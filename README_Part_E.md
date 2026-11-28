@@ -127,7 +127,7 @@ There is one record per AI program in `07_Comparison_Validation/human_review_rec
 - `06_AI_Mode_II_CAD/extractor_and_manifest/tests`: **33 passed**. These are integration tests on the real Onshape
   evidence (values, reproducibility, every evidence pointer resolves, hashes) plus synthetic B-rep unit tests and
   vendor/secret checks.
-- `07_Comparison_Validation/tools/tests`: **31 passed**. These cover the NC checker on synthetic snippets, isolation for
+- `07_Comparison_Validation/tools/tests`: **32 passed** (2026-11-28). These cover the NC checker on synthetic snippets, isolation for
   the four real prompts, write-once archiving, revision preservation and the metric definitions.
 
 Synthetic fixtures are labelled as such. They test the software, not the parts.
@@ -136,9 +136,9 @@ Synthetic fixtures are labelled as such. They test the software, not the parts.
 
 | # | Task | Owner (part) | Blocks |
 |---|---|---|---|
-| 1 | Approve stock, material, tools, cutting data, setups, work zeros, clearances (Part B) and copy them into the shared config | Part B | all 4 AI attempts |
+| 1 | ~~Copy Part B values into the shared config~~ done 2026-11-28 from `02_Process_Plans/` (stock, material, work zeros, tools, speeds/feeds). Still open: **safety clearances** (both), setup 2 grip/datum/simulation stock (both), part position in the milling block, lathe T05/T09 reach, lathe internal thread (M14×1 vs CAD M14×2) | Part B | all 4 AI attempts |
 | 2 | Write and commit the human lathe and milling baselines (03_Lathe, 04_Mill) | Parts C/D | AI attempts (brief §2.5), baseline rows of the matrix |
-| 3 | ~~Create a named version~~ done: **Ch2-Final**, manifests re-extracted 2026-11-28. Still open: put `onshape_link.txt` + drawing PDFs in 01_Onshape_Drawings; fix the lathe drawing title block (says inches, Letter size) | Part A | same-revision guarantee, Mode I team drawing |
+| 3 | ~~Named version, `onshape_link.txt`, drawing PDFs~~ done 2026-11-28 (**Ch2-Final**). Still open: fix the lathe drawing title block (says inches, Letter size) | Part A | Mode I team drawing |
 | 4 | Choose the Mode I drawing (instructor sheet or team drawing) | Part E | Mode I attempts |
 | 5 | Verify the evaluation reference (`evaluation_reference/*.json`) against the drawing, especially the open readings (lathe "2", and "20"/"21" on the instructor sheet) | Part E | metrics |
 | 6 | Decide whether human annotation `H-L-01` may be sent in Mode II (default: not sent) | Part E | Mode II lathe |

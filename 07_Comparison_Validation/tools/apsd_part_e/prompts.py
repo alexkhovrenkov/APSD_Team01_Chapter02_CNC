@@ -11,7 +11,9 @@ Isolation checks (recorded in isolation_check.json, a failing check stops the bu
   * no line of a human baseline program (03_Lathe / 04_Mill) in the prompt;
   * Mode I: no manifest content; Mode II: no drawing attachment or drawing file name;
   * the shared configuration and template contain no reference dimension of the part
-    (numbers >= 3 not attached to a letter, compared with the evaluation reference).
+    (numbers >= 3 not attached to a letter, compared with the evaluation reference); numbers that are
+    process values (tool sizes, feeds) are accepted only if listed with a reason in the config's
+    'isolation_allowlist'.
 Preflight (stop unless --allow-pending, then recorded as accepted deviations):
   * required configuration values still MISSING / PENDING_HUMAN_REVIEW;
   * no human baseline program yet (brief 2.5: baseline before AI);
@@ -102,6 +104,14 @@ def leaked_numbers(text: str, part: str) -> list[str]:
     return sorted({tok for tok in NUM.findall(body) if round(float(tok), 4) in refs})
 
 
+def isolation_allowlist(part: str) -> dict[str, str]:
+    """Numbers that equal a reference dimension but are PROCESS values in the shared config (tool sizes, feeds,
+    step-downs). Each entry needs a written reason in shared_experiment_config.json -> isolation_allowlist.
+    Both modes receive these values identically, so they cannot favour one mode."""
+    cfg = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    return {k: v for k, v in cfg.get("isolation_allowlist", {}).get(PARTS[part], {}).items() if str(v).strip()}
+
+
 def baseline_lines(part: str) -> list[str]:
     out = []
     for p in BASELINE_OF[part].rglob("*"):
@@ -182,9 +192,14 @@ def isolation_check(mode: str, part: str, text: str, cfg_json: str, tpl: str) ->
     else:
         chk("Mode II: no drawing image or drawing file", ".png" not in text and "drawing_inputs" not in text and "instructor_sheet" not in text)
         chk("Mode II: manufacturing hints removed", '"manufacturing_considerations"' not in text)
-    lk_cfg = leaked_numbers(cfg_json, part)
+    allow = isolation_allowlist(part)
+    lk_all = leaked_numbers(cfg_json, part)
+    lk_cfg = [n for n in lk_all if n not in allow]
+    allowed_found = [n for n in lk_all if n in allow]
     lk_tpl = leaked_numbers(tpl, part)
-    chk("shared config contains no reference dimension of this part", not lk_cfg, f"numbers found: {lk_cfg}" if lk_cfg else "")
+    chk("shared config contains no reference dimension of this part", not lk_cfg,
+        (f"numbers found: {lk_cfg}" if lk_cfg else "")
+        + (f"; allowed process values (see isolation_allowlist): {allowed_found}" if allowed_found else ""))
     chk("template contains no reference dimension of this part", not lk_tpl, f"numbers found: {lk_tpl}" if lk_tpl else "")
     return {"passed": all(c["passed"] for c in checks), "checks": checks,
             "limits": "These checks prove what the PROMPT contains. They cannot prove what the chat model saw elsewhere; "

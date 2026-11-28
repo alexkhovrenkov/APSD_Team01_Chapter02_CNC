@@ -48,7 +48,17 @@ def test_unapproved_human_annotation_is_not_sent():
 
 def test_preflight_blocks_without_baseline_and_part_b():
     probs = prompts.preflight("lathe")
-    assert any("baseline" in p for p in probs) and any(".stock" in p for p in probs)
+    assert any("baseline" in p for p in probs) and any(".safety_clearances" in p for p in probs)
+
+
+def test_allowlist_needs_a_reason_and_only_covers_listed_numbers():
+    allow = prompts.isolation_allowlist("milling")
+    assert all(isinstance(r, str) and len(r) > 10 for r in allow.values())
+    assert "105" not in allow  # boss centre distance must never be allow-listed
+    for part in ("lathe", "milling"):
+        cfg = json.dumps(prompts.ai_visible_config(part), indent=1, ensure_ascii=False)
+        unexplained = [n for n in prompts.leaked_numbers(cfg, part) if n not in prompts.isolation_allowlist(part)]
+        assert unexplained == []
 
 
 # ------------------------------------------------------------------ archiving
