@@ -1,0 +1,37 @@
+[
+ {
+  "name": "MILLING",
+  "id": "6b0a96d5bccd77fdf90951ac",
+  "state": "IN_PROGRESS",
+  "description": null,
+  "revision": null,
+  "partNumber": null,
+  "elementId": "20caaefd66e3a40229321161",
+  "partId": "JHD",
+  "bodyType": "solid",
+  "microversionId": "4d05edae182b19aa4ea1f30d",
+  "isFlattenedBody": false,
+  "partQuery": "query=qCompressed(1.0,\"%B5$QueryM5S12$disambiguationDataA1M2S12$disambiguationTypeS13$ORIGINAL_DEPENDENCYS9$originalsA2C0M5Sa$entityTypeBa$EntityTypeS4$EDGESb$historyTypeS8$CREATIONSb$operationIdB2$IdA1S11.6$FrlslkXPqMkFITt_0wireOpS9$queryTypeSd$SKETCH_ENTITYSe$sketchEntityIdSc$uRRV6TQH7KOIC0M5R4R5R6R7R8RaRbRcRdSc$XscuqsJTleSLR4C6S4$BODYR6R7R8CbA1S11.9$Fu7md2XMxSJfLHP_0opExtrudeRbSa$SWEPT_BODY\",id);",
+  "partIdentity": "d87d3a2b63630e61a1b91166",
+  "meshState": "NO_MESH",
+  "isHidden": false,
+  "configurationId": null,
+  "thumbnailConfigurationId": null,
+  "propertySourceTypes": {
+   "57f3fb8efa3416c06701d60d": 3
+  },
+  "metadataMicroversion": "6e87bc46bde3f5e4ceb98f76",
+  "defaultColorHash": "Fu7md2XMxSJfLHP_0_0",
+  "ordinal": 0,
+  "isMesh": false,
+  "appearance": {
+   "color": {
+    "red": 157,
+    "green": 207,
+    "blue": 237
+   },
+   "isGenerated": true,
+   "opacity": 255
+  }
+ }
+]

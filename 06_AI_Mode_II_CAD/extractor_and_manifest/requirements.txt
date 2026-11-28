@@ -1,0 +1,6 @@
+# Same pinned versions as the Chapter 1 pipeline (tested there on 2026-11-09, Python 3.13, macOS)
+# and re-tested for Part E on 2026-11-26.
+requests==2.34.2
+python-dotenv==1.2.4
+jsonschema==4.26.0
+pytest==9.2.0

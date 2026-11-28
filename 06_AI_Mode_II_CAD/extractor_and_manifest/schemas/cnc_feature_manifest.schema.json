@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apsd-cnc-feature-manifest-1.0",
+  "title": "APSD Chapter 2 Part E - CNC feature manifest (Mode II input)",
+  "description": "Project-defined schema (Team01). One manifest per workpiece, generated from live Onshape API evidence by apsd_cam. Every value carries a provenance label: CAD_EXTRACTED (read from the CAD data, unit conversion only), GEOMETRICALLY_INFERRED (computed by the extractor from CAD values), HUMAN_ANNOTATED (supplied and verified by a named team member), UNKNOWN (not available; value null). The section manufacturing_considerations is NOT sent to the AI in Mode II (fairness: Mode I receives no process hints either).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "label_convention", "evidence_class", "part", "units", "cad_source", "extraction", "coordinate_system", "bounding_box", "features", "relationships", "human_annotations", "missing_data", "manufacturing_considerations", "limitations"],
+  "properties": {
+    "schema": {"const": "apsd-cnc-feature-manifest"},
+    "schema_version": {"const": "1.0"},
+    "label_convention": {"type": "object", "required": ["CAD_EXTRACTED", "GEOMETRICALLY_INFERRED", "HUMAN_ANNOTATED", "UNKNOWN"]},
+    "evidence_class": {"enum": ["LIVE_ONSHAPE_API", "SYNTHETIC_TEST_FIXTURE"]},
+    "part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "process", "name_in_cad", "body_count"],
+      "properties": {
+        "id": {"enum": ["APSD-LATHE", "APSD-MILLING"]},
+        "process": {"enum": ["turning", "milling"]},
+        "name_in_cad": {"type": ["string", "null"]},
+        "body_count": {"type": "integer", "minimum": 0},
+        "material": {"$ref": "#/$defs/value"}
+      }
+    },
+    "units": {
+      "type": "object",
+      "required": ["length", "angle", "source_length_unit", "conversion"],
+      "properties": {
+        "length": {"const": "mm"},
+        "angle": {"const": "deg"},
+        "source_length_unit": {"type": "string"},
+        "conversion": {"type": "string"}
+      }
+    },
+    "cad_source": {
+      "type": "object",
+      "required": ["method", "host", "api_version", "document_id", "element_id", "element_name", "url_context", "snapshot_microversion", "element_microversion", "named_version", "revision_changed_during_extraction"],
+      "properties": {
+        "method": {"type": "string"},
+        "host": {"type": "string"},
+        "api_version": {"type": "string"},
+        "document_id": {"type": "string", "pattern": "^[0-9a-f]{24}$"},
+        "element_id": {"type": "string", "pattern": "^[0-9a-f]{24}$"},
+        "element_name": {"type": ["string", "null"]},
+        "url_context": {"type": "object"},
+        "snapshot_microversion": {"type": ["string", "null"]},
+        "element_microversion": {"type": ["string", "null"]},
+        "named_version": {"type": ["string", "null"]},
+        "revision_changed_during_extraction": {"type": ["boolean", "null"]},
+        "drawing_element": {"type": ["object", "null"]}
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "required": ["run_id", "extracted_utc", "evidence_dir", "evidence_files", "pipeline", "pipeline_version", "vendored_chapter1"],
+      "properties": {
+        "run_id": {"type": "string"},
+        "extracted_utc": {"type": "string"},
+        "evidence_dir": {"type": "string"},
+        "evidence_files": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+        "pipeline": {"type": "string"},
+        "pipeline_version": {"type": "string"},
+        "vendored_chapter1": {"type": "object"},
+        "endpoints": {"type": "object"}
+      }
+    },
+    "coordinate_system": {
+      "type": "object",
+      "required": ["frame", "origin", "axes", "label", "note"],
+      "properties": {
+        "frame": {"type": "string"},
+        "origin": {"type": "string"},
+        "axes": {"type": "object"},
+        "label": {"$ref": "#/$defs/label"},
+        "note": {"type": "string"}
+      }
+    },
+    "bounding_box": {
+      "type": "object",
+      "required": ["min_mm", "max_mm", "size_mm", "label", "method", "evidence"],
+      "properties": {
+        "min_mm": {"$ref": "#/$defs/xyz"},
+        "max_mm": {"$ref": "#/$defs/xyz"},
+        "size_mm": {"$ref": "#/$defs/xyz"},
+        "label": {"$ref": "#/$defs/label"},
+        "method": {"type": "string"},
+        "evidence": {"$ref": "#/$defs/evidence"},
+        "cross_check": {"type": "object"}
+      }
+    },
+    "features": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/feature"}},
+    "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}},
+    "human_annotations": {"type": "array", "items": {"$ref": "#/$defs/annotation"}},
+    "missing_data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item", "label", "reason", "needed_for"],
+        "properties": {
+          "item": {"type": "string"},
+          "label": {"const": "UNKNOWN"},
+          "reason": {"type": "string"},
+          "needed_for": {"type": "string"}
+        }
+      }
+    },
+    "manufacturing_considerations": {
+      "type": "object",
+      "required": ["excluded_from_mode_II_prompt", "reason", "items"],
+      "properties": {
+        "excluded_from_mode_II_prompt": {"const": true},
+        "reason": {"type": "string"},
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "text", "label", "basis", "applies_to"],
+            "properties": {
+              "id": {"type": "string"},
+              "text": {"type": "string"},
+              "label": {"$ref": "#/$defs/label"},
+              "basis": {"type": "string"},
+              "applies_to": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "label": {"enum": ["CAD_EXTRACTED", "GEOMETRICALLY_INFERRED", "HUMAN_ANNOTATED", "UNKNOWN"]},
+    "xyz": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+    "evidence": {"type": "array", "items": {"type": "string", "minLength": 3}},
+    "value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit", "label"],
+      "properties": {
+        "value": {},
+        "unit": {"type": ["string", "null"]},
+        "label": {"$ref": "#/$defs/label"},
+        "evidence": {"$ref": "#/$defs/evidence"},
+        "note": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"label": {"const": "UNKNOWN"}}}, "then": {"properties": {"value": {"type": "null"}}, "required": ["note"]}},
+        {"if": {"properties": {"label": {"enum": ["CAD_EXTRACTED", "GEOMETRICALLY_INFERRED"]}}}, "then": {"properties": {"value": {"not": {"type": "null"}}}}}
+      ]
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "description", "label", "dimensions", "location", "evidence", "extraction_method", "confidence", "uncertainty", "needs_human_verification"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[LM]-[A-Z0-9]+(-[A-Z0-9]+)*$"},
+        "type": {"type": "string"},
+        "description": {"type": "string"},
+        "label": {"$ref": "#/$defs/label", "description": "label of the feature's EXISTENCE and type"},
+        "dimensions": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}},
+        "location": {"type": "object", "additionalProperties": {"$ref": "#/$defs/value"}},
+        "geometry_elements": {"type": "array", "items": {"type": "object"}},
+        "evidence": {"$ref": "#/$defs/evidence", "minItems": 1},
+        "extraction_method": {"type": "string"},
+        "confidence": {"enum": ["high", "medium", "low", "none"]},
+        "uncertainty": {"type": "string"},
+        "needs_human_verification": {"type": "boolean"},
+        "access_direction": {"type": "string"},
+        "related_features": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description", "value", "unit", "label", "method", "evidence"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[LM]-REL-[0-9]{2}$"},
+        "description": {"type": "string"},
+        "value": {},
+        "unit": {"type": ["string", "null"]},
+        "label": {"$ref": "#/$defs/label"},
+        "method": {"type": "string"},
+        "evidence": {"$ref": "#/$defs/evidence"},
+        "features": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "fact", "value", "unit", "label", "provenance", "source", "verified_by", "verified_on", "approved_for_mode_II_prompt", "fairness_note"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^H-[LM]-[0-9]{2}$"},
+        "fact": {"type": "string"},
+        "value": {},
+        "unit": {"type": ["string", "null"]},
+        "label": {"const": "HUMAN_ANNOTATED"},
+        "provenance": {"type": "string"},
+        "source": {"type": "string", "minLength": 3},
+        "verified_by": {"type": "string", "minLength": 2},
+        "verified_on": {"type": "string", "minLength": 8},
+        "approved_for_mode_II_prompt": {"type": "boolean"},
+        "fairness_note": {"type": "string"},
+        "related_features": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

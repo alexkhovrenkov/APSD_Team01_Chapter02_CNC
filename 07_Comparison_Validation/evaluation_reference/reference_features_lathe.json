@@ -1,0 +1,253 @@
+{
+ "title": "Evaluation reference - APSD-LATHE (EVALUATOR ONLY: never part of any AI prompt)",
+ "status": "PENDING_HUMAN_REVIEW",
+ "drafted_by": "Claude Code (Anthropic, claude-opus-5-5), 2026-11-26: reading of the instructor sheet 3 (brief PDF p.26, rendered at 300 dpi) and of 06 manifests/lathe_manifest.json. NOT verified. Gate G1: a team member must confirm every drawing_value against the original sheet (or the team drawing of the same named version) and sign below before metrics are computed.",
+ "verified_by": null,
+ "verified_on": null,
+ "reference_drawing": "05_AI_Mode_I_Drawing/drawing_inputs/APSD_LATHE_instructor_sheet3_p26_300dpi.png (sha256 in input_manifest.json)",
+ "reference_cad": "06_AI_Mode_II_CAD/extractor_and_manifest/manifests/lathe_manifest.json",
+ "rules": [
+  "A reference feature is APPLICABLE to a mode when its existence is determinable from that mode's input. drawing_dimensioned=false items count for Mode I only as 'correctly flagged as missing/unclear'.",
+  "Dimensional discrepancy = |AI value - reference value| in mm, reference value = the agreed drawing/CAD value; if drawing and CAD disagree the team decides at G1 and records the decision here.",
+  "Never measure the drawing image to fill a value (brief: dimensions must not be inferred from image scale)."
+ ],
+ "features": [
+  {
+   "ref_id": "R-L-01",
+   "feature": "overall axial length",
+   "dims": {
+    "length": {
+     "drawing_value": 210,
+     "drawing_source": "front view, '210'",
+     "cad_value": 210.0,
+     "cad_ref": "L-AXIS"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-02",
+   "feature": "spigot (small end) external diameter and length",
+   "dims": {
+    "diameter": {
+     "drawing_value": 29.9,
+     "drawing_source": "end view 'Ø29,9'",
+     "cad_value": 29.9,
+     "cad_ref": "L-OD-01"
+    },
+    "length": {
+     "drawing_value": 20,
+     "drawing_source": "front view '20' (lower left)",
+     "cad_value": 20.0,
+     "cad_ref": "L-OD-01"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-03",
+   "feature": "hub diameter Ø60 between spigot and flange",
+   "dims": {
+    "diameter": {
+     "drawing_value": 60,
+     "drawing_source": "end view 'Ø60'",
+     "cad_value": 60.0,
+     "cad_ref": "L-OD-02"
+    },
+    "length_to_flange_face": {
+     "drawing_value": 40,
+     "drawing_source": "front view '40' (to flange face, incl. R5)",
+     "cad_value": 40.0,
+     "cad_ref": "L-OD-02 + L-BLEND-01 (20 -> 60)"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-04",
+   "feature": "flange Ø100 x 20",
+   "dims": {
+    "diameter": {
+     "drawing_value": 100,
+     "drawing_source": "end view 'Ø100'",
+     "cad_value": 100.0,
+     "cad_ref": "L-OD-03"
+    },
+    "thickness": {
+     "drawing_value": 20,
+     "drawing_source": "front view '20' (top)",
+     "cad_value": 20.0,
+     "cad_ref": "L-REL-02"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-05",
+   "feature": "two concave R5 fillets at the flange",
+   "dims": {
+    "radius": {
+     "drawing_value": 5,
+     "drawing_source": "front view 'R5' x2",
+     "cad_value": 5.0,
+     "cad_ref": "L-BLEND-01/02"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-06",
+   "feature": "external thread on the long shaft",
+   "dims": {
+    "pitch": {
+     "drawing_value": 5,
+     "drawing_source": "front view '5'",
+     "cad_value": 5.0,
+     "cad_ref": "L-THREAD-EXT-01"
+    },
+    "threaded_length": {
+     "drawing_value": 125,
+     "drawing_source": "section A-A '125'",
+     "cad_value": 125.0,
+     "cad_ref": "L-OD-04 span 85-210"
+    },
+    "major_diameter": {
+     "drawing_value": "INTERPRETATION PENDING: radial callout '25' at the threaded end (section A-A) may be the major RADIUS (=> Ø50)",
+     "drawing_source": "section A-A '25'",
+     "cad_value": 50.0,
+     "cad_ref": "L-OD-04"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true,
+   "note": "thread designation/standard/class not on the sheet and not in CAD"
+  },
+  {
+   "ref_id": "R-L-07",
+   "feature": "internal threaded blind bore at the spigot end",
+   "dims": {
+    "depth": {
+     "drawing_value": 41.42,
+     "drawing_source": "section A-A '41,42'",
+     "cad_value": 41.42,
+     "cad_ref": "L-BORE-01"
+    },
+    "pitch": {
+     "drawing_value": null,
+     "drawing_source": "not given on the sheet",
+     "cad_value": 2.0,
+     "cad_ref": "L-THREAD-INT-01"
+    },
+    "entry_offset": {
+     "drawing_value": "INTERPRETATION PENDING: '2' at the spigot end of A-A",
+     "drawing_source": "section A-A '2'",
+     "cad_value": null,
+     "cad_ref": "no chamfer/step modelled"
+    }
+   },
+   "drawing_dimensioned": "partly",
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-08",
+   "feature": "through bore Ø13",
+   "dims": {
+    "diameter": {
+     "drawing_value": 13,
+     "drawing_source": "end view 'Ø13'",
+     "cad_value": 13.0,
+     "cad_ref": "L-BORE-02"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-09",
+   "feature": "counterbore at the threaded end",
+   "dims": {
+    "diameter": {
+     "drawing_value": 30,
+     "drawing_source": "instructor end view 'Ø30'; team drawing end view 'R15'",
+     "cad_value": 30.0,
+     "cad_ref": "L-BORE-03"
+    },
+    "depth": {
+     "drawing_value": 40,
+     "drawing_source": "section A-A '40'",
+     "cad_value": 40.0,
+     "cad_ref": "L-BORE-03"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true
+  },
+  {
+   "ref_id": "R-L-10",
+   "feature": "6 axial holes on the hub shoulder",
+   "dims": {
+    "diameter": {
+     "drawing_value": 3.52,
+     "drawing_source": "end view 'Ø3,52'",
+     "cad_value": 3.52,
+     "cad_ref": "L-HOLES-01"
+    },
+    "depth": {
+     "drawing_value": 4.1,
+     "drawing_source": "front view '4,1'",
+     "cad_value": 4.1,
+     "cad_ref": "L-HOLES-01"
+    },
+    "pitch_circle_diameter": {
+     "drawing_value": 46,
+     "drawing_source": "front view vertical '23' = distance from the axis to the hole centres (radius) - both the instructor sheet and the team drawing",
+     "cad_value": 46.0,
+     "cad_ref": "L-HOLES-01"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": false
+  },
+  {
+   "ref_id": "R-L-11",
+   "feature": "raised key on the spigot",
+   "dims": {
+    "width": {
+     "drawing_value": 7.98,
+     "drawing_source": "end view '7,98'",
+     "cad_value": 7.98,
+     "cad_ref": "L-KEY-01"
+    },
+    "top_from_axis": {
+     "drawing_value": 17.9,
+     "drawing_source": "end view '17,9'",
+     "cad_value": 17.9,
+     "cad_ref": "L-KEY-01"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": false
+  },
+  {
+   "ref_id": "R-L-12",
+   "feature": "radial callouts '20' and '21' at the threaded end (section A-A)",
+   "dims": {
+    "meaning": {
+     "drawing_value": "INTERPRETATION PENDING (thread minor radius? undercut?)",
+     "drawing_source": "section A-A",
+     "cad_value": null,
+     "cad_ref": "no matching CAD feature found by the extractor"
+    }
+   },
+   "drawing_dimensioned": true,
+   "turnable_2_axis": true,
+   "note": "candidate drawing/CAD discrepancy for G1; instructor sheet only - the team drawing does not show '20'/'21'"
+  }
+ ],
+ "team_drawing_check": "2026-11-28, Claude Code (claude-opus-5-5), UNVERIFIED: team drawing APSD-LATHE-Final (exported from Ch2-Final, 05_AI_Mode_I_Drawing/drawing_inputs/APSD_LATHE_team_drawing_vdd8cc179_300dpi.png) shows the same values as the instructor sheet, except: counterbore given as 'R15' (= Ø30), the threaded-end callouts '20'/'21' are absent (only '25' = radius to the thread crest, Ø50). DEFECT for Part A: the title block says 'DIMENSIONS ARE IN INCHES' with inch tolerances although all values are mm, and the sheet is ANSI A (Letter) not A4/A3."
+}
