@@ -1,0 +1,1111 @@
+{
+ "title": "Course simulator dialect (LatheLab / MillLab) - extracted from the simulator's public source",
+ "class": "SIMULATOR_SETTING (facts about the teaching simulator, not human-approved process data)",
+ "source": {
+  "url_lathe": "https://mohammadrezaconstructor.github.io/cnc-simulator/",
+  "url_mill": "https://mohammadrezaconstructor.github.io/cnc-simulator/mill.html",
+  "retrieved_on": "2026-11-26",
+  "sha256_lathe_html": "af3780585ae8a8c13d7bd9bb97c478b50af883167b6e8f1ad94c5fbd0457b079",
+  "sha256_mill_html": "d0c6daaf59dbd0f782721bc0528828595319f2685a573bc74fa9ceba51e96a56",
+  "method": "HTML downloaded with curl; supported-code sets, reference entries, defaults and Program-check messages read from the bundled JavaScript. The simulator may change after this date: re-check the hashes before relying on this file. This is a static reading of the source, NOT a simulation run.",
+  "not_committed": "The simulator HTML itself (third-party, ~1.2 MB each) is not stored in the repository."
+ },
+ "lathelab": {
+  "supported_g": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   18,
+   20,
+   21,
+   28,
+   32,
+   33,
+   40,
+   41,
+   42,
+   50,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   70,
+   71,
+   72,
+   73,
+   74,
+   75,
+   76,
+   90,
+   92,
+   94,
+   96,
+   97,
+   98,
+   99
+  ],
+  "supported_m": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   7,
+   8,
+   9,
+   30,
+   98,
+   99,
+   40,
+   41,
+   42,
+   43,
+   44
+  ],
+  "unsupported_g_behaviour": "error 'G.. is not supported'",
+  "unsupported_m_behaviour": "warning 'M.. is not supported - ignored'",
+  "conventions": {
+   "X": "Absolute position in X - always a DIAMETER on a lathe. X0 is the spindle centre line. (simulator reference)",
+   "Z": "Absolute axial position. Z0 is normally the finished front face; negative Z is towards the chuck. (simulator reference)",
+   "U_W": "Incremental X (diameter change) / incremental Z. Absolute vs incremental is chosen by the ADDRESS (X/Z vs U/W), not by G90/G91.",
+   "G90": "OD/ID turning box cycle (NOT absolute mode). G91 is NOT supported.",
+   "G94_G98_G99": "G94 = facing box cycle. G98/G99 = feed per minute / per revolution.",
+   "T": "Tool call TttOO, e.g. T0101 = tool 01 with offset 01 (nose radius R and tip T from the offset page)",
+   "G96_G50": "G96 constant surface speed should be limited with G50 S.. (warning otherwise)",
+   "threading": "G76 multiple threading cycle, G92 single pass, G32 single move; use G97 for threading",
+   "tool_post": "slant-bed lathe, turret behind the centre line (rear tool post); G02/G03 as in the usual lathe picture (+X up, +Z right)",
+   "machine_limits": {
+    "maxRpm": 4000,
+    "rapidRate_mm_min": 12000,
+    "homeX_diameter": 200,
+    "homeZ": 150,
+    "source": "default machine settings object in the bundle"
+   },
+   "stock_dialog": [
+    "diameter",
+    "length",
+    "bore",
+    "faceAllowance (default 1)",
+    "gripLength (default 30)",
+    "material"
+   ]
+  },
+  "default_tool_table": [
+   "T01 OD rough CNMG 80deg R0.8",
+   "T02 OD finish VNMG 35deg R0.4",
+   "T03 OD groove 3 mm",
+   "T04 OD thread 60deg",
+   "T05 Drill D16",
+   "T06 Boring bar D10 DCMT07 55deg R0.4",
+   "T07 Part-off 3 mm",
+   "T08 OD finish DNMG 55deg R0.4",
+   "T09 ID thread 60deg",
+   "T10 Centre/spot drill D6 90deg",
+   "T11 ID groove 3 mm",
+   "T12 Boring bar D16 CCMT09 80deg R0.8"
+  ],
+  "reference": {
+   "G00": {
+    "title": "Rapid positioning",
+    "group": "Motion",
+    "modal": true
+   },
+   "G01": {
+    "title": "Linear interpolation (feed)",
+    "group": "Motion",
+    "modal": true
+   },
+   "G02": {
+    "title": "Circular interpolation clockwise",
+    "group": "Motion",
+    "modal": true
+   },
+   "G03": {
+    "title": "Circular interpolation counter-clockwise",
+    "group": "Motion",
+    "modal": true
+   },
+   "G04": {
+    "title": "Dwell",
+    "group": "Non-modal",
+    "modal": false
+   },
+   "G18": {
+    "title": "ZX plane selection",
+    "group": "Plane",
+    "modal": true
+   },
+   "G20": {
+    "title": "Inch input",
+    "group": "Units",
+    "modal": true
+   },
+   "G21": {
+    "title": "Metric input",
+    "group": "Units",
+    "modal": true
+   },
+   "G28": {
+    "title": "Return to reference (home) position",
+    "group": "Non-modal",
+    "modal": false
+   },
+   "G32": {
+    "title": "Thread cutting (single move)",
+    "group": "Motion",
+    "modal": true
+   },
+   "G40": {
+    "title": "Cancel tool nose radius compensation",
+    "group": "Compensation",
+    "modal": true
+   },
+   "G41": {
+    "title": "Tool nose radius compensation LEFT",
+    "group": "Compensation",
+    "modal": true
+   },
+   "G42": {
+    "title": "Tool nose radius compensation RIGHT",
+    "group": "Compensation",
+    "modal": true
+   },
+   "G50": {
+    "title": "Max. spindle speed / coordinate setting",
+    "group": "Non-modal",
+    "modal": false
+   },
+   "G54": {
+    "title": "Work coordinate system 1",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G55": {
+    "title": "Work coordinate system 2",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G56": {
+    "title": "Work coordinate system 3",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G57": {
+    "title": "Work coordinate system 4",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G58": {
+    "title": "Work coordinate system 5",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G59": {
+    "title": "Work coordinate system 6",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G70": {
+    "title": "Finishing cycle",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G71": {
+    "title": "Stock removal in turning (OD/ID roughing)",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G72": {
+    "title": "Stock removal in facing",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G73": {
+    "title": "Pattern repeating",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G74": {
+    "title": "Face peck drilling / face grooving",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G75": {
+    "title": "OD/ID peck grooving",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G76": {
+    "title": "Multiple threading cycle",
+    "group": "Multiple repetitive cycles",
+    "modal": false
+   },
+   "G90": {
+    "title": "OD/ID turning cycle (box cycle)",
+    "group": "Single cycles",
+    "modal": true
+   },
+   "G92": {
+    "title": "Threading cycle (single pass)",
+    "group": "Single cycles",
+    "modal": true
+   },
+   "G94": {
+    "title": "Facing cycle (box cycle)",
+    "group": "Single cycles",
+    "modal": true
+   },
+   "G96": {
+    "title": "Constant surface speed (CSS)",
+    "group": "Spindle",
+    "modal": true
+   },
+   "G97": {
+    "title": "Constant spindle speed",
+    "group": "Spindle",
+    "modal": true
+   },
+   "G98": {
+    "title": "Feed per minute",
+    "group": "Feed",
+    "modal": true
+   },
+   "G99": {
+    "title": "Feed per revolution",
+    "group": "Feed",
+    "modal": true
+   },
+   "M00": {
+    "title": "Program stop",
+    "group": "Program",
+    "modal": false
+   },
+   "M01": {
+    "title": "Optional stop",
+    "group": "Program",
+    "modal": false
+   },
+   "M02": {
+    "title": "End of program",
+    "group": "Program",
+    "modal": false
+   },
+   "M03": {
+    "title": "Spindle on, clockwise",
+    "group": "Spindle",
+    "modal": true
+   },
+   "M04": {
+    "title": "Spindle on, counter-clockwise",
+    "group": "Spindle",
+    "modal": true
+   },
+   "M05": {
+    "title": "Spindle stop",
+    "group": "Spindle",
+    "modal": true
+   },
+   "M07": {
+    "title": "Mist coolant on",
+    "group": "Coolant",
+    "modal": true
+   },
+   "M08": {
+    "title": "Coolant on",
+    "group": "Coolant",
+    "modal": true
+   },
+   "M09": {
+    "title": "Coolant off",
+    "group": "Coolant",
+    "modal": true
+   },
+   "M30": {
+    "title": "End of program & rewind",
+    "group": "Program",
+    "modal": false
+   },
+   "M98": {
+    "title": "Sub-program call",
+    "group": "Program",
+    "modal": false
+   },
+   "M99": {
+    "title": "Sub-program end / return",
+    "group": "Program",
+    "modal": false
+   }
+  },
+  "program_check_messages": [
+   {
+    "severity": "error",
+    "message_template": "Threading moves are not allowed inside a G70–G73 finishing profile"
+   },
+   {
+    "severity": "error",
+    "message_template": "Feed move without a feed rate (F) – the control would alarm (no F command)."
+   },
+   {
+    "severity": "warning",
+    "message_template": "Feed move while the spindle is stopped (M03/M04 missing)."
+   },
+   {
+    "severity": "warning",
+    "message_template": "Main program ran into sub-program O${n.o} – end the main program with M30."
+   },
+   {
+    "severity": "info",
+    "message_template": "Program has no M30 (program end & rewind)."
+   },
+   {
+    "severity": "error",
+    "message_template": "G${e.raw} is not supported"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M${e.raw} is not supported – ignored"
+   },
+   {
+    "severity": "warning",
+    "message_template": "More than one M-code in a block – many controls allow only one."
+   },
+   {
+    "severity": "error",
+    "message_template": "G${p} and G${e} are in the same modal group"
+   },
+   {
+    "severity": "info",
+    "message_template": "G${e}: nose radius of offset ${a.offset} is 0 – compensation has no effect"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${e} with offset 00 – select a tool offset (e.g. T0101) so the nose radius R and tip T are known"
+   },
+   {
+    "severity": "error",
+    "message_template": "The block after \",C\"/\",R\" must be a G01 move – the corner was not made"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Feed F${c.F.raw} mm/rev is very high for turning"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Feed F${c.F.raw} mm/min (G98) is extremely slow – did you mean G99 (mm/rev)?"
+   },
+   {
+    "severity": "warning",
+    "message_template": "S${c.S.raw} exceeds the machine maximum of ${this.cfg.machine.maxRpm} rpm – clamped"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G96 (constant surface speed) without a G50 S.. speed limit"
+   },
+   {
+    "severity": "error",
+    "message_template": "Tool T${String(n).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M0${e} without a spindle speed – program S.. (rpm or m/min)"
+   },
+   {
+    "severity": "info",
+    "message_template": "G50 X/Z sets the work coordinate system from the current tool position (old-style programming)."
+   },
+   {
+    "severity": "warning",
+    "message_template": "G28 with tool-nose radius compensation active – cancel with G40 first"
+   },
+   {
+    "severity": "error",
+    "message_template": "Arc/cycle words without an end point (X/Z/U/W)"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M${e} inside a sub-program"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Program ends with tool-nose radius compensation still active (G40 missing)"
+   },
+   {
+    "severity": "info",
+    "message_template": "Spindle still running at program end – M05 is good practice before M30"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M99 in the main program loops forever on a real machine – treated as end"
+   },
+   {
+    "severity": "error",
+    "message_template": "Macro alarm ${s(o)}: ${e.comment?.trim()||"
+   },
+   {
+    "severity": "error",
+    "message_template": "${t.kind}: the next move is in line with this one – no corner to ${t.kind==="
+   },
+   {
+    "severity": "error",
+    "message_template": "${t.kind}${t.size} is too large for the adjacent moves"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Tool change close to the workpiece"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Feed move after threading without a new F"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${i.motion} with nose radius compensation active – compensation is ignored inside the cycle"
+   },
+   {
+    "severity": "info",
+    "message_template": "Taper/arc cut without tool-nose radius compensation (G41/G42)"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Threading with G96 (CSS) – use G97 constant rpm so every pass stays in sync"
+   },
+   {
+    "severity": "error",
+    "message_template": "Thread feed ${(n*t.feed).toFixed(0)} mm/min exceeds what the Z axis can follow – reduce S"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Threading with T${String(r.id).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${e} called with G41/G42 active – roughing ignores compensation; cancel with G40 before the cycle"
+   },
+   {
+    "severity": "info",
+    "message_template": "G${e} type II: the first profile block names both axes, so pockets in the profile are roughed too"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${e} ${t}${r[t].raw} = ${+i.toFixed(4)} mm ${a} – without a decimal point ${t} is in ${s.inch?"
+   },
+   {
+    "severity": "info",
+    "message_template": "G74 drilling at X${(u.x*2).toFixed(3)} – drills normally start at X0"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G76 tool angle ${s.g76.a}° is unusual (0, 29, 30, 55, 60, 80)"
+   },
+   {
+    "severity": "info",
+    "message_template": "G76 generates ${m.length} passes (thread height ${n.toFixed(3)} mm, first cut ${o.toFixed(3)} mm)"
+   }
+  ]
+ },
+ "milllab": {
+  "supported_g": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   28,
+   40,
+   41,
+   42,
+   43,
+   44,
+   49,
+   52,
+   53,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   68,
+   69,
+   73,
+   74,
+   76,
+   80,
+   81,
+   82,
+   83,
+   84,
+   85,
+   86,
+   89,
+   90,
+   91,
+   94,
+   95,
+   98,
+   99
+  ],
+  "supported_m": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   19,
+   29,
+   30,
+   98,
+   99
+  ],
+  "unsupported_g_behaviour": "error 'G.. is not supported' (G50.1/G51.1 mirror: warning, ignored)",
+  "unsupported_m_behaviour": "warning 'M.. is not supported - ignored'",
+  "conventions": {
+   "axes": "X table left/right, Y towards/away, Z spindle up/down; negative Z goes into the part (simulator lesson 1)",
+   "G54": "Work zero set automatically to the chosen top corner or centre of the block (default origin 'corner' = front-left); Z0 on the finished top (default) or raw top",
+   "G90_G91": "Absolute / incremental programming",
+   "G94_G95": "Feed per minute / per revolution",
+   "G43_H": "Tool length compensation; without G43 Hnn (or AUTO TOOL COMP) the tip runs one tool length lower - warning",
+   "G41_G42_D": "Cutter radius compensation, only simulated in G17; G41/G42 without D -> tool centre on the contour (warning)",
+   "canned_cycles": "G73, G74, G76, G81-G86, G89 with G98/G99 return; G80 cancel",
+   "M06": "Tool change; cancel G40 / G80 before M06",
+   "machine_limits": {
+    "maxRpm": 8000,
+    "rapidRate_mm_min": 15000,
+    "homeZ": 250,
+    "homeX": 150,
+    "homeY": 120,
+    "source": "default machine settings object in the bundle"
+   },
+   "stock_dialog": [
+    "sizeX",
+    "sizeY",
+    "sizeZ",
+    "origin (corner|front-right|back-left|back-right|center)",
+    "topAllowance",
+    "zRef (finished|raw)",
+    "material",
+    "aboveJaws (default 15)"
+   ],
+   "stock_shape": "rectangular block only"
+  },
+  "default_tool_table": [
+   "T01 Face mill D50 (5 inserts)",
+   "T02 End mill D10 3-flute",
+   "T03 End mill D6 3-flute",
+   "T04 Spot drill D10 90deg",
+   "T05 Drill D6.8 (tap drill M8)",
+   "T06 Tap M8x1.25",
+   "T07 Drill D10",
+   "T08 Ball end mill D8 (R4)",
+   "T09 Chamfer mill D12 90deg",
+   "T10 Bull-nose D12 R1",
+   "T11 Reamer D8 H7",
+   "T12 End mill D16 4-flute"
+  ],
+  "reference": {
+   "G00": {
+    "title": "Rapid positioning",
+    "group": "Motion",
+    "modal": true
+   },
+   "G01": {
+    "title": "Linear interpolation (feed)",
+    "group": "Motion",
+    "modal": true
+   },
+   "G02": {
+    "title": "Circular interpolation CW",
+    "group": "Motion",
+    "modal": true
+   },
+   "G03": {
+    "title": "Circular interpolation CCW",
+    "group": "Motion",
+    "modal": true
+   },
+   "G04": {
+    "title": "Dwell",
+    "group": "Non-modal",
+    "modal": false
+   },
+   "G15": {
+    "title": "Polar coordinates OFF",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G16": {
+    "title": "Polar coordinates ON",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G17": {
+    "title": "XY plane",
+    "group": "Plane",
+    "modal": true
+   },
+   "G18": {
+    "title": "ZX plane",
+    "group": "Plane",
+    "modal": true
+   },
+   "G19": {
+    "title": "YZ plane",
+    "group": "Plane",
+    "modal": true
+   },
+   "G20": {
+    "title": "Inch input",
+    "group": "Units",
+    "modal": true
+   },
+   "G21": {
+    "title": "Metric input",
+    "group": "Units",
+    "modal": true
+   },
+   "G28": {
+    "title": "Reference (home) return",
+    "group": "Non-modal",
+    "modal": false
+   },
+   "G40": {
+    "title": "Cutter compensation cancel",
+    "group": "Compensation",
+    "modal": true
+   },
+   "G41": {
+    "title": "Cutter compensation LEFT",
+    "group": "Compensation",
+    "modal": true
+   },
+   "G42": {
+    "title": "Cutter compensation RIGHT",
+    "group": "Compensation",
+    "modal": true
+   },
+   "G43": {
+    "title": "Tool length compensation +",
+    "group": "Length compensation",
+    "modal": true
+   },
+   "G44": {
+    "title": "Tool length compensation −",
+    "group": "Length compensation",
+    "modal": true
+   },
+   "G49": {
+    "title": "Tool length compensation cancel",
+    "group": "Length compensation",
+    "modal": true
+   },
+   "G52": {
+    "title": "Local coordinate system",
+    "group": "Coordinates",
+    "modal": false
+   },
+   "G53": {
+    "title": "Machine coordinates (one block)",
+    "group": "Coordinates",
+    "modal": false
+   },
+   "G54": {
+    "title": "Work offset 1",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G55": {
+    "title": "Work offset 2",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G56": {
+    "title": "Work offset 3",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G57": {
+    "title": "Work offset 4",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G58": {
+    "title": "Work offset 5",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G59": {
+    "title": "Work offset 6",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G68": {
+    "title": "Coordinate rotation",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G69": {
+    "title": "Rotation cancel",
+    "group": "Coordinates",
+    "modal": true
+   },
+   "G73": {
+    "title": "High-speed peck drilling",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G74": {
+    "title": "Left-hand tapping",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G76": {
+    "title": "Fine boring",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G80": {
+    "title": "Cancel canned cycle",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G81": {
+    "title": "Drilling",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G82": {
+    "title": "Spot drilling / counterboring",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G83": {
+    "title": "Deep-hole peck drilling",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G84": {
+    "title": "Tapping",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G85": {
+    "title": "Boring (feed out)",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G86": {
+    "title": "Boring (spindle stop, rapid out)",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G89": {
+    "title": "Boring with dwell",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G90": {
+    "title": "Absolute programming",
+    "group": "Distance",
+    "modal": true
+   },
+   "G91": {
+    "title": "Incremental programming",
+    "group": "Distance",
+    "modal": true
+   },
+   "G94": {
+    "title": "Feed per minute",
+    "group": "Feed",
+    "modal": true
+   },
+   "G95": {
+    "title": "Feed per revolution",
+    "group": "Feed",
+    "modal": true
+   },
+   "G98": {
+    "title": "Return to initial level",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "G99": {
+    "title": "Return to R-plane",
+    "group": "Hole cycles",
+    "modal": true
+   },
+   "M00": {
+    "title": "Program stop",
+    "group": "Program",
+    "modal": false
+   },
+   "M01": {
+    "title": "Optional stop",
+    "group": "Program",
+    "modal": false
+   },
+   "M02": {
+    "title": "End of program",
+    "group": "Program",
+    "modal": false
+   },
+   "M03": {
+    "title": "Spindle on CW",
+    "group": "Spindle",
+    "modal": true
+   },
+   "M04": {
+    "title": "Spindle on CCW",
+    "group": "Spindle",
+    "modal": true
+   },
+   "M05": {
+    "title": "Spindle stop",
+    "group": "Spindle",
+    "modal": true
+   },
+   "M06": {
+    "title": "Tool change",
+    "group": "Tool",
+    "modal": false
+   },
+   "M08": {
+    "title": "Coolant on",
+    "group": "Coolant",
+    "modal": true
+   },
+   "M09": {
+    "title": "Coolant off",
+    "group": "Coolant",
+    "modal": true
+   },
+   "M19": {
+    "title": "Spindle orientation",
+    "group": "Spindle",
+    "modal": false
+   },
+   "M29": {
+    "title": "Rigid tapping mode",
+    "group": "Spindle",
+    "modal": false
+   },
+   "M30": {
+    "title": "End of program & rewind",
+    "group": "Program",
+    "modal": false
+   },
+   "M98": {
+    "title": "Sub-program call",
+    "group": "Program",
+    "modal": false
+   },
+   "M99": {
+    "title": "Sub-program end",
+    "group": "Program",
+    "modal": false
+   }
+  },
+  "program_check_messages": [
+   {
+    "severity": "error",
+    "message_template": "Feed move without a feed rate (F) – the control would alarm."
+   },
+   {
+    "severity": "warning",
+    "message_template": "Feed move while the spindle is stopped (M03 missing?)"
+   },
+   {
+    "severity": "warning",
+    "message_template": "No tool length compensation (G43 H${String(s.tool).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Tool change retained G${s.lenComp} H${String(s.hReg).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Main program ran into sub-program O${n.o} – end the main program with M30."
+   },
+   {
+    "severity": "info",
+    "message_template": "Program has no M30 (program end & rewind)."
+   },
+   {
+    "severity": "error",
+    "message_template": "Macro alarm ${s(o)}: ${e.comment?.trim()||"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${e.raw} (mirror image) is not simulated – ignored"
+   },
+   {
+    "severity": "error",
+    "message_template": "G${e.raw} is not supported"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M${e.raw} is not supported – ignored"
+   },
+   {
+    "severity": "error",
+    "message_template": "Two motion codes in one block"
+   },
+   {
+    "severity": "error",
+    "message_template": "Cutter compensation is only simulated in the G17 (XY) plane"
+   },
+   {
+    "severity": "error",
+    "message_template": "The block after \",C\"/\",R\" must be a G01 move – the corner was not made"
+   },
+   {
+    "severity": "warning",
+    "message_template": "F${s.F.raw} mm/rev (G95) is very large – did you mean G94 (mm/min)?"
+   },
+   {
+    "severity": "warning",
+    "message_template": "S${s.S.raw} exceeds the machine maximum (${this.cfg.settings.maxRpm} rpm)"
+   },
+   {
+    "severity": "error",
+    "message_template": "Tool T${e} is not in the magazine (see Tool table)"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M0${e} without S – the spindle does not turn"
+   },
+   {
+    "severity": "info",
+    "message_template": "G49 with automatic length compensation: back to the length of T${String(i.tool).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${g} without H – the previous H${i.hReg} is used"
+   },
+   {
+    "severity": "warning",
+    "message_template": "H${String(i.hReg).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Length offset H${i.hReg} is empty (0)"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Radius offset D${String(i.dReg).padStart(2,"
+   },
+   {
+    "severity": "info",
+    "message_template": "Automatic cutter radius: R${+this.compRadius().toFixed(3)} from tool T${String(i.tool).padStart(2,"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G41/G42 without D – D00 means no offset: the tool centre runs on the contour"
+   },
+   {
+    "severity": "info",
+    "message_template": "G68: coordinates rotated by ${i.rot.a}° about X${i.rot.cx} Y${i.rot.cy}"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G28 with cutter compensation active – cancel with G40 first"
+   },
+   {
+    "severity": "info",
+    "message_template": "G52 local coordinate system: origin shifted by X${i.local.x} Y${i.local.y} Z${i.local.z}"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Program ends with cutter compensation active (G40 missing)"
+   },
+   {
+    "severity": "info",
+    "message_template": "Canned cycle still active at program end – G80 is good practice"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M99 in the main program loops forever on a real machine – treated as end"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M06 with cutter compensation active – cancel with G40 first"
+   },
+   {
+    "severity": "warning",
+    "message_template": "M06 with a canned cycle active – cancel with G80 first"
+   },
+   {
+    "severity": "info",
+    "message_template": "M06: T${String(r).padStart(2,"
+   },
+   {
+    "severity": "info",
+    "message_template": "Automatic length compensation: ${o} length ${+(a.length+(this.cfg.offsets.get(r)?.hw??0)).toFixed(3)} mm applied – no G43 H${String(r).padStart(2,"
+   },
+   {
+    "severity": "info",
+    "message_template": "Programmed point of ${o}: the ${a.type==="
+   },
+   {
+    "severity": "warning",
+    "message_template": "Canned cycle with cutter compensation active – cancel with G40 first"
+   },
+   {
+    "severity": "error",
+    "message_template": "G${e}: Z${l} is not below the R-plane R${c}"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${e} without Q (peck depth) – drills in one go"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Q${t.Q.raw} without a decimal point means ${u} mm (Fanuc least input increment) – did you mean Q${t.Q.raw}. ?"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Tapping cycle G${e} with ${t?t.name:"
+   },
+   {
+    "severity": "warning",
+    "message_template": "Tapping feed F${i.feed} does not match pitch × rpm = ${t.pitch} × ${i.rpm} = ${e.toFixed(1)} mm/min – the tap would break"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G84 (right-hand tap) needs M03"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G74 (left-hand tap) needs M04"
+   },
+   {
+    "severity": "warning",
+    "message_template": "R-plane below the hole depth?"
+   },
+   {
+    "severity": "error",
+    "message_template": "G${o.g}: Z${o.z} is not below the R-plane R${o.r}"
+   },
+   {
+    "severity": "warning",
+    "message_template": "G${o.g}: the tool starts below the R-plane – it moves sideways at Z${i.pos.z.toFixed(3)}"
+   }
+  ]
+ }
+}

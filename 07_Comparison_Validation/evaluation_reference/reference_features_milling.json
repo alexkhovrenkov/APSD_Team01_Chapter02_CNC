@@ -1,0 +1,25 @@
+{
+  "title": "Evaluation reference - APSD-MILLING (EVALUATOR ONLY: never part of any AI prompt)",
+  "status": "PENDING_HUMAN_REVIEW",
+  "drafted_by": "Claude Code (Anthropic, claude-opus-5-5), 2026-11-26: reading of the instructor sheet 2 (brief PDF p.25, rendered at 300 dpi) and of 06 manifests/milling_manifest.json. NOT verified. Gate G1: a team member must confirm every drawing_value and sign below before metrics are computed.",
+  "verified_by": null,
+  "verified_on": null,
+  "reference_drawing": "05_AI_Mode_I_Drawing/drawing_inputs/APSD_MILLING_instructor_sheet2_p25_300dpi.png (sha256 in input_manifest.json)",
+  "reference_cad": "06_AI_Mode_II_CAD/extractor_and_manifest/manifests/milling_manifest.json",
+  "rules": "see reference_features_lathe.json",
+  "features": [
+    {"ref_id": "R-M-01", "feature": "boss thickness", "dims": {"thickness": {"drawing_value": 20, "drawing_source": "side view '20' x2", "cad_value": 20.0, "cad_ref": "M-REL-03/04"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-02", "feature": "arm thickness (centred on the bosses)", "dims": {"thickness": {"drawing_value": 10, "drawing_source": "section B-B '10'", "cad_value": 10.0, "cad_ref": "M-REL-02"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-03", "feature": "large boss Ø60", "dims": {"diameter": {"drawing_value": 60, "drawing_source": "plan 'Ø60'", "cad_value": 60.0, "cad_ref": "M-BOSS-01"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-04", "feature": "bore Ø30 through the large boss", "dims": {"diameter": {"drawing_value": 30, "drawing_source": "plan 'Ø30'", "cad_value": 30.0, "cad_ref": "M-BORE-01"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-05", "feature": "keyway in the Ø30 bore", "dims": {"width": {"drawing_value": 8, "drawing_source": "section C-C '8'", "cad_value": 8.0, "cad_ref": "M-KEYWAY-01"}, "end_from_bore_axis": {"drawing_value": 18, "drawing_source": "section B-B '18' (from the bore centre line)", "cad_value": 18.0, "cad_ref": "M-KEYWAY-01"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-06", "feature": "small boss Ø42", "dims": {"diameter": {"drawing_value": 42, "drawing_source": "plan 'Ø42'", "cad_value": 42.0, "cad_ref": "M-BOSS-02"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-07", "feature": "hole Ø20 through the small boss", "dims": {"diameter": {"drawing_value": 20, "drawing_source": "plan 'Ø20'", "cad_value": 20.0, "cad_ref": "M-HOLE-01"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-08", "feature": "6 raised pins on top of the large boss (NOT holes)", "dims": {"diameter": {"drawing_value": 3.5, "drawing_source": "plan 'Ø3,5'", "cad_value": 3.5, "cad_ref": "M-PINS-01"}, "height": {"drawing_value": 4, "drawing_source": "section B-B '4'", "cad_value": 4.0, "cad_ref": "M-PINS-01"}, "pitch_circle_radius": {"drawing_value": 23, "drawing_source": "section B-B '23' (from the bore centre line)", "cad_value": 23.0, "cad_ref": "M-PINS-01 (PCD 46)"}}, "drawing_dimensioned": true, "note": "plan view alone looks like holes; B-B and the isometric show pins - a planned Q2.11 check"},
+    {"ref_id": "R-M-09", "feature": "outer arm arc", "dims": {"radius": {"drawing_value": 115, "drawing_source": "plan 'R115'", "cad_value": 115.0, "cad_ref": "M-CONTOUR-01"}, "centre": {"drawing_value": null, "drawing_source": "NOT located on the sheet", "cad_value": [44.8286, -72.2177], "cad_ref": "M-CONTOUR-01"}}, "drawing_dimensioned": "partly"},
+    {"ref_id": "R-M-10", "feature": "inner (concave) arm arc", "dims": {"radius": {"drawing_value": 60, "drawing_source": "plan 'R60.00'", "cad_value": 60.0, "cad_ref": "M-CONTOUR-01"}, "centre": {"drawing_value": null, "drawing_source": "NOT located on the sheet", "cad_value": [59.8286, -67.235], "cad_ref": "M-CONTOUR-01"}}, "drawing_dimensioned": "partly"},
+    {"ref_id": "R-M-11", "feature": "through window in the arm", "dims": {"corner_radius": {"drawing_value": 8, "drawing_source": "section C-C 'R8' x4", "cad_value": 8.0, "cad_ref": "M-WINDOW-01"}, "outer_rib_width": {"drawing_value": 8, "drawing_source": "plan '8' (top)", "cad_value": 8.0, "cad_ref": "M-REL-07"}, "inner_rib_width": {"drawing_value": 8, "drawing_source": "plan '8' (bottom)", "cad_value": 8.0, "cad_ref": "M-REL-06"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-12", "feature": "R2 fillets at arm/boss junctions", "dims": {"radius": {"drawing_value": 2, "drawing_source": "side view / A-A 'R2'", "cad_value": 2.0, "cad_ref": "M-FILLET-01"}}, "drawing_dimensioned": true},
+    {"ref_id": "R-M-13", "feature": "centre distance between the two bosses", "dims": {"distance": {"drawing_value": null, "drawing_source": "NOT dimensioned on the sheet", "cad_value": 105.0, "cad_ref": "M-REL-01"}}, "drawing_dimensioned": false, "note": "Mode I is correct only if it flags this as missing; any numeric value from Mode I is an invented dimension"}
+  ]
+}

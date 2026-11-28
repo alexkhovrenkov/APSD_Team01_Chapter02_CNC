@@ -1,0 +1,20 @@
+{
+  "source_repository": "APSD_Project_2026 (Team01 Chapter 1, CAD-to-AI OPITZ pipeline)",
+  "source_commit": "17f6d607b21f0104d4658bf792caa6921f44d409",
+  "source_branch": "juli-changes",
+  "copied_on": "2026-11-26",
+  "policy": "Files are byte-identical copies. Do not edit them here; extend them in ../apsd_cam instead. tests/test_vendor_integrity.py re-checks these hashes.",
+  "files": {
+    "apsd_pipeline/__init__.py": {"sha256": "59892e26d4ee67eda30183523e6604df320d76956c7db093b7e7407df6b86df0", "source_path": "pipeline/apsd_pipeline/__init__.py"},
+    "apsd_pipeline/config.py": {"sha256": "e83d412be7ff2d4f7eed2712c2ff02e6d68248a9c6a1f4cb0fec97e1db4c752e", "source_path": "pipeline/apsd_pipeline/config.py"},
+    "apsd_pipeline/extract.py": {"sha256": "66e642cb751ef646a857fb35b3fbf6137c983b2c5d173061cba3bc6f951aaa10", "source_path": "pipeline/apsd_pipeline/extract.py"},
+    "apsd_pipeline/feature_parser.py": {"sha256": "14c2884c95bc279d116344ebcaff6664b39dabf9f91f853719aa9e7216489ab5", "source_path": "pipeline/apsd_pipeline/feature_parser.py"},
+    "apsd_pipeline/geometry_parser.py": {"sha256": "1e3b6b5d0c08fb3a66517e4f0ad72091c78f3b4f4dd418ba9ae52c0072a83c75", "source_path": "pipeline/apsd_pipeline/geometry_parser.py"},
+    "apsd_pipeline/manifest.py": {"sha256": "7891106162821e1be01d2b40a108360f507f460914c0626e852fb1e579f7acb9", "source_path": "pipeline/apsd_pipeline/manifest.py"},
+    "apsd_pipeline/onshape_client.py": {"sha256": "941deeff54971d726fbc6c9739efa76388eeaaa595eaba34744f84814bf5ad3b", "source_path": "pipeline/apsd_pipeline/onshape_client.py"},
+    "apsd_pipeline/redact.py": {"sha256": "ba071e07ae3da573a94eb9c48a49c78ac7d42e87e394a1d03088b5a8d7129082", "source_path": "pipeline/apsd_pipeline/redact.py"},
+    "apsd_pipeline/units.py": {"sha256": "a5d3fecc9a0e0f2ac31e2ec0792ff0cc429fc40eaa1e5bc76e8b34b326a4d658", "source_path": "pipeline/apsd_pipeline/units.py"},
+    "human_inputs/drawing_supplement.json": {"sha256": "5f448a307514dba5673ff1f2205ed9bc91a61ef56cf41f1aa1174a29124d3673", "source_path": "pipeline/human_inputs/drawing_supplement.json"},
+    "schemas/feature_manifest.schema.json": {"sha256": "3b14d30a903a02106e3207134ec2c1cd2b4b7f4173c5c4f2a5faa301131001b0", "source_path": "pipeline/schemas/feature_manifest.schema.json"}
+  }
+}

@@ -1,0 +1,1534 @@
+{
+ "schema": "apsd-cnc-feature-manifest",
+ "schema_version": "1.0",
+ "label_convention": {
+  "CAD_EXTRACTED": "Read directly from the Onshape B-rep or feature list; only unit conversion (m -> mm) or radius -> diameter applied.",
+  "GEOMETRICALLY_INFERRED": "Computed by apsd_cam from CAD values (projections, spans, distances, section loops, feature types, patterns). Deterministic and re-runnable, but an interpretation.",
+  "HUMAN_ANNOTATED": "Supplied by a named team member with a cited source and date; never merged into the CAD values.",
+  "UNKNOWN": "Not available from the CAD data or a verified human source; value is null."
+ },
+ "evidence_class": "LIVE_ONSHAPE_API",
+ "part": {
+  "id": "APSD-LATHE",
+  "process": "turning",
+  "name_in_cad": "LATHE",
+  "body_count": 1,
+  "material": {
+   "value": null,
+   "unit": null,
+   "label": "UNKNOWN",
+   "note": "no material assigned in Onshape (body properties material = null)"
+  }
+ },
+ "units": {
+  "length": "mm",
+  "angle": "deg",
+  "source_length_unit": "m (Onshape getPartStudioBodyDetails: 'All coordinates are in meters')",
+  "conversion": "mm = m x 1000, rounded to 0.0001 mm"
+ },
+ "cad_source": {
+  "method": "Onshape REST API (Part Studio body details, feature list, bounding boxes) - course option iii / Chapter 1 Path B",
+  "host": "https://cad.onshape.com",
+  "api_version": "v17",
+  "document_id": "6877e7a6059a24d360e8c6e1",
+  "element_id": "147da5f19a2ac767328e5f7f",
+  "element_name": "APSD-LATHE-Final",
+  "url_context": {
+   "wvm": "w",
+   "wvm_id": "008a5bb3f73e5b75f4629e14"
+  },
+  "snapshot_microversion": "4d05edae182b19aa4ea1f30d",
+  "element_microversion": "6048fb80fb1f02ebe3846657",
+  "named_version": null,
+  "revision_changed_during_extraction": false,
+  "drawing_element": {
+   "element_id": "39fec93b315c33208dd4a282",
+   "name": "APSD-LATHE-Final",
+   "data_type": "onshape-app/drawing",
+   "element_microversion": "10f9ffea4217a02c745355ca"
+  }
+ },
+ "extraction": {
+  "run_id": "20261126T161449Z_hmac",
+  "extracted_utc": "2026-11-26T16:14:49+00:00",
+  "evidence_dir": "evidence/20261126T161449Z_hmac_lathe",
+  "evidence_files": {
+   "01_document.json": "b9de740cb9c60140abc789bd1ec10f7bc2fcd3770b86f0741c9e9da4ae6827c2",
+   "02_workspace_microversion.json": "b8c7a46dccf27df46d1b5bf9ec4c6cbc876069782c9d2beb3a6dc74b659a2a1b",
+   "03_elements.json": "b2f81f284f148c55b3048b52cf169055c94a646c553f6cfcfa8f296e6914ab2c",
+   "04_features.json": "f399004fb9a1f6d110064eafac699c749a96dfbbcd61296c674886334814e79d",
+   "05_parts.json": "b97b7efdfbc5bcf9b297677df44b9a396eec7475e023d871bb13ae95a997c7f7",
+   "06_configuration.json": "7eeb7bcd5772a256ab89177e9b6986271c37201237cc385f2a0a40bd926d8af0",
+   "07_bodydetails.json": "b6c95b1c179b6f76cdb96bbe4a28ad8d3fdbcf2e45a4d3793658bba50d7fbf25",
+   "08_boundingboxes.json": "99a5de963822d10c3eb5354068d66059623c0ae14c3b8c85d531e05d305902e2",
+   "09_document_end.json": "580c8a9ad4963943a83d47022d7a691f108f9cee0161427194c84abee4c5482f",
+   "10_workspace_microversion_end.json": "b8c7a46dccf27df46d1b5bf9ec4c6cbc876069782c9d2beb3a6dc74b659a2a1b",
+   "11_drawing_views.json": "344902e7b46cfe055a78d332f6d96ba03507d7d2476d2c740c618408c2239250",
+   "extraction_record.json": "8dc71370719c8db1c8d050ba966c4c528d5d99cc12f9111e0741a5d5315c51cd"
+  },
+  "pipeline": "apsd_cam (Chapter 2 Part E) on top of vendored Chapter 1 apsd_pipeline",
+  "pipeline_version": "1.0.0",
+  "vendored_chapter1": {
+   "source_commit": "17f6d607b21f0104d4658bf792caa6921f44d409",
+   "source_branch": "juli-changes",
+   "record": "scripts/vendor_ch1/VENDORED_FROM_CHAPTER1.json"
+  },
+  "endpoints": {
+   "01_document": 200,
+   "02_workspace_microversion": 200,
+   "03_elements": 200,
+   "04_features": 200,
+   "05_parts": 200,
+   "06_configuration": 200,
+   "07_bodydetails": 200,
+   "08_boundingboxes": 200,
+   "11_drawing_views": 200,
+   "09_document_end": 200,
+   "10_workspace_microversion_end": 200
+  },
+  "manifest_built_utc": "2026-11-26T16:15:04+00:00",
+  "feature_tree": [
+   {
+    "index": 0,
+    "type": "newSketch",
+    "name": "Y0",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/0"
+   },
+   {
+    "index": 1,
+    "type": "revolve",
+    "name": "Revolve 1",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/1"
+   },
+   {
+    "index": 2,
+    "type": "newSketch",
+    "name": "Y20",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/2"
+   },
+   {
+    "index": 3,
+    "type": "extrude",
+    "name": "Y20",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/3"
+   },
+   {
+    "index": 4,
+    "type": "fillet",
+    "name": "Fillet 1",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/4"
+   },
+   {
+    "index": 5,
+    "type": "hole",
+    "name": "#featureName",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/5"
+   },
+   {
+    "index": 6,
+    "type": "newSketch",
+    "name": "Y170",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/6"
+   },
+   {
+    "index": 7,
+    "type": "extrude",
+    "name": "Y170",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/7"
+   },
+   {
+    "index": 8,
+    "type": "newSketch",
+    "name": "Y0-2",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/8"
+   },
+   {
+    "index": 9,
+    "type": "extrude",
+    "name": "Y0-2",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/9"
+   },
+   {
+    "index": 10,
+    "type": "threadCreator",
+    "name": "#screwfriendlyname",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/10"
+   },
+   {
+    "index": 11,
+    "type": "threadCreator",
+    "name": "#screwfriendlyname",
+    "suppressed": false,
+    "pointer": "04_features.json#/features/11"
+   }
+  ],
+  "chapter1_fact_builder": "apsd_pipeline.manifest.build_manifest (vendored, unchanged) - facts validated against the Chapter 1 schema"
+ },
+ "coordinate_system": {
+  "frame": "Onshape Part Studio world coordinates (APSD-LATHE-Final tab)",
+  "origin": "world origin [0.0, 0.0, 0.0] mm, on the rotation axis at the spigot (small) end face",
+  "axes": {
+   "rotation_axis_direction": {
+    "value": [
+     1.0,
+     0.0,
+     0.0
+    ],
+    "unit": null,
+    "label": "GEOMETRICALLY_INFERRED",
+    "evidence": [
+     "07_bodydetails.json#/bodies/0/faces/2/surface",
+     "07_bodydetails.json#/bodies/0/faces/4/surface",
+     "07_bodydetails.json#/bodies/0/faces/6/surface",
+     "07_bodydetails.json#/bodies/0/faces/8/surface",
+     "07_bodydetails.json#/bodies/0/faces/10/surface",
+     "07_bodydetails.json#/bodies/0/faces/24/surface"
+    ]
+   },
+   "axial_coordinate": {
+    "value": "a = world X; a = 0 at the spigot end face, a = 210 at the threaded end face",
+    "unit": "mm",
+    "label": "GEOMETRICALLY_INFERRED",
+    "evidence": [
+     "07_bodydetails.json#/bodies/0/faces/2/surface",
+     "07_bodydetails.json#/bodies/0/faces/4/surface",
+     "07_bodydetails.json#/bodies/0/faces/6/surface",
+     "07_bodydetails.json#/bodies/0/faces/8/surface",
+     "07_bodydetails.json#/bodies/0/faces/10/surface",
+     "07_bodydetails.json#/bodies/0/faces/24/surface"
+    ]
+   },
+   "radial_coordinate": {
+    "value": "distance from the rotation axis (diameters are reported as diameters)",
+    "unit": "mm",
+    "label": "GEOMETRICALLY_INFERRED"
+   }
+  },
+  "label": "GEOMETRICALLY_INFERRED",
+  "note": "CAD frame only. The lathe work zero (e.g. Z0 on the finished front face, X as diameter in LatheLab) is a process decision in the shared experiment configuration, not CAD data."
+ },
+ "bounding_box": {
+  "min_mm": [
+   0.0,
+   -50.0,
+   -50.0
+  ],
+  "max_mm": [
+   210.0,
+   50.0,
+   50.0
+  ],
+  "size_mm": [
+   210.0,
+   100.0,
+   100.0
+  ],
+  "label": "GEOMETRICALLY_INFERRED",
+  "method": "axial extent from analytic face boxes projected on the axis; radial extent = largest external coaxial cylinder (key top at 17.9 mm is inside it)",
+  "evidence": [
+   "07_bodydetails.json#/bodies/0/faces (analytic face boxes)",
+   "08_boundingboxes.json"
+  ],
+  "cross_check": {
+   "onshape_partstudio_boundingbox_mm": {
+    "highZ": 50.0,
+    "lowX": -0.8803,
+    "lowY": -50.0,
+    "lowZ": -50.0,
+    "highX": 212.3232,
+    "highY": 50.0
+   },
+   "note": "Onshape documents this box as approximate; reported for comparison only"
+  }
+ },
+ "features": [
+  {
+   "id": "L-AXIS",
+   "type": "rotation_axis",
+   "description": "Principal rotation (turning) axis",
+   "label": "GEOMETRICALLY_INFERRED",
+   "dimensions": {
+    "overall_axial_length": {
+     "value": 210.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces"
+     ]
+    },
+    "max_diameter": {
+     "value": 100.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/8"
+     ]
+    }
+   },
+   "location": {
+    "origin": {
+     "value": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/2/surface",
+      "07_bodydetails.json#/bodies/0/faces/4/surface",
+      "07_bodydetails.json#/bodies/0/faces/6/surface",
+      "07_bodydetails.json#/bodies/0/faces/8/surface",
+      "07_bodydetails.json#/bodies/0/faces/10/surface",
+      "07_bodydetails.json#/bodies/0/faces/24/surface"
+     ]
+    },
+    "direction": {
+     "value": [
+      1.0,
+      0.0,
+      0.0
+     ],
+     "unit": null,
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/2/surface",
+      "07_bodydetails.json#/bodies/0/faces/4/surface",
+      "07_bodydetails.json#/bodies/0/faces/6/surface",
+      "07_bodydetails.json#/bodies/0/faces/8/surface",
+      "07_bodydetails.json#/bodies/0/faces/10/surface",
+      "07_bodydetails.json#/bodies/0/faces/24/surface"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/2/surface",
+    "07_bodydetails.json#/bodies/0/faces/4/surface",
+    "07_bodydetails.json#/bodies/0/faces/6/surface",
+    "07_bodydetails.json#/bodies/0/faces/8/surface",
+    "07_bodydetails.json#/bodies/0/faces/10/surface",
+    "07_bodydetails.json#/bodies/0/faces/24/surface"
+   ],
+   "extraction_method": "9 coaxial rotational faces, largest total area of 7 axis groups; feature list: revolve FYIWnfYGm1s7a11_0 about sketch line Rj308cwR6Gtk",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-01",
+   "type": "end_face",
+   "description": "Planar face normal to the axis at a = 0 mm (594.705 mm2) - part end face",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 594.705,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/1"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 0.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/1"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/1"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-02",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 20 mm (2041.92 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 2041.918,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/11"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/11"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/11"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-03",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 41.42 mm (7.472 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 7.472,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/0"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 41.42,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/0"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/0"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-04",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 41.42 mm (7.782 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 7.782,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/37"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 41.42,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/37"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/37"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-05",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 60 mm (4005.53 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 4005.531,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/9"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 60.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/9"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/9"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-06",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 80 mm (5026.55 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 5026.548,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/7"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 80.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/7"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/7"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-07",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 85 mm (235.052 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 235.052,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/33"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 85.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/33"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/33"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-08",
+   "type": "shoulder_face",
+   "description": "Planar face normal to the axis at a = 170 mm (574.126 mm2)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 574.126,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/3"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 170.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/3"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/3"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-FACE-09",
+   "type": "end_face",
+   "description": "Planar face normal to the axis at a = 210 mm (1021.59 mm2) - part end face",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "area": {
+     "value": 1021.585,
+     "unit": "mm2",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/5"
+     ]
+    }
+   },
+   "location": {
+    "axial_position": {
+     "value": 210.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/5"
+     ],
+     "note": "plane origin along the world-aligned axis"
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/5"
+   ],
+   "extraction_method": "geometry_parser: plane normal parallel to the rotation axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-OD-01",
+   "type": "external_cylinder",
+   "description": "External diameter Ø29.9 from a = 0 to 20 mm",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 29.9,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/2"
+     ],
+     "note": "2 x cylinder radius"
+    },
+    "length": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/2"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 0.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/2"
+     ]
+    },
+    "axial_to": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/2"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/2"
+   ],
+   "extraction_method": "geometry_parser: external coaxial cylinder (orientation=true), span from face box projected on the axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-OD-02",
+   "type": "external_cylinder",
+   "description": "External diameter Ø60 from a = 20 to 55 mm",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 60.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/10"
+     ],
+     "note": "2 x cylinder radius"
+    },
+    "length": {
+     "value": 35.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/10"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/10"
+     ]
+    },
+    "axial_to": {
+     "value": 55.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/10"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/10"
+   ],
+   "extraction_method": "geometry_parser: external coaxial cylinder (orientation=true), span from face box projected on the axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-OD-03",
+   "type": "external_cylinder",
+   "description": "External diameter Ø100 from a = 60 to 80 mm",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 100.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/8"
+     ],
+     "note": "2 x cylinder radius"
+    },
+    "length": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/8"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 60.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/8"
+     ]
+    },
+    "axial_to": {
+     "value": 80.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/8"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/8"
+   ],
+   "extraction_method": "geometry_parser: external coaxial cylinder (orientation=true), span from face box projected on the axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-OD-04",
+   "type": "external_cylinder",
+   "description": "External diameter Ø50 from a = 85 to 210 mm",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 50.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/6"
+     ],
+     "note": "2 x cylinder radius"
+    },
+    "length": {
+     "value": 125.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/6"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 85.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/6"
+     ]
+    },
+    "axial_to": {
+     "value": 210.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/6"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/6"
+   ],
+   "extraction_method": "geometry_parser: external coaxial cylinder (orientation=true), span from face box projected on the axis",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-BLEND-01",
+   "type": "concave_fillet",
+   "description": "Concave R5 blend between Ø60 and Ø100",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "radius": {
+     "value": 5.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/24"
+     ],
+     "note": "torus minor radius"
+    }
+   },
+   "location": {
+    "axial_span": {
+     "value": [
+      55.0,
+      60.0
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/24"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/24"
+   ],
+   "extraction_method": "geometry_parser: coaxial torus, orientation=false (concave)",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-BLEND-02",
+   "type": "concave_fillet",
+   "description": "Concave R5 blend between Ø100 and Ø50",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "radius": {
+     "value": 5.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/25"
+     ],
+     "note": "torus minor radius"
+    }
+   },
+   "location": {
+    "axial_span": {
+     "value": [
+      80.0,
+      85.0
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/25"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/25"
+   ],
+   "extraction_method": "geometry_parser: coaxial torus, orientation=false (concave)",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-BORE-01",
+   "type": "internal_cylinder",
+   "description": "Internal diameter Ø12 from a = 0 to 41.42 mm, open at a = 0",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 12.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/38"
+     ]
+    },
+    "length": {
+     "value": 41.42,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/38"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 0.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/38"
+     ]
+    },
+    "axial_to": {
+     "value": 41.42,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/38"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/38",
+    "04_features.json#/features/5"
+   ],
+   "extraction_method": "geometry_parser: internal coaxial cylinder (orientation=false)",
+   "confidence": "medium",
+   "uncertainty": "feature-list Hole parameter says Ø14 x 41.42, evaluated geometry says Ø12; the evaluated geometry is used, the CAD owner should resolve the inconsistency",
+   "needs_human_verification": true
+  },
+  {
+   "id": "L-BORE-02",
+   "type": "internal_cylinder",
+   "description": "Internal diameter Ø13 from a = 41.42 to 170 mm, internal step (not open to an end face)",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 13.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/26"
+     ]
+    },
+    "length": {
+     "value": 128.58,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/26"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 41.42,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/26"
+     ]
+    },
+    "axial_to": {
+     "value": 170.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/26"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/26"
+   ],
+   "extraction_method": "geometry_parser: internal coaxial cylinder (orientation=false)",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-BORE-03",
+   "type": "internal_cylinder",
+   "description": "Internal diameter Ø30 from a = 170 to 210 mm, open at a = 210",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "diameter": {
+     "value": 30.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/4"
+     ]
+    },
+    "length": {
+     "value": 40.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/4"
+     ]
+    }
+   },
+   "location": {
+    "axial_from": {
+     "value": 170.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/4"
+     ]
+    },
+    "axial_to": {
+     "value": 210.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/4"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/4"
+   ],
+   "extraction_method": "geometry_parser: internal coaxial cylinder (orientation=false)",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-THREAD-EXT-01",
+   "type": "external_thread_modelled",
+   "description": "External helical thread modelled in CAD (threadCreator), pitch 5 mm, near Ø50",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "pitch": {
+     "value": 5.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/10",
+      "04_features.json#/features/10/parameters/5/value",
+      "04_features.json#/features/10/parameters/7/expression"
+     ]
+    },
+    "major_diameter_parameter": {
+     "value": 25.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/10",
+      "04_features.json#/features/10/parameters/5/value",
+      "04_features.json#/features/10/parameters/7/expression"
+     ],
+     "note": "third-party FeatureScript parameter; matches none of the diameters at the thread region - NOT a usable thread size"
+    },
+    "designation_standard_class": {
+     "value": null,
+     "unit": null,
+     "label": "UNKNOWN",
+     "note": "not in the CAD data: the reported label '1.9685-5.08' / profile 'ANSI_STD' is FeatureScript text, not a verified designation"
+    },
+    "handedness": {
+     "value": "right-hand",
+     "unit": null,
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/10",
+      "04_features.json#/features/10/parameters/5/value",
+      "04_features.json#/features/10/parameters/7/expression"
+     ]
+    }
+   },
+   "location": {
+    "axial_span_approx": {
+     "value": [
+      82.671,
+      210.0
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/30",
+      "07_bodydetails.json#/bodies/0/faces/31",
+      "07_bodydetails.json#/bodies/0/faces/32"
+     ],
+     "note": "from LOOSE bounding boxes of non-analytic helical faces (can exceed true extent by ~1 mm)"
+    },
+    "nominal_diameter_region": {
+     "value": [
+      50.0
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/30",
+      "07_bodydetails.json#/bodies/0/faces/31",
+      "07_bodydetails.json#/bodies/0/faces/32"
+     ]
+    }
+   },
+   "evidence": [
+    "04_features.json#/features/10",
+    "04_features.json#/features/10/parameters/5/value",
+    "04_features.json#/features/10/parameters/7/expression",
+    "07_bodydetails.json#/bodies/0/faces/30",
+    "07_bodydetails.json#/bodies/0/faces/31",
+    "07_bodydetails.json#/bodies/0/faces/32"
+   ],
+   "extraction_method": "vendored feature_parser (threadCreator parameters) + locate_freeform_faces (helical faces)",
+   "confidence": "medium",
+   "uncertainty": "threadCreator parameter majorDiameter = 25 mm matches none of the diameters at the threaded region [50.0] mm; this third-party parameter is reported but not interpreted",
+   "needs_human_verification": true
+  },
+  {
+   "id": "L-THREAD-INT-01",
+   "type": "internal_thread_modelled",
+   "description": "Internal helical thread modelled in CAD (threadCreator), pitch 2 mm, near Ø12/13",
+   "label": "CAD_EXTRACTED",
+   "dimensions": {
+    "pitch": {
+     "value": 2.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/11",
+      "04_features.json#/features/11/parameters/5/value",
+      "04_features.json#/features/11/parameters/7/expression"
+     ]
+    },
+    "major_diameter_parameter": {
+     "value": 25.0,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/11",
+      "04_features.json#/features/11/parameters/5/value",
+      "04_features.json#/features/11/parameters/7/expression"
+     ],
+     "note": "third-party FeatureScript parameter; matches none of the diameters at the thread region - NOT a usable thread size"
+    },
+    "designation_standard_class": {
+     "value": null,
+     "unit": null,
+     "label": "UNKNOWN",
+     "note": "not in the CAD data: the reported label '0.5118-12.7' / profile 'ANSI_STD' is FeatureScript text, not a verified designation"
+    },
+    "handedness": {
+     "value": "right-hand",
+     "unit": null,
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/11",
+      "04_features.json#/features/11/parameters/5/value",
+      "04_features.json#/features/11/parameters/7/expression"
+     ]
+    }
+   },
+   "location": {
+    "axial_span_approx": {
+     "value": [
+      0.0,
+      42.296
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/34",
+      "07_bodydetails.json#/bodies/0/faces/35",
+      "07_bodydetails.json#/bodies/0/faces/36"
+     ],
+     "note": "from LOOSE bounding boxes of non-analytic helical faces (can exceed true extent by ~1 mm)"
+    },
+    "nominal_diameter_region": {
+     "value": [
+      12.0,
+      13.0
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/34",
+      "07_bodydetails.json#/bodies/0/faces/35",
+      "07_bodydetails.json#/bodies/0/faces/36"
+     ]
+    }
+   },
+   "evidence": [
+    "04_features.json#/features/11",
+    "04_features.json#/features/11/parameters/5/value",
+    "04_features.json#/features/11/parameters/7/expression",
+    "07_bodydetails.json#/bodies/0/faces/34",
+    "07_bodydetails.json#/bodies/0/faces/35",
+    "07_bodydetails.json#/bodies/0/faces/36"
+   ],
+   "extraction_method": "vendored feature_parser (threadCreator parameters) + locate_freeform_faces (helical faces)",
+   "confidence": "medium",
+   "uncertainty": "threadCreator parameter majorDiameter = 25 mm matches none of the diameters at the threaded region [12.0, 13.0] mm; this third-party parameter is reported but not interpreted",
+   "needs_human_verification": true
+  },
+  {
+   "id": "L-HOLES-01",
+   "type": "axial_hole_pattern",
+   "description": "6 x Ø3.52 blind holes parallel to the axis on PCD 46",
+   "label": "GEOMETRICALLY_INFERRED",
+   "dimensions": {
+    "diameter": {
+     "value": 3.52,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/12",
+      "07_bodydetails.json#/bodies/0/faces/14",
+      "07_bodydetails.json#/bodies/0/faces/16"
+     ]
+    },
+    "count": {
+     "value": 6,
+     "unit": null,
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/12",
+      "07_bodydetails.json#/bodies/0/faces/14",
+      "07_bodydetails.json#/bodies/0/faces/16"
+     ],
+     "note": "one cylinder face per hole observed"
+    },
+    "pitch_circle_diameter": {
+     "value": 46.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/12",
+      "07_bodydetails.json#/bodies/0/faces/14",
+      "07_bodydetails.json#/bodies/0/faces/16"
+     ]
+    },
+    "depth": {
+     "value": 4.1,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "04_features.json#/features/3"
+     ],
+     "note": "extrude REMOVE, BLIND"
+    }
+   },
+   "location": {
+    "angular_positions": {
+     "value": [
+      0.0,
+      60.0,
+      120.0,
+      180.0,
+      240.0,
+      300.0
+     ],
+     "unit": "deg",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/12",
+      "07_bodydetails.json#/bodies/0/faces/14",
+      "07_bodydetails.json#/bodies/0/faces/16"
+     ],
+     "note": "angle origin = first hole found; only the spacing is meaningful"
+    },
+    "hole_bottom_axial_position": {
+     "value": 24.1,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json (6 small planes normal to the axis)"
+     ]
+    },
+    "entry_face_axial_position": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "hole bottom - depth"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/12",
+    "07_bodydetails.json#/bodies/0/faces/14",
+    "07_bodydetails.json#/bodies/0/faces/16",
+    "04_features.json#/features/3"
+   ],
+   "extraction_method": "geometry_parser: off-axis cylinders parallel to the axis grouped by radius and distance; depth from the cut feature",
+   "confidence": "high",
+   "uncertainty": "none identified",
+   "needs_human_verification": false
+  },
+  {
+   "id": "L-KEY-01",
+   "type": "raised_key",
+   "description": "Raised key on the Ø29.9 spigot: flat top 17.9 mm from the axis, two parallel side flats 7.98 mm apart",
+   "label": "GEOMETRICALLY_INFERRED",
+   "dimensions": {
+    "width": {
+     "value": 7.98,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/27",
+      "07_bodydetails.json#/bodies/0/faces/28",
+      "07_bodydetails.json#/bodies/0/faces/29",
+      "04_features.json#/features/9"
+     ],
+     "note": "2 x distance of the side flats from the axis"
+    },
+    "top_distance_from_axis": {
+     "value": 17.9,
+     "unit": "mm",
+     "label": "CAD_EXTRACTED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/27",
+      "07_bodydetails.json#/bodies/0/faces/28",
+      "07_bodydetails.json#/bodies/0/faces/29",
+      "04_features.json#/features/9"
+     ]
+    },
+    "length": {
+     "value": 20.0,
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/27",
+      "07_bodydetails.json#/bodies/0/faces/28",
+      "07_bodydetails.json#/bodies/0/faces/29",
+      "04_features.json#/features/9"
+     ]
+    }
+   },
+   "location": {
+    "axial_span": {
+     "value": [
+      0.0,
+      20.0
+     ],
+     "unit": "mm",
+     "label": "GEOMETRICALLY_INFERRED",
+     "evidence": [
+      "07_bodydetails.json#/bodies/0/faces/27",
+      "07_bodydetails.json#/bodies/0/faces/28",
+      "07_bodydetails.json#/bodies/0/faces/29",
+      "04_features.json#/features/9"
+     ]
+    }
+   },
+   "evidence": [
+    "07_bodydetails.json#/bodies/0/faces/27",
+    "07_bodydetails.json#/bodies/0/faces/28",
+    "07_bodydetails.json#/bodies/0/faces/29",
+    "04_features.json#/features/9"
+   ],
+   "extraction_method": "geometry_parser: planes parallel to the axis; ADD extrude 'ADD (extrude)' in the feature list",
+   "confidence": "high",
+   "uncertainty": "angular orientation of the key relative to the hole pattern is not reported by this extractor",
+   "needs_human_verification": false
+  }
+ ],
+ "relationships": [
+  {
+   "id": "L-REL-01",
+   "description": "L/D ratio (overall length / max diameter)",
+   "value": 2.1,
+   "unit": null,
+   "label": "GEOMETRICALLY_INFERRED",
+   "method": "computed from the listed features",
+   "evidence": [
+    "features L-AXIS"
+   ],
+   "features": [
+    "L-AXIS"
+   ]
+  },
+  {
+   "id": "L-REL-02",
+   "description": "Flange (Ø100) thickness",
+   "value": 20.0,
+   "unit": "mm",
+   "label": "GEOMETRICALLY_INFERRED",
+   "method": "computed from the listed features",
+   "evidence": [
+    "features L-OD-03"
+   ],
+   "features": [
+    "L-OD-03"
+   ]
+  }
+ ],
+ "human_annotations": [
+  {
+   "id": "H-L-01",
+   "fact": "external_thread_on_physical_part",
+   "value": {
+    "present": true,
+    "region": "long Ø50 shaft section opposite the small end",
+    "pitch_callout_mm": 5,
+    "region_length_callout_mm": 125
+   },
+   "unit": "mm",
+   "label": "HUMAN_ANNOTATED",
+   "provenance": "Chapter 1 human_inputs/drawing_supplement.json (vendored unchanged)",
+   "source": "Onshape drawing tab 'APSD-LATHE-Final' (element 39fec93b315c33208dd4a282): thread on the long Ø50 shaft, pitch callout '5', threaded length '125' - confirmed on this tab by the verifiers",
+   "verified_by": "Ezgi Kutlu & Mario Iraheta",
+   "verified_on": "11-11-2026",
+   "approved_for_mode_II_prompt": false,
+   "fairness_note": "Read from the team DRAWING. Sending it in Mode II would give Mode II drawing information; the CAD already contains the external thread (pitch 5). Default: NOT sent. The team may approve it at gate G1 and must then disclose it.",
+   "related_features": [
+    "L-THREAD-EXT-01"
+   ]
+  }
+ ],
+ "missing_data": [
+  {
+   "item": "material",
+   "label": "UNKNOWN",
+   "reason": "no material assigned in Onshape",
+   "needed_for": "cutting speeds/feeds (G2), simulator material setting"
+  },
+  {
+   "item": "raw stock form and size",
+   "label": "UNKNOWN",
+   "reason": "process decision (Part B route sheet), not CAD",
+   "needed_for": "simulator stock, roughing passes"
+  },
+  {
+   "item": "tolerances, fits, surface finish",
+   "label": "UNKNOWN",
+   "reason": "not in the B-rep; drawing annotations are not returned by the API",
+   "needed_for": "finishing strategy, inspection"
+  },
+  {
+   "item": "thread designations, standards and tolerance classes (external p=5, internal p=2)",
+   "label": "UNKNOWN",
+   "reason": "threadCreator text is not a verified designation; majorDiameter parameter inconsistent",
+   "needed_for": "threading cycle (G76/G92) depth and diameters"
+  },
+  {
+   "item": "chamfers / edge breaks",
+   "label": "UNKNOWN",
+   "reason": "none modelled in CAD (Chapter 1 fact 'chamfers' = absent); drawing notes are not available through the API",
+   "needed_for": "finishing passes"
+  },
+  {
+   "item": "angular orientation of the key relative to the Ø3.52 hole pattern",
+   "label": "UNKNOWN",
+   "reason": "not computed by this extractor",
+   "needed_for": "milling/indexing of the key and holes (not turning)"
+  }
+ ],
+ "manufacturing_considerations": {
+  "excluded_from_mode_II_prompt": true,
+  "reason": "Process hints are an extractor interpretation, not geometry. Mode I receives no such hints, so the Mode II prompt builder strips this section to keep the comparison about the INPUT REPRESENTATION (drawing vs CAD facts). Kept here for the human G2 process gate.",
+  "items": [
+   {
+    "id": "L-MC-01",
+    "text": "The raised key and the off-axis Ø3.52 holes are not producible by two-axis turning (need live tooling / C-axis or a milling setup).",
+    "label": "GEOMETRICALLY_INFERRED",
+    "basis": "planes parallel to the axis and off-axis cylinders",
+    "applies_to": [
+     "L-KEY-01",
+     "L-HOLES-01"
+    ]
+   },
+   {
+    "id": "L-MC-02",
+    "text": "The flange (maximum diameter) lies between both ends, and both end faces carry bores: two lathe setups (re-chucking) are expected.",
+    "label": "GEOMETRICALLY_INFERRED",
+    "basis": "max_diameter_position = interior; bores open at a = 0 and a = L",
+    "applies_to": [
+     "L-OD-03",
+     "L-BORE-01",
+     "L-BORE-03"
+    ]
+   },
+   {
+    "id": "L-MC-03",
+    "text": "Concave R5 blends limit the finishing tool nose radius to <= 5 mm and need G02/G03 or compensated profiling.",
+    "label": "GEOMETRICALLY_INFERRED",
+    "basis": "torus minor radius 5",
+    "applies_to": [
+     "L-BLEND-01",
+     "L-BLEND-02"
+    ]
+   },
+   {
+    "id": "L-MC-04",
+    "text": "External (p=5) and internal (p=2) threads require OD and ID threading tools; thread size data is missing (see missing_data).",
+    "label": "GEOMETRICALLY_INFERRED",
+    "basis": "threadCreator features",
+    "applies_to": [
+     "L-THREAD-EXT-01",
+     "L-THREAD-INT-01"
+    ]
+   }
+  ]
+ },
+ "limitations": [
+  "Lathe facts come from the Chapter 1 builder (vendored unchanged); its own limitations apply (see vendor_ch1/apsd_pipeline/manifest.py).",
+  "Thread regions are located with loose bounding boxes of helical faces; thread sizes are not derivable from this model.",
+  "No drawing annotation text is available through the Onshape API; drawing-only information enters only as HUMAN_ANNOTATED entries.",
+  "The CAD frame is not the machining frame: the lathe work zero and X-as-diameter convention are set in the shared experiment configuration."
+ ]
+}

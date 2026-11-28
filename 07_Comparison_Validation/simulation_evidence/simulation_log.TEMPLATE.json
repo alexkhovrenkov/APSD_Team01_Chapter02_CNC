@@ -1,0 +1,13 @@
+{
+ "_how_to_use": "Copy to simulation_evidence/<lathe|milling>/<manual|mode_I|mode_II>/simulation_log.json. One entry per simulated operation/program version. Only record what you actually observed in LatheLab/MillLab; every PASS needs at least one screenshot path that exists in the repository. Never reuse the instructor's Figure 2.2 images.",
+ "workpiece": "APSD-LATHE | APSD-MILLING",
+ "case": "manual | Mode I | Mode II",
+ "simulator": {"url": "https://mohammadrezaconstructor.github.io/cnc-simulator/", "lab": "LatheLab | MillLab", "date": "YYYY-MM-DD", "browser": ""},
+ "settings": {"stock": "", "tools_and_offsets": "", "work_offset": "", "z_reference": "", "auto_tool_comp": ""},
+ "runs": [
+  {"operation": "OP10 facing", "program": "path/to/program.nc", "program_sha256": "", "program_version": "v00_initial | vNN",
+   "result": "PASS | FAIL | PARTIAL | UNSUPPORTED", "program_check_messages": ["copy the simulator's Program check text"],
+   "inspection_or_check_part": "", "remaining_material_notes": "", "evidence": ["07_Comparison_Validation/simulation_evidence/.../op10_after.png"],
+   "observer": "", "date": ""}
+ ]
+}

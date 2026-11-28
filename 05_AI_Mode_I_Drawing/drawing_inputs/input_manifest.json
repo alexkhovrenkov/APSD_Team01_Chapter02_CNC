@@ -1,0 +1,27 @@
+{
+ "title": "Mode I drawing inputs",
+ "files": [
+  {
+   "file": "APSD_LATHE_instructor_sheet3_p26_300dpi.png",
+   "workpiece": "APSD-LATHE",
+   "sha256": "e4160242b16cac76a762123282d7a33626202ad69bd9ed114685c199238fd260",
+   "source": "APSD.Part 00. Fall 2026 MAIN Project-P2.pdf (Release 2.0, 14 Nov 2026), page 26, instructor sheet 3 (lathe part)",
+   "source_pdf_sha256": "965a9eff49f6791f8b181baa57bf112062be78e0b60d5227331d383b52bfdaa6",
+   "rendering": "PyMuPDF get_pixmap, 300 dpi, full A4 sheet, 3509 x 2480 px; vector drawing, no resampling of dimension text",
+   "views_included": "labelled isometric view + orthographic views + sections (all on the one sheet)",
+   "why_orthographic_and_sections_are_included": "The isometric view on this sheet carries NO dimensions; every dimension is on the orthographic/section views. Sending the isometric alone would give the model no dimensions (brief 2.7.1 allows essential orthographic/section views when justified and logged).",
+   "status": "CANDIDATE - PENDING_HUMAN_REVIEW: the team decides whether Mode I uses this instructor sheet or the team's own Onshape drawing of the SAME named version (01_Onshape_Drawings/APSD_*_drawing.pdf, not yet exported)."
+  },
+  {
+   "file": "APSD_MILLING_instructor_sheet2_p25_300dpi.png",
+   "workpiece": "APSD-MILLING",
+   "sha256": "1a0cf82a87ab59f9f29902dcba35e846cbd3e6608d1404df15383f9448776f9e",
+   "source": "APSD.Part 00. Fall 2026 MAIN Project-P2.pdf (Release 2.0, 14 Nov 2026), page 25, instructor sheet 2 (milling part)",
+   "source_pdf_sha256": "965a9eff49f6791f8b181baa57bf112062be78e0b60d5227331d383b52bfdaa6",
+   "rendering": "PyMuPDF get_pixmap, 300 dpi, full A4 sheet, 3509 x 2480 px; vector drawing, no resampling of dimension text",
+   "views_included": "labelled isometric view + orthographic views + sections (all on the one sheet)",
+   "why_orthographic_and_sections_are_included": "The isometric view on this sheet carries NO dimensions; every dimension is on the orthographic/section views. Sending the isometric alone would give the model no dimensions (brief 2.7.1 allows essential orthographic/section views when justified and logged).",
+   "status": "CANDIDATE - PENDING_HUMAN_REVIEW: the team decides whether Mode I uses this instructor sheet or the team's own Onshape drawing of the SAME named version (01_Onshape_Drawings/APSD_*_drawing.pdf, not yet exported)."
+  }
+ ]
+}
