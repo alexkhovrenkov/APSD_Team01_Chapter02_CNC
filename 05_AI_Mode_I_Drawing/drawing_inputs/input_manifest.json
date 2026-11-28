@@ -10,7 +10,7 @@
    "rendering": "PyMuPDF get_pixmap, 300 dpi, full A4 sheet, 3509 x 2480 px; vector drawing, no resampling of dimension text",
    "views_included": "labelled isometric view + orthographic views + sections (all on the one sheet)",
    "why_orthographic_and_sections_are_included": "The isometric view on this sheet carries NO dimensions; every dimension is on the orthographic/section views. Sending the isometric alone would give the model no dimensions (brief 2.7.1 allows essential orthographic/section views when justified and logged).",
-   "status": "CANDIDATE - PENDING_HUMAN_REVIEW: the team decides whether Mode I uses this instructor sheet or the team's own Onshape drawing of the SAME named version (01_Onshape_Drawings/APSD_*_drawing.pdf, not yet exported)."
+   "status": "CANDIDATE (instructor sheet) - PENDING_HUMAN_REVIEW: team chooses instructor sheet or team drawing for Mode I"
   },
   {
    "file": "APSD_MILLING_instructor_sheet2_p25_300dpi.png",
@@ -21,7 +21,35 @@
    "rendering": "PyMuPDF get_pixmap, 300 dpi, full A4 sheet, 3509 x 2480 px; vector drawing, no resampling of dimension text",
    "views_included": "labelled isometric view + orthographic views + sections (all on the one sheet)",
    "why_orthographic_and_sections_are_included": "The isometric view on this sheet carries NO dimensions; every dimension is on the orthographic/section views. Sending the isometric alone would give the model no dimensions (brief 2.7.1 allows essential orthographic/section views when justified and logged).",
-   "status": "CANDIDATE - PENDING_HUMAN_REVIEW: the team decides whether Mode I uses this instructor sheet or the team's own Onshape drawing of the SAME named version (01_Onshape_Drawings/APSD_*_drawing.pdf, not yet exported)."
+   "status": "CANDIDATE (instructor sheet) - PENDING_HUMAN_REVIEW: team chooses instructor sheet or team drawing for Mode I"
+  },
+  {
+   "file": "APSD_LATHE_team_drawing_vdd8cc179_300dpi.png",
+   "workpiece": "APSD-LATHE",
+   "sha256": "b6f8d978337b146e7b6416e2c1e179e8e3d0a955741dfc07f1ab91119dab94ff",
+   "source": "team drawing 'APSD-LATHE-Final.pdf' exported from Onshape on 2026-11-28 (PDF creation 2026-11-28; named version Ch2-Final per the team)",
+   "source_pdf_sha256": "7f0698ad81039c87a304fd151b921047c5b2b32d1c3d55798e47d3a70d593829",
+   "rendering": "PyMuPDF get_pixmap, 300 dpi, full sheet, no edits",
+   "views_included": "isometric + orthographic views + section(s) on one sheet",
+   "why_orthographic_and_sections_are_included": "the isometric view carries no dimensions (same justification as the instructor sheet)",
+   "notes": "ANSI A (Letter) sheet; title block wrongly says DIMENSIONS ARE IN INCHES (values are mm) - Part A should fix and re-export before this is used",
+   "status": "CANDIDATE (team drawing, same revision as the CAD manifests) - PENDING_HUMAN_REVIEW"
+  },
+  {
+   "file": "APSD_MILLING_team_drawing_vdd8cc179_300dpi.png",
+   "workpiece": "APSD-MILLING",
+   "sha256": "126c2407e12a807b84111eef8868adb6c7cd11a238166d12a26c50497303d6d8",
+   "source": "team drawing 'APSD-MILLING.pdf' exported from Onshape on 2026-11-28 (PDF creation 2026-11-28; named version Ch2-Final per the team)",
+   "source_pdf_sha256": "335793c267d9fa681d068ed9c33cf7cb04b12314f8c8ec4ba7cdb84eac8a2e41",
+   "rendering": "PyMuPDF get_pixmap, 300 dpi, full sheet, no edits",
+   "views_included": "isometric + orthographic views + section(s) on one sheet",
+   "why_orthographic_and_sections_are_included": "the isometric view carries no dimensions (same justification as the instructor sheet)",
+   "notes": "A4, mm; same callouts as instructor sheet 2",
+   "status": "CANDIDATE (team drawing, same revision as the CAD manifests) - PENDING_HUMAN_REVIEW"
   }
- ]
+ ],
+ "decision": {
+  "mode_I_drawing": "PENDING_HUMAN_REVIEW",
+  "recommendation": "Use the team drawings (same named version Ch2-Final as the Mode II manifests), after Part A fixes the lathe title block (mm, A4/A3). Record the choice here and in each run's input_manifest."
+ }
 }

@@ -72,7 +72,10 @@ Every value is labelled `CAD_EXTRACTED` (read from the B-rep or feature list; un
 Every feature carries evidence pointers of the form `07_bodydetails.json#/bodies/0/faces/12`. The test suite resolves
 every one of them and checks the SHA-256 of every evidence file.
 
-## Results (live extraction 2026-11-26, snapshot `4d05edae182b19aa4ea1f30d`, unchanged during extraction)
+## Results (named version **Ch2-Final** `dd8cc179d8265b20fe3f589e`, extracted 2026-11-28; model state `4d05edae182b19aa4ea1f30d`)
+
+The default target is now this named version (`targets.py`), so a re-run reads exactly the same model. The first extraction
+(2026-11-26, live workspace at the same model state) is kept in `evidence/` as history and produced identical features.
 
 | | Lathe (23 features) | Milling (14 features, 7 relationships) |
 |---|---|---|

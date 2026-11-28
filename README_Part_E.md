@@ -86,8 +86,8 @@ Only the extractor needs network access and keys. The 07 tools use the same virt
 1. **Prerequisites (human):** Part B route/tool sheets approved → copy stock, tools, cutting data, setups, work zeros and
    clearances into `07_Comparison_Validation/experiment_config/shared_experiment_config.json` (status `CONFIRMED`,
    class `HUMAN_APPROVED`). Commit the human baselines in `03_Lathe/` and `04_Mill/` **before** any AI run (brief §2.5).
-   Decide which drawing Mode I uses (instructor sheet vs team drawing of the same named version). Ideally create a
-   named Onshape version and re-extract with `APSD_LATHE_URL` / `APSD_MILLING_URL`.
+   Decide which drawing Mode I uses (instructor sheet vs team drawing of named version Ch2-Final). The manifests are
+   already extracted from Ch2-Final, which is the default target.
 2. `python -m apsd_part_e build-prompt --mode I --part lathe` (repeat for `--mode I --part milling`, `--mode II --part lathe`,
    `--mode II --part milling`). The builder refuses while inputs are missing. It also runs the isolation checks and records
    the hash of every input in `input_manifest.json`.
@@ -138,9 +138,9 @@ Synthetic fixtures are labelled as such. They test the software, not the parts.
 |---|---|---|---|
 | 1 | Approve stock, material, tools, cutting data, setups, work zeros, clearances (Part B) and copy them into the shared config | Part B | all 4 AI attempts |
 | 2 | Write and commit the human lathe and milling baselines (03_Lathe, 04_Mill) | Parts C/D | AI attempts (brief §2.5), baseline rows of the matrix |
-| 3 | Create a named Onshape version; export drawings and `onshape_link.txt` (01_Onshape_Drawings); re-extract the manifests from that version | Part A | same-revision guarantee |
+| 3 | ~~Create a named version~~ done: **Ch2-Final**, manifests re-extracted 2026-11-28. Still open: put `onshape_link.txt` + drawing PDFs in 01_Onshape_Drawings; fix the lathe drawing title block (says inches, Letter size) | Part A | same-revision guarantee, Mode I team drawing |
 | 4 | Choose the Mode I drawing (instructor sheet or team drawing) | Part E | Mode I attempts |
-| 5 | Verify the evaluation reference (`evaluation_reference/*.json`) against the drawing, especially the open readings (lathe "2", "20/21/25") | Part E | metrics |
+| 5 | Verify the evaluation reference (`evaluation_reference/*.json`) against the drawing, especially the open readings (lathe "2", and "20"/"21" on the instructor sheet) | Part E | metrics |
 | 6 | Decide whether human annotation `H-L-01` may be sent in Mode II (default: not sent) | Part E | Mode II lathe |
 | 7 | Run the four attempts, G1–G4 reviews and simulations; log effort in `effort_log.csv` | Part E | Q2.11, Q2.13, Q2.14 |
 | 8 | Extend the root `.gitignore` (it only lists `.DS_Store`; `.DS_Store` is still tracked) with `.env`, `.venv/`, `__pycache__/`. No credential was found in this repository; the extractor folder has its own `.gitignore` | all | hygiene |

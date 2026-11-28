@@ -14,8 +14,8 @@ The prompt is built from the same template as Mode II
 dimensions only from callouts, never from image scale, and to list unclear or missing dimensions instead of inventing them.
 
 **Known drawing gaps (draft, to verify at G1).** The following are not dimensioned on the sheets: the milling boss centre
-distance, the R115/R60 arc centres, the pin and hole pitch-circle diameters (the milling sheet gives only "23" in B-B), the
-internal thread pitch, and the meaning of the lathe "2" and "20/21/25" callouts. A correct Mode I answer must flag them.
-These checks are planned for Q2.11.
+distance, the R115/R60 arc centres, the internal thread pitch, and the meaning of the lathe "2" callout (plus "20"/"21" on
+the instructor sheet). The pin and hole pitch circles **are** given as the radius "23" (milling B-B, lathe front view). A
+correct Mode I answer must flag the gaps. These checks are planned for Q2.11.
 
 How to run: see [README_Part_E.md](../README_Part_E.md#reproducing-the-four-ai-programming-attempts).

@@ -1,67 +1,268 @@
 {
-  "title": "Part E shared experiment configuration - identical for Mode I (drawing) and Mode II (CAD data)",
-  "version": "0.1-draft",
-  "last_changed": "2026-11-26",
-  "prepared_by": "Claude Code (Anthropic, model claude-opus-5-5) as a proposing agent; every PENDING_HUMAN_REVIEW value must be decided by the team",
-  "isolation_rule": "This file is sent VERBATIM (section 'ai_visible') to BOTH modes. It must not contain target geometry (dimensions, feature lists, coordinates of features). Geometry reaches the AI only through the mode-specific input: drawing images (Mode I) or the CAD manifest (Mode II). tools/apsd_part_e checks this before building a prompt.",
-  "value_classes": {
-    "DRAWING_REQUIREMENT": "stated on the part drawing (not used in this file: geometry is mode-specific input)",
-    "CAD_EXTRACTED": "read from the CAD model (only revision identifiers are used in this file)",
-    "HUMAN_APPROVED": "decided and signed by a named team member (Part B route sheet / tool sheet)",
-    "SIMULATOR_SETTING": "a property or default of LatheLab / MillLab (see simulator_dialect.json)",
-    "UNVERIFIED_ASSUMPTION": "proposed, not yet confirmed",
-    "MISSING": "not yet available"
+ "title": "Part E shared experiment configuration - identical for Mode I (drawing) and Mode II (CAD data)",
+ "version": "0.1-draft",
+ "last_changed": "2026-11-28",
+ "prepared_by": "Claude Code (Anthropic, model claude-opus-5-5) as a proposing agent; every PENDING_HUMAN_REVIEW value must be decided by the team",
+ "isolation_rule": "This file is sent VERBATIM (section 'ai_visible') to BOTH modes. It must not contain target geometry (dimensions, feature lists, coordinates of features). Geometry reaches the AI only through the mode-specific input: drawing images (Mode I) or the CAD manifest (Mode II). tools/apsd_part_e checks this before building a prompt.",
+ "value_classes": {
+  "DRAWING_REQUIREMENT": "stated on the part drawing (not used in this file: geometry is mode-specific input)",
+  "CAD_EXTRACTED": "read from the CAD model (only revision identifiers are used in this file)",
+  "HUMAN_APPROVED": "decided and signed by a named team member (Part B route sheet / tool sheet)",
+  "SIMULATOR_SETTING": "a property or default of LatheLab / MillLab (see simulator_dialect.json)",
+  "UNVERIFIED_ASSUMPTION": "proposed, not yet confirmed",
+  "MISSING": "not yet available"
+ },
+ "status_values": [
+  "CONFIRMED",
+  "PENDING_HUMAN_REVIEW"
+ ],
+ "dependencies": {
+  "02_Process_Plans": "EMPTY on 2026-11-26 (only .gitkeep). Stock, tools, speeds/feeds, setups and work zeros below must be copied from the approved Part B route and tool sheets, so that the AI receives exactly the same process inputs as the human baseline.",
+  "03_Lathe / 04_Mill": "EMPTY on 2026-11-26. The brief (2.5) requires the human baselines BEFORE AI code is requested; the comparison is invalid if the AI prompts use different stock/tools than the baselines (EVALUATION.md E.3).",
+  "01_Onshape_Drawings": "Named version 'Ch2-Final' exists (link received 2026-11-28). onshape_link.txt and the drawing PDFs still have to be placed in 01_Onshape_Drawings by the Part A owner (or with the team's approval)."
+ },
+ "ai_visible": {
+  "common": {
+   "units": {
+    "value": "mm, degrees; G21 (metric) in every program",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json (G21 supported in both labs); CAD manifests in mm"
+   },
+   "simulator": {
+    "value": "Course simulator https://mohammadrezaconstructor.github.io/cnc-simulator/ - LatheLab for turning, MillLab for milling",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "brief 2.9"
+   },
+   "safety_scope": {
+    "value": "Programs are SIMULATION-ONLY candidates. They will not be run on a physical machine before independent human verification.",
+    "class": "HUMAN_APPROVED",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "brief 2.10 integrity policy; team to confirm"
+   },
+   "required_output": {
+    "value": "see prompt template section 'Required response format' (features JSON, operation plan JSON, toolpath assumptions, operation-labelled NC blocks, consolidated program per setup, uncertainty list)",
+    "class": "HUMAN_APPROVED",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "brief 2.7.1 (i)-(iv)"
+   }
   },
-  "status_values": ["CONFIRMED", "PENDING_HUMAN_REVIEW"],
-  "dependencies": {
-    "02_Process_Plans": "EMPTY on 2026-11-26 (only .gitkeep). Stock, tools, speeds/feeds, setups and work zeros below must be copied from the approved Part B route and tool sheets, so that the AI receives exactly the same process inputs as the human baseline.",
-    "03_Lathe / 04_Mill": "EMPTY on 2026-11-26. The brief (2.5) requires the human baselines BEFORE AI code is requested; the comparison is invalid if the AI prompts use different stock/tools than the baselines (EVALUATION.md E.3)."
-  },
-  "ai_visible": {
-    "common": {
-      "units": {"value": "mm, degrees; G21 (metric) in every program", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json (G21 supported in both labs); CAD manifests in mm"},
-      "simulator": {"value": "Course simulator https://mohammadrezaconstructor.github.io/cnc-simulator/ - LatheLab for turning, MillLab for milling", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "brief 2.9"},
-      "safety_scope": {"value": "Programs are SIMULATION-ONLY candidates. They will not be run on a physical machine before independent human verification.", "class": "HUMAN_APPROVED", "status": "PENDING_HUMAN_REVIEW", "source": "brief 2.10 integrity policy; team to confirm"},
-      "required_output": {"value": "see prompt template section 'Required response format' (features JSON, operation plan JSON, toolpath assumptions, operation-labelled NC blocks, consolidated program per setup, uncertainty list)", "class": "HUMAN_APPROVED", "status": "PENDING_HUMAN_REVIEW", "source": "brief 2.7.1 (i)-(iv)"}
+  "APSD-LATHE": {
+   "part_id": {
+    "value": "APSD-LATHE",
+    "class": "CAD_EXTRACTED",
+    "status": "CONFIRMED",
+    "source": "brief Table 2.1; Onshape tab APSD-LATHE-Final"
+   },
+   "cad_revision": {
+    "value": {
+     "document": "6877e7a6059a24d360e8c6e1",
+     "named_version": "Ch2-Final",
+     "version_id": "dd8cc179d8265b20fe3f589e",
+     "element": "147da5f19a2ac767328e5f7f (APSD-LATHE-Final)",
+     "model_microversion": "4d05edae182b19aa4ea1f30d"
     },
-    "APSD-LATHE": {
-      "part_id": {"value": "APSD-LATHE", "class": "CAD_EXTRACTED", "status": "CONFIRMED", "source": "brief Table 2.1; Onshape tab APSD-LATHE-Final"},
-      "cad_revision": {"value": {"document": "6877e7a6059a24d360e8c6e1", "element": "147da5f19a2ac767328e5f7f (APSD-LATHE-Final)", "workspace_microversion": "4d05edae182b19aa4ea1f30d", "named_version": null}, "class": "CAD_EXTRACTED", "status": "PENDING_HUMAN_REVIEW", "source": "06 evidence 20261126T161449Z_hmac_lathe; a NAMED VERSION should be created by the Part A owner and both drawing and manifest regenerated from it"},
-      "machine_type": {"value": "2-axis CNC slant-bed lathe, turret behind the centre line (rear tool post), as modelled by LatheLab", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json lathelab.conventions.tool_post"},
-      "controller_dialect": {"value": "Fanuc-style lathe G-code as implemented by LatheLab: X = DIAMETER (X0 spindle centre line), Z axial; U/W incremental; G90 = OD/ID turning BOX CYCLE (not absolute mode), G91 unsupported; G94 facing cycle; G98/G99 feed per min/rev; G96 CSS with G50 S limit; T0101 tool/offset format; cycles G70-G76, G92; supported G/M lists in simulator_dialect.json", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json (static reading of the simulator source, 2026-11-26) - the team must still test each used command in LatheLab (brief 2.5 'Lathe programming checks')"},
-      "machine_limits": {"value": "max 4000 rpm, rapid 12000 mm/min", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json lathelab.conventions.machine_limits (defaults)"},
-      "stock": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B route sheet (02_Process_Plans) - outer diameter, length, any pre-bore, face allowance, grip length"},
-      "material": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "not in CAD; Part B decision (LatheLab offers steel/stainless/aluminium/brass/castiron/plastic)"},
-      "work_origin": {"value": "Z0 on the finished front face of the current setup, negative Z towards the chuck; X0 on the spindle centre line, X as diameter", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "LatheLab reference convention; must match the human baseline's setup drawing (Part C, C1)"},
-      "setups": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B (Q2.5): which end is chucked in setup 1 and setup 2, grip length, re-chucking reference"},
-      "workholding": {"value": "3-jaw chuck (LatheLab stock dialog: grip length)", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "Part B"},
-      "tools": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B tool sheet; LatheLab default tool table (simulator_dialect.json lathelab.default_tool_table) is available but NOT approved"},
-      "cutting_data": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B (Vc, f, ap per tool, with the brief's equations 2.1-2.5)"},
-      "safety_clearances": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part C setup log (safe approach point, tool-change position, retract)"},
-      "simulator_setup": {"value": "LatheLab: Stock dialog = Part B stock; Tools & offsets = Part B tools; Program check + Operations + Inspection; Check part only with a correctly configured target", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "brief 2.5 C2/C4"}
-    },
-    "APSD-MILLING": {
-      "part_id": {"value": "APSD-MILLING", "class": "CAD_EXTRACTED", "status": "CONFIRMED", "source": "brief Table 2.1; Onshape tab APSD-MILLING"},
-      "cad_revision": {"value": {"document": "6877e7a6059a24d360e8c6e1", "element": "20caaefd66e3a40229321161 (APSD-MILLING)", "workspace_microversion": "4d05edae182b19aa4ea1f30d", "named_version": null}, "class": "CAD_EXTRACTED", "status": "PENDING_HUMAN_REVIEW", "source": "06 evidence 20261126T161455Z_hmac_milling; see the lathe note on named versions"},
-      "machine_type": {"value": "3-axis vertical machining centre with a vise, as modelled by MillLab", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json milllab.conventions.axes"},
-      "controller_dialect": {"value": "Fanuc-style mill G-code as implemented by MillLab: G17/G18/G19, G90/G91 absolute/incremental, G94/G95, G54-G59, G43 Hnn tool length compensation (or AUTO TOOL COMP), G41/G42 Dnn cutter compensation only in G17, canned cycles G73/G74/G76/G81-G86/G89 + G80, M06 tool change; supported G/M lists in simulator_dialect.json", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json (static reading, 2026-11-26) - each used command still to be tested in MillLab"},
-      "machine_limits": {"value": "max 8000 rpm, rapid 15000 mm/min", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "simulator_dialect.json milllab.conventions.machine_limits (defaults)"},
-      "stock": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B route sheet: block X x Y x Z, top allowance, height above vise jaws (MillLab stock is a rectangular block only)"},
-      "material": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "not in CAD; Part B decision"},
-      "work_origin": {"value": "G54 at the front-left top corner of the block, Z0 on the finished top (MillLab default)", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "MillLab default; must match the human baseline (Part D, D1) for setup 1 AND state the datum of every later setup (D4)"},
-      "setups": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B (Q2.2/Q2.5): number of setups, how the part is flipped/re-clamped, datum per setup"},
-      "workholding": {"value": "machine vise (MillLab: height above jaws)", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "Part B"},
-      "tools": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B tool sheet; MillLab default tool table (simulator_dialect.json milllab.default_tool_table) is available but NOT approved"},
-      "cutting_data": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part B (Vc, fz, z, ap, ae per tool, equations 2.1-2.6)"},
-      "safety_clearances": {"value": null, "class": "MISSING", "status": "PENDING_HUMAN_REVIEW", "source": "Part D setup log (clearance plane, R-plane, tool-change height)"},
-      "simulator_setup": {"value": "MillLab: Workpiece dialog = Part B block + origin + Z reference; Tools & offsets = Part B tools (H/D registers or AUTO comp stated); one simulation run per setup", "class": "SIMULATOR_SETTING", "status": "CONFIRMED", "source": "brief 2.6 D4/D5"}
-    }
+    "class": "CAD_EXTRACTED",
+    "status": "CONFIRMED",
+    "source": "Onshape named version 'Ch2-Final' (created 2026-11-28 by the team); 06 evidence 20261128T085834Z_hmac_lathe"
+   },
+   "machine_type": {
+    "value": "2-axis CNC slant-bed lathe, turret behind the centre line (rear tool post), as modelled by LatheLab",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json lathelab.conventions.tool_post"
+   },
+   "controller_dialect": {
+    "value": "Fanuc-style lathe G-code as implemented by LatheLab: X = DIAMETER (X0 spindle centre line), Z axial; U/W incremental; G90 = OD/ID turning BOX CYCLE (not absolute mode), G91 unsupported; G94 facing cycle; G98/G99 feed per min/rev; G96 CSS with G50 S limit; T0101 tool/offset format; cycles G70-G76, G92; supported G/M lists in simulator_dialect.json",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json (static reading of the simulator source, 2026-11-26) - the team must still test each used command in LatheLab (brief 2.5 'Lathe programming checks')"
+   },
+   "machine_limits": {
+    "value": "max 4000 rpm, rapid 12000 mm/min",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json lathelab.conventions.machine_limits (defaults)"
+   },
+   "stock": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B route sheet (02_Process_Plans) - outer diameter, length, any pre-bore, face allowance, grip length"
+   },
+   "material": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "not in CAD; Part B decision (LatheLab offers steel/stainless/aluminium/brass/castiron/plastic)"
+   },
+   "work_origin": {
+    "value": "Z0 on the finished front face of the current setup, negative Z towards the chuck; X0 on the spindle centre line, X as diameter",
+    "class": "UNVERIFIED_ASSUMPTION",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "LatheLab reference convention; must match the human baseline's setup drawing (Part C, C1)"
+   },
+   "setups": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B (Q2.5): which end is chucked in setup 1 and setup 2, grip length, re-chucking reference"
+   },
+   "workholding": {
+    "value": "3-jaw chuck (LatheLab stock dialog: grip length)",
+    "class": "UNVERIFIED_ASSUMPTION",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B"
+   },
+   "tools": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B tool sheet; LatheLab default tool table (simulator_dialect.json lathelab.default_tool_table) is available but NOT approved"
+   },
+   "cutting_data": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B (Vc, f, ap per tool, with the brief's equations 2.1-2.5)"
+   },
+   "safety_clearances": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part C setup log (safe approach point, tool-change position, retract)"
+   },
+   "simulator_setup": {
+    "value": "LatheLab: Stock dialog = Part B stock; Tools & offsets = Part B tools; Program check + Operations + Inspection; Check part only with a correctly configured target",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "brief 2.5 C2/C4"
+   }
   },
-  "experiment_protocol": {
-    "ai_system": {"value": "Anthropic Claude via the claude.ai web chat (same interface as Chapter 1); model name recorded exactly as shown in the model selector at the time of each run", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "team decision; alternative: Claude Code subagents (then record the model id they report)"},
-    "isolation": {"value": "One NEW conversation per attempt (4 initial attempts): no Project, no memory/history features, no attached files except the inputs listed in the run's input_manifest.json. Mode I runs never see manifests; Mode II runs never see drawings; no run sees the human baselines or the other mode's output.", "class": "HUMAN_APPROVED", "status": "PENDING_HUMAN_REVIEW", "source": "brief 2.7.1/2.7.2; Chapter 1 practice (incognito chats)"},
-    "attempt_order": {"value": "After the human baselines are committed: Mode I lathe, Mode I milling, Mode II lathe, Mode II milling (order recorded; any change disclosed)", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "brief 2.5 (baseline before AI)"},
-    "operation_split": {"value": "One prompt per workpiece. If the reply is truncated or the geometry is too large, split into the SAME documented operations for both modes (brief 2.7.3)", "class": "UNVERIFIED_ASSUMPTION", "status": "PENDING_HUMAN_REVIEW", "source": "brief 2.7.3"},
-    "acceptance_tolerance_simulation": {"value": "+/-0.05 mm feature-level conformance in Check part / Inspection", "class": "SIMULATOR_SETTING", "status": "PENDING_HUMAN_REVIEW", "source": "LatheLab/MillLab mission default tol 0.05 mm (simulator source); the team decides the acceptance criterion"}
+  "APSD-MILLING": {
+   "part_id": {
+    "value": "APSD-MILLING",
+    "class": "CAD_EXTRACTED",
+    "status": "CONFIRMED",
+    "source": "brief Table 2.1; Onshape tab APSD-MILLING"
+   },
+   "cad_revision": {
+    "value": {
+     "document": "6877e7a6059a24d360e8c6e1",
+     "named_version": "Ch2-Final",
+     "version_id": "dd8cc179d8265b20fe3f589e",
+     "element": "20caaefd66e3a40229321161 (APSD-MILLING)",
+     "model_microversion": "4d05edae182b19aa4ea1f30d"
+    },
+    "class": "CAD_EXTRACTED",
+    "status": "CONFIRMED",
+    "source": "Onshape named version 'Ch2-Final' (created 2026-11-28 by the team); 06 evidence 20261128T085839Z_hmac_milling"
+   },
+   "machine_type": {
+    "value": "3-axis vertical machining centre with a vise, as modelled by MillLab",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json milllab.conventions.axes"
+   },
+   "controller_dialect": {
+    "value": "Fanuc-style mill G-code as implemented by MillLab: G17/G18/G19, G90/G91 absolute/incremental, G94/G95, G54-G59, G43 Hnn tool length compensation (or AUTO TOOL COMP), G41/G42 Dnn cutter compensation only in G17, canned cycles G73/G74/G76/G81-G86/G89 + G80, M06 tool change; supported G/M lists in simulator_dialect.json",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json (static reading, 2026-11-26) - each used command still to be tested in MillLab"
+   },
+   "machine_limits": {
+    "value": "max 8000 rpm, rapid 15000 mm/min",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "simulator_dialect.json milllab.conventions.machine_limits (defaults)"
+   },
+   "stock": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B route sheet: block X x Y x Z, top allowance, height above vise jaws (MillLab stock is a rectangular block only)"
+   },
+   "material": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "not in CAD; Part B decision"
+   },
+   "work_origin": {
+    "value": "G54 at the front-left top corner of the block, Z0 on the finished top (MillLab default)",
+    "class": "UNVERIFIED_ASSUMPTION",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "MillLab default; must match the human baseline (Part D, D1) for setup 1 AND state the datum of every later setup (D4)"
+   },
+   "setups": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B (Q2.2/Q2.5): number of setups, how the part is flipped/re-clamped, datum per setup"
+   },
+   "workholding": {
+    "value": "machine vise (MillLab: height above jaws)",
+    "class": "UNVERIFIED_ASSUMPTION",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B"
+   },
+   "tools": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B tool sheet; MillLab default tool table (simulator_dialect.json milllab.default_tool_table) is available but NOT approved"
+   },
+   "cutting_data": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part B (Vc, fz, z, ap, ae per tool, equations 2.1-2.6)"
+   },
+   "safety_clearances": {
+    "value": null,
+    "class": "MISSING",
+    "status": "PENDING_HUMAN_REVIEW",
+    "source": "Part D setup log (clearance plane, R-plane, tool-change height)"
+   },
+   "simulator_setup": {
+    "value": "MillLab: Workpiece dialog = Part B block + origin + Z reference; Tools & offsets = Part B tools (H/D registers or AUTO comp stated); one simulation run per setup",
+    "class": "SIMULATOR_SETTING",
+    "status": "CONFIRMED",
+    "source": "brief 2.6 D4/D5"
+   }
   }
+ },
+ "experiment_protocol": {
+  "ai_system": {
+   "value": "Anthropic Claude via the claude.ai web chat (same interface as Chapter 1); model name recorded exactly as shown in the model selector at the time of each run",
+   "class": "UNVERIFIED_ASSUMPTION",
+   "status": "PENDING_HUMAN_REVIEW",
+   "source": "team decision; alternative: Claude Code subagents (then record the model id they report)"
+  },
+  "isolation": {
+   "value": "One NEW conversation per attempt (4 initial attempts): no Project, no memory/history features, no attached files except the inputs listed in the run's input_manifest.json. Mode I runs never see manifests; Mode II runs never see drawings; no run sees the human baselines or the other mode's output.",
+   "class": "HUMAN_APPROVED",
+   "status": "PENDING_HUMAN_REVIEW",
+   "source": "brief 2.7.1/2.7.2; Chapter 1 practice (incognito chats)"
+  },
+  "attempt_order": {
+   "value": "After the human baselines are committed: Mode I lathe, Mode I milling, Mode II lathe, Mode II milling (order recorded; any change disclosed)",
+   "class": "UNVERIFIED_ASSUMPTION",
+   "status": "PENDING_HUMAN_REVIEW",
+   "source": "brief 2.5 (baseline before AI)"
+  },
+  "operation_split": {
+   "value": "One prompt per workpiece. If the reply is truncated or the geometry is too large, split into the SAME documented operations for both modes (brief 2.7.3)",
+   "class": "UNVERIFIED_ASSUMPTION",
+   "status": "PENDING_HUMAN_REVIEW",
+   "source": "brief 2.7.3"
+  },
+  "acceptance_tolerance_simulation": {
+   "value": "+/-0.05 mm feature-level conformance in Check part / Inspection",
+   "class": "SIMULATOR_SETTING",
+   "status": "PENDING_HUMAN_REVIEW",
+   "source": "LatheLab/MillLab mission default tol 0.05 mm (simulator source); the team decides the acceptance criterion"
+  }
+ }
 }

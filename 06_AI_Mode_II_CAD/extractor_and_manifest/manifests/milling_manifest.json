@@ -34,12 +34,12 @@
   "element_id": "20caaefd66e3a40229321161",
   "element_name": "APSD-MILLING",
   "url_context": {
-   "wvm": "w",
-   "wvm_id": "008a5bb3f73e5b75f4629e14"
+   "wvm": "v",
+   "wvm_id": "dd8cc179d8265b20fe3f589e"
   },
-  "snapshot_microversion": "4d05edae182b19aa4ea1f30d",
+  "snapshot_microversion": "dd8cc179d8265b20fe3f589e",
   "element_microversion": "6e87bc46bde3f5e4ceb98f76",
-  "named_version": null,
+  "named_version": "dd8cc179d8265b20fe3f589e",
   "revision_changed_during_extraction": false,
   "drawing_element": {
    "element_id": "d36cfe272e42345986bdfb77",
@@ -49,22 +49,20 @@
   }
  },
  "extraction": {
-  "run_id": "20261126T161455Z_hmac",
-  "extracted_utc": "2026-11-26T16:14:55+00:00",
-  "evidence_dir": "evidence/20261126T161455Z_hmac_milling",
+  "run_id": "20261128T085839Z_hmac",
+  "extracted_utc": "2026-11-28T08:58:39+00:00",
+  "evidence_dir": "evidence/20261128T085839Z_hmac_milling",
   "evidence_files": {
-   "01_document.json": "00744eb5361c4cf3093e05d182fdb5980138fb956dd288aa001269b5e32816c4",
-   "02_workspace_microversion.json": "b8c7a46dccf27df46d1b5bf9ec4c6cbc876069782c9d2beb3a6dc74b659a2a1b",
-   "03_elements.json": "38192df5961549383ba562fc36d35a7406c4496950efd6b8551d95b5dbcfd76a",
-   "04_features.json": "c50920490b0bb231876520042a7b390974bbbbebc159027a2035cdbd71aeda0a",
-   "05_parts.json": "7783c41bba69cad8b52341e231b6037246bd1615abfd7dcfafb851d3c66f4115",
-   "06_configuration.json": "7eeb7bcd5772a256ab89177e9b6986271c37201237cc385f2a0a40bd926d8af0",
-   "07_bodydetails.json": "4b42eb76d03ea8f92eb351c2e533c978567ebaa18479f62aefefc59e76d84e64",
-   "08_boundingboxes.json": "a7643cb6bc5f174accee7184b5d1c99c760f60009dd821f1faee0d4a93fd4854",
-   "09_document_end.json": "f47d1fceb1024a7f152fca65247681f911ffd08a142e89b11cc84cf4e278db05",
-   "10_workspace_microversion_end.json": "b8c7a46dccf27df46d1b5bf9ec4c6cbc876069782c9d2beb3a6dc74b659a2a1b",
-   "11_drawing_views.json": "aa72ad88d1fdf130938ec82f2d53c8c4d86c582dca09efd46b2580835c47b21b",
-   "extraction_record.json": "b69ccf6c23643ff65e4000607a9f4e7a3c8da065a7f94918f421d33b4845b68e"
+   "01_document.json": "33559bf438bb0c75855e48affdd451b3f996ce32ac1ccd0731304478985b7cbe",
+   "03_elements.json": "46b2cf3620ccdb0f1266f6b10c07154d62ea739190a2d25653510fb29c125d93",
+   "04_features.json": "300a599fa7f3aad72aa39ebdc302841ceb2b7bf3df5f6dc7c80adfc403930bbc",
+   "05_parts.json": "02a887f816cdb78fefe232c23a85d9c9b74c72c4def4ae5342cac6aac115dfdd",
+   "06_configuration.json": "a9e1c8465fec04b7660bb75741ec93dfc075e7b7b53a57ec552971c200a52885",
+   "07_bodydetails.json": "46870d985d0fb3e97963afaa11ae8587686cee16e23cb29c36b301b88880b79b",
+   "08_boundingboxes.json": "0e3e2e0d74fdc172934faca3be2417a18147b051816d3c6c672d0caa4da3612c",
+   "09_document_end.json": "e6b821c3d1f53e8b6f0fc8c978610255edd8ff26c017deb083270bcb0223df2d",
+   "11_drawing_views.json": "2f87ad2d857d0c3d2d7b7bffc2dc1c31206c51fb40be4807555131dfc0a3e512",
+   "extraction_record.json": "3f7e1801b78610b5a0c97f671de2e28faa770222c2c514f4bd96c799af4a2b22"
   },
   "pipeline": "apsd_cam (Chapter 2 Part E) on top of vendored Chapter 1 apsd_pipeline",
   "pipeline_version": "1.0.0",
@@ -75,7 +73,6 @@
   },
   "endpoints": {
    "01_document": 200,
-   "02_workspace_microversion": 200,
    "03_elements": 200,
    "04_features": 200,
    "05_parts": 200,
@@ -83,10 +80,9 @@
    "07_bodydetails": 200,
    "08_boundingboxes": 200,
    "11_drawing_views": 200,
-   "09_document_end": 200,
-   "10_workspace_microversion_end": 200
+   "09_document_end": 200
   },
-  "manifest_built_utc": "2026-11-26T16:15:16+00:00",
+  "manifest_built_utc": "2026-11-28T08:58:56+00:00",
   "feature_tree": [
    {
     "index": 0,
@@ -273,12 +269,12 @@
   ],
   "cross_check": {
    "onshape_partstudio_boundingbox_mm": {
-    "highZ": 14.0,
-    "lowX": -30.0,
     "lowY": -30.0,
     "lowZ": -10.0,
     "highX": 126.0,
-    "highY": 42.7823
+    "highY": 42.7823,
+    "highZ": 14.0,
+    "lowX": -30.0
    },
    "note": "Onshape documents this box as approximate; reported for comparison only"
   }

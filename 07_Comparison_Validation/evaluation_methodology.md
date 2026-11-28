@@ -6,7 +6,7 @@ A value that has not been recorded is written as `NOT_MEASURED`, `NOT_RUN`, `PEN
 `PENDING_HUMAN_REVIEW` or `MISSING_DEPENDENCY`. Nothing is estimated.
 
 ## Controlled variables
-Same CAD snapshot for both parts (`4d05edae182b19aa4ea1f30d`; a named version is recommended), the same `ai_visible`
+Same CAD revision for both parts (named version **Ch2-Final**, `dd8cc179d8265b20fe3f589e`), the same `ai_visible`
 configuration, the same template and dialect summary (SHA-256 per run), the same output format, a new conversation per
 attempt, and the first imported attempt counts as the *initial* proposal. Only the geometry block differs between the modes.
 

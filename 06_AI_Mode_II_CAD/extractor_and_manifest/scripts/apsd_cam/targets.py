@@ -17,6 +17,9 @@ from apsd_pipeline.config import OnshapeTarget, parse_document_url  # vendored C
 HOST = "https://cad.onshape.com"
 DOCUMENT_ID = "6877e7a6059a24d360e8c6e1"
 WORKSPACE_ID = "008a5bb3f73e5b75f4629e14"
+# Named version frozen by the team for Chapter 2 (link received 2026-11-28). Default target from now on,
+# so every re-extraction reads exactly the same model state. Set APSD_*_URL to a /w/ URL to read the live workspace.
+VERSION_ID = "dd8cc179d8265b20fe3f589e"
 
 
 @dataclass(frozen=True)
@@ -30,7 +33,7 @@ class PartTab:
 
     @property
     def default_url(self) -> str:
-        return f"{HOST}/documents/{DOCUMENT_ID}/w/{WORKSPACE_ID}/e/{self.element_id}"
+        return f"{HOST}/documents/{DOCUMENT_ID}/v/{VERSION_ID}/e/{self.element_id}"
 
     def target(self) -> OnshapeTarget:
         url = os.environ.get(f"APSD_{self.key.upper()}_URL", "").strip() or self.default_url

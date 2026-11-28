@@ -50,7 +50,7 @@ Statuses: COMPLETE · PARTIALLY_COMPLETE · BLOCKED · PENDING_HUMAN_REVIEW · P
 | Criterion | Marks | State | Still needed (owner) |
 |---|---|---|---|
 | Drawing-based AI approach | 4 | inputs, template, protocol, G1 worksheet mechanism ready | Part B values; run Mode I ×2; G1 review (Part E) |
-| Functioning structured CAD-data workflow | 6 | working end to end on live data; schema, tests, docs, Q2.12 | named version + re-extract (Part A); team review |
+| Functioning structured CAD-data workflow | 6 | working end to end on live data from named version Ch2-Final; schema, tests, docs, Q2.12 | team review |
 | Four AI attempts and transparent logs | 4 | write-once archive, hashes, revision log, metadata | baselines first (C/D), then 4 runs (E) |
 | Comparative analysis and human verification | 6 | methodology, matrix generator, checklist, records, templates | attempts, reviews, simulations, effort log (E) |
 
