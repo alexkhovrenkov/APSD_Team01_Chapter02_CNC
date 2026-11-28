@@ -1,0 +1,36 @@
+{
+ "passed": true,
+ "checks": [
+  {
+   "check": "no evaluation-reference ids or files",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "no human-baseline NC line in the prompt",
+   "passed": true,
+   "detail": "741 baseline lines compared"
+  },
+  {
+   "check": "no Mode II output referenced",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "Mode I: no manifest content",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "shared config contains no reference dimension of this part",
+   "passed": true,
+   "detail": "; allowed process values (see isolation_allowlist): ['10', '18', '20', '30', '4', '60', '8']"
+  },
+  {
+   "check": "template contains no reference dimension of this part",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "limits": "These checks prove what the PROMPT contains. They cannot prove what the chat model saw elsewhere; that is controlled by the run protocol (new conversation, no Project, no memory, only the listed attachment)."
+}

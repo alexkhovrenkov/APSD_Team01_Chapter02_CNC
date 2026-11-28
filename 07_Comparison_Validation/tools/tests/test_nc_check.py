@@ -142,3 +142,18 @@ def test_lathe_cycles_not_misread_as_motion():
 
 def test_empty_program():
     assert check_program("(only a comment)\n", "lathelab")["counts"]["critical"] == 1
+
+
+def test_stock_bounds_come_from_the_confirmed_config():
+    from apsd_part_e.nc_check import stock_from_config
+    lathe, mill = stock_from_config("lathelab"), stock_from_config("milllab")
+    assert lathe["diameter"] == 105 and lathe["length"] == 240 - 25 - 1
+    assert mill["z_top"] == 0 and mill["z_bottom"] == -24
+
+
+def test_g76_first_block_needs_no_feed():
+    from apsd_part_e.nc_check import check_program
+    ok = "G21 G18 G99\nT0404\nG97 S150 M03\nG00 X56 Z10\nG76 P020060 Q100 R0.05\nG76 X43.87 Z-122 P3067 Q700 F5.0\nG00 X110\nM05\nM30\n"
+    assert not [f for f in check_program(ok, "lathelab")["findings"] if f["code"] == "cycle_without_feed"]
+    bad = ok.replace(" F5.0", "")
+    assert [f for f in check_program(bad, "lathelab")["findings"] if f["code"] == "cycle_without_feed"]

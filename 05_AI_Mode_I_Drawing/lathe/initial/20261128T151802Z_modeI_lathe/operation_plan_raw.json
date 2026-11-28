@@ -1,0 +1,311 @@
+{
+ "setups": [
+  {
+   "id": "S1",
+   "orientation_and_workholding": "Raw bar D105 x 240 in 3-jaw chuck, 25 mm held (215 mm stick-out). Front = thread end.",
+   "work_zero": "X0 spindle centre line (X = diameter), Z0 finished thread-end face, -Z towards the chuck; raw face at Z+1",
+   "operations": [
+    {
+     "id": "OP10",
+     "name": "Face front end to Z0",
+     "features": [
+      "F01"
+     ],
+     "tool": "T01",
+     "strategy": "facing (G94 box cycle, 1 pass 1.0 mm)",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.15",
+     "depth_of_cut": "1.0 mm axial",
+     "simulator_supported": true,
+     "nc_file": "op_10_face_front.nc"
+    },
+    {
+     "id": "OP20",
+     "name": "Rough OD profile: D50, R5, flange right face, D100",
+     "features": [
+      "F02",
+      "F03",
+      "F04"
+     ],
+     "tool": "T01",
+     "strategy": "roughing (G71 type I)",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.2",
+     "depth_of_cut": "2.5 mm radial; leaves 0.5 mm per side (U1.0 dia, W0.5)",
+     "simulator_supported": true,
+     "nc_file": "op_20_rough_od.nc"
+    },
+    {
+     "id": "OP30",
+     "name": "Finish OD profile",
+     "features": [
+      "F02",
+      "F03",
+      "F04"
+     ],
+     "tool": "T02",
+     "strategy": "finishing contour with G42",
+     "spindle": "G97 S500 M03 (profile/radius data)",
+     "feed": "G99 F0.1",
+     "depth_of_cut": "0.5 mm per side",
+     "simulator_supported": true,
+     "nc_file": "op_30_finish_od.nc"
+    },
+    {
+     "id": "OP40",
+     "name": "Centre/spot drill front",
+     "features": [
+      "F09"
+     ],
+     "tool": "T10",
+     "strategy": "drilling",
+     "spindle": "G97 S800 M03",
+     "feed": "G99 F0.08",
+     "depth_of_cut": "2 mm deep",
+     "simulator_supported": true,
+     "nc_file": "op_40_centre_drill.nc"
+    },
+    {
+     "id": "OP50",
+     "name": "Peck drill D13 from front to Z-65 (pilot for bore, first part of through hole)",
+     "features": [
+      "F08",
+      "F09"
+     ],
+     "tool": "T05",
+     "strategy": "drilling, peck 10 mm with full retract",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.12",
+     "depth_of_cut": "10 mm pecks, tip to Z-65 (flute length 70)",
+     "simulator_supported": true,
+     "nc_file": "op_50_drill_d13.nc"
+    },
+    {
+     "id": "OP60",
+     "name": "Rough bore D30 x 40",
+     "features": [
+      "F08"
+     ],
+     "tool": "T06",
+     "strategy": "roughing (G90 ID box cycle, 8 passes)",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.10",
+     "depth_of_cut": "1.0 mm radial; to D29.0 / Z-39.5",
+     "simulator_supported": true,
+     "nc_file": "op_60_rough_bore.nc"
+    },
+    {
+     "id": "OP70",
+     "name": "Finish bore D30 x 40 and bore bottom",
+     "features": [
+      "F08"
+     ],
+     "tool": "T06",
+     "strategy": "finishing contour with G41",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.08",
+     "depth_of_cut": "0.5 mm per side",
+     "simulator_supported": true,
+     "nc_file": "op_70_finish_bore.nc"
+    },
+    {
+     "id": "OP80",
+     "name": "External thread D50 x P5 (assumed metric 60 deg)",
+     "features": [
+      "F02"
+     ],
+     "tool": "T04",
+     "strategy": "threading (G76 multi-pass + 2 spring passes)",
+     "spindle": "G97 S150 M03",
+     "feed": "F5.0 (= pitch)",
+     "depth_of_cut": "first pass 0.7 mm, decreasing, min 0.1 mm; total 3.067 mm per side",
+     "simulator_supported": true,
+     "nc_file": "op_80_thread_ext.nc"
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "orientation_and_workholding": "Part reversed, protected chuck arrangement on a finished surface (grip surface/length not specified by the team, accepted). Simulated with a fresh raw bar D105 x 240, 25 held.",
+   "work_zero": "X0 spindle centre line, Z0 finished spigot-end (rear) face, -Z towards the chuck; S2 Z = -210 - S1 Z",
+   "operations": [
+    {
+     "id": "OP110",
+     "name": "Face rear end to Z0 (sets length 210)",
+     "features": [
+      "F01"
+     ],
+     "tool": "T01",
+     "strategy": "facing (G94, 1 pass on simulated stock)",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.15",
+     "depth_of_cut": "1.0 mm axial in simulation; real excess about 29 mm, see assumptions",
+     "simulator_supported": true,
+     "nc_file": "op_110_face_rear.nc"
+    },
+    {
+     "id": "OP120",
+     "name": "Rough OD rear: spigot D29.9, shoulder, D60, R5, flange left face",
+     "features": [
+      "F05",
+      "F06",
+      "F07"
+     ],
+     "tool": "T01",
+     "strategy": "roughing (G71 type I)",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.2",
+     "depth_of_cut": "2.5 mm radial; leaves 0.5 mm per side",
+     "simulator_supported": true,
+     "nc_file": "op_120_rough_od_rear.nc"
+    },
+    {
+     "id": "OP130",
+     "name": "Finish OD rear profile",
+     "features": [
+      "F05",
+      "F06",
+      "F07"
+     ],
+     "tool": "T02",
+     "strategy": "finishing contour with G42",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.1",
+     "depth_of_cut": "0.5 mm per side",
+     "simulator_supported": true,
+     "nc_file": "op_130_finish_od_rear.nc"
+    },
+    {
+     "id": "OP140",
+     "name": "Centre/spot drill rear",
+     "features": [
+      "F09",
+      "F10"
+     ],
+     "tool": "T10",
+     "strategy": "drilling",
+     "spindle": "G97 S800 M03",
+     "feed": "G99 F0.08",
+     "depth_of_cut": "2 mm deep",
+     "simulator_supported": true,
+     "nc_file": "op_140_centre_drill_rear.nc"
+    },
+    {
+     "id": "OP150",
+     "name": "Peck drill D13 from rear to Z-65 (core hole for F10, second part of through hole)",
+     "features": [
+      "F09",
+      "F10"
+     ],
+     "tool": "T05",
+     "strategy": "drilling, peck 10 mm with full retract",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.12",
+     "depth_of_cut": "10 mm pecks, tip to Z-65",
+     "simulator_supported": true,
+     "nc_file": "op_150_drill_d13_rear.nc"
+    },
+    {
+     "id": "OP160",
+     "name": "Internal thread in spigot end, 41.42 deep - BLOCKED",
+     "features": [
+      "F10"
+     ],
+     "tool": "T09",
+     "strategy": "threading (G76 internal) - not programmed",
+     "spindle": "G97 S150 M03 (approved data)",
+     "feed": "= pitch (unknown)",
+     "depth_of_cut": "unknown",
+     "simulator_supported": true,
+     "status": "BLOCKED_NO_NC: thread size/pitch missing; T09 reach 15 < 41.42; T09 bar D12 cannot work inside a D13 core hole",
+     "nc_file": null
+    },
+    {
+     "id": "OP170",
+     "name": "Complete D13 through hole between the two drilled ends - BLOCKED",
+     "features": [
+      "F09"
+     ],
+     "tool": "T05",
+     "strategy": "drilling - not programmed",
+     "spindle": "-",
+     "feed": "-",
+     "depth_of_cut": "-",
+     "simulator_supported": true,
+     "status": "BLOCKED_NO_NC: T05 flute length 70; full-diameter hole reaches only S1 Z-61.1 (OP50) and S1 Z-148.9 (OP150); about 88 mm remain undrilled",
+     "nc_file": null
+    }
+   ]
+  },
+  {
+   "id": "S3_OFF_LATHE",
+   "orientation_and_workholding": "3-axis mill secondary setup (team route sheet ops 230-250) - OUT OF SCOPE for the lathe programs",
+   "work_zero": "defined by the milling team",
+   "operations": [
+    {
+     "id": "OP230",
+     "name": "Keyway 7.98 wide on spigot D29.9",
+     "features": [
+      "F12"
+     ],
+     "tool": "milling (not in lathe tool table)",
+     "strategy": "slot milling",
+     "spindle": "-",
+     "feed": "-",
+     "depth_of_cut": "keyway depth unknown",
+     "simulator_supported": false,
+     "status": "OUT_OF_SCOPE_MILL",
+     "nc_file": null
+    },
+    {
+     "id": "OP240",
+     "name": "6 x D3.52 holes on PCD 46 in shoulder face, depth 4.1 (assumed)",
+     "features": [
+      "F11"
+     ],
+     "tool": "milling/drilling (not in lathe tool table)",
+     "strategy": "off-axis drilling",
+     "spindle": "-",
+     "feed": "-",
+     "depth_of_cut": "-",
+     "simulator_supported": false,
+     "status": "OUT_OF_SCOPE_MILL",
+     "nc_file": null
+    },
+    {
+     "id": "OP250",
+     "name": "Break all sharp edges and deburr (general note)",
+     "features": [
+      "F14"
+     ],
+     "tool": "manual",
+     "strategy": "deburring",
+     "spindle": "-",
+     "feed": "-",
+     "depth_of_cut": "-",
+     "simulator_supported": false,
+     "status": "MANUAL_NOT_PROGRAMMED",
+     "nc_file": null
+    }
+   ]
+  }
+ ],
+ "assumptions": [
+  "All dimensions in mm (team configuration) despite the 'inches' text in the title block.",
+  "Thread major turned to nominal D50, not undersized; thread class unknown.",
+  "External thread is metric 60 deg right-hand, P5: depth 0.6134 x 5 = 3.067 per side, minor dia 43.87.",
+  "Thread ends at Z-122 (3 mm short of the fillet tangent) because no relief groove is drawn; the last turn is incomplete.",
+  "Flange right face at S1 Z-130 and D60 body 40 long are derived values (see unclear_or_missing).",
+  "Flange OD D100 is finished completely in S1 (turned to Z-152, 2 mm past the flange left face); S2 does not touch D100.",
+  "Bore F08 = D30 with a flat bottom at Z-40.",
+  "D13 is used as pilot for the bore and as core hole for the internal thread; drill tip depth limited to 65 mm (5 mm margin under the 70 mm flute length).",
+  "T06 (bar D10) can enter the D13 pilot hole for the first G90 pass at D15; minimum bore diameter of T06 is not given in the tool table.",
+  "Whole finishing contours run at the 'profile/radius' data (500 rpm, 0.1 mm/rev) because each contour contains an R5 radius.",
+  "Bore cutting data: 0.10 mm/rev roughing, 0.08 mm/rev finishing (inside the approved 0.08-0.10 range).",
+  "Roughing feed 0.20 mm/rev (upper end of the approved 0.15-0.20 range).",
+  "Drill retracts on the spindle axis use G00: a drill retracting along its own axis is not read as a retract 'along a machined face'. Team to confirm.",
+  "S2 is simulated on a fresh raw bar with the face at Z+1, as stated by the team. The real part carries about 29 mm extra length at the rear (240 - 210 - 1) that must be removed before OP110.",
+  "No chamfers are programmed; edges are broken manually (OP250).",
+  "Coolant M08/M09 is programmed for C45; LatheLab may ignore it."
+ ]
+}

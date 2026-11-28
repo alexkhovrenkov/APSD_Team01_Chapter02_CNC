@@ -1,1 +1,5 @@
 case,activity,person,start_local,end_local,minutes,note
+APSD-LATHE / Mode I,ai_generation,Julissa Barahona,2026-11-28 16:24,2026-11-28 16:33,9,"claude.ai new chat, Opus 5.5 High; prompt + drawing sent, full reply received without typing continue"
+APSD-MILLING / Mode I,ai_generation,Julissa Barahona,2026-11-28 16:38,2026-11-28 16:39,1,"claude.ai new chat, Opus 5.5 High; prompt + drawing sent, full reply received without typing continue; times as reported by the operator"
+APSD-LATHE / Mode II,ai_generation,Julissa Barahona,2026-11-28 16:57,2026-11-28 17:09,12,"claude.ai new chat, Opus 5.5 High; prompt with CAD manifest sent, full reply received without typing continue"
+APSD-MILLING / Mode II,ai_generation,Julissa Barahona,2026-11-28 17:14,2026-11-28 17:43,29,"claude.ai new chat, Opus 5.5 High; prompt with CAD manifest sent; reply came in 2 parts, operator typed continue once"

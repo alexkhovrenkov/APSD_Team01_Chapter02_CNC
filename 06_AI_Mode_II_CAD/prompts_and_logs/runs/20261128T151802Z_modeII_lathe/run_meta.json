@@ -1,0 +1,180 @@
+{
+ "run_id": "20261128T151802Z_modeII_lathe",
+ "mode": "II",
+ "workpiece": "APSD-LATHE",
+ "provider": "Anthropic",
+ "model_designation": "Opus 5.5 High (as shown in the claude.ai model selector)",
+ "model_designation_source": "as entered by the operator from the chat's model selector",
+ "interface": "claude.ai web chat, new conversation, no attachment (prompt with embedded CAD manifest)",
+ "date_of_use": "2026-11-28",
+ "operator": "Julissa Barahona",
+ "conversation_ref": null,
+ "input_modalities": [
+  "text"
+ ],
+ "settings": "chat defaults (no temperature control in the web chat)",
+ "prompt_sha256": "13f14ba35f646d5ac5ff73f0cd067fab21a8e5b04bbf6a4eb721d3641b0c6fa0",
+ "reply_sha256": "2994fcd2f2410890dbd1971158b7198b5ce526765cf19f05829adafe2701d0ba",
+ "imported_utc": "2026-11-28T16:13:46+00:00",
+ "parse_problems": [],
+ "extracted_files": [
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_10_face_front.nc",
+   "sha256": "f25931b255943cb1fd3b3a60601f3b2a49e8ad75b65d95b7b80340b2d4403bb4",
+   "setup": "S1",
+   "op": "OP10",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 2
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_20_od_rough.nc",
+   "sha256": "8d946f81cf376fde3828e9a11e737c5b05fba4a31b6e921b13d11b8114562235",
+   "setup": "S1",
+   "op": "OP20",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_30_spot_drill.nc",
+   "sha256": "9d406a83c1d993b8c3384c4c9027450caa706d17f37528347c1351390ca5a292",
+   "setup": "S1",
+   "op": "OP30",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_40_drill_d13.nc",
+   "sha256": "40daa04718021a88a8bf04477be971600e281813a9f8e773711934f0b26e1250",
+   "setup": "S1",
+   "op": "OP40",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_50_bore_d30_rough.nc",
+   "sha256": "4f922a6cb4e07ae8d974d9727023e6aac64bcfaa4c1e8a581c6b02db0dd7efda",
+   "setup": "S1",
+   "op": "OP50",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_60_bore_d30_finish.nc",
+   "sha256": "3fd65940e9af960e64823bea303f4e91a151fa7cf176674bcd55af69651fd283",
+   "setup": "S1",
+   "op": "OP60",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_70_od_finish.nc",
+   "sha256": "7a8b87f89786326993543d122d42fbe9ba63f6d58bac14eca4d6079000deed5a",
+   "setup": "S1",
+   "op": "OP70",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_80_thread_ext_p5.nc",
+   "sha256": "bf348c8155d1d82cc8f1e3e69b63f0a0f692299f889e24fe6d969d3423c9dc1d",
+   "setup": "S1",
+   "op": "OP80",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_110_face_rear.nc",
+   "sha256": "a10ec327017c548703b3fe1b1642546d3751adbbbd7c7f710fb7d9828887039e",
+   "setup": "S2",
+   "op": "OP110",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 2
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_120_od_rough_rear.nc",
+   "sha256": "d6ddc0736947c2deffbe54e95244fe561c58ff0dd2bc2003355913c900744f7b",
+   "setup": "S2",
+   "op": "OP120",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_130_od_finish_rear.nc",
+   "sha256": "9a0f01dc5cd77186c363a5de28bedf5becc365f948e0b798b120db74695cd48f",
+   "setup": "S2",
+   "op": "OP130",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/setup_01_complete.nc",
+   "sha256": "10d8ffa720f7ae3230eb27cebecfd3b7edd64d5e7e82a445a6d137362318c1c3",
+   "setup": "S1",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 2
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/setup_02_complete.nc",
+   "sha256": "ed08beaa46c2f726e20ed9de1ebebde55f00d82532cdf0cfcf3fa2a294364610",
+   "setup": "S2",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 2
+   }
+  }
+ ],
+ "initial_dir": "06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe",
+ "status": "INITIAL AI PROPOSAL - UNVERIFIED (simulation-only candidate)"
+}

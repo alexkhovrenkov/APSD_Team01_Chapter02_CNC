@@ -31,7 +31,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .paths import DIALECT_PATH
+from .paths import CONFIG_PATH, DIALECT_PATH
 
 WORD = re.compile(r"([A-Z])\s*([-+]?(?:\d+\.?\d*|\.\d+))")
 SEVERITIES = ("critical", "major", "minor", "info")
@@ -231,7 +231,11 @@ def check_program(text: str, dialect_name: str, dialect: dict | None = None, sto
         # ------------------------------------------------ motion
         moves = [a for a in ("X", "Y", "Z", "U", "W") if a in w]
         if cycle_block:
-            if st.feed is None and "F" not in w and any(int(g) in (71, 72, 73, 74, 75, 76) for g in gs) and ("P" in w and "Q" in w):
+            # Fanuc two-block cycles: only the SECOND block needs F. G71-G73: second block = P..Q.. (first is U..R..).
+            # G74-G76: first block = P/Q/R parameters only; the second block carries the end point (X/Z/U/W).
+            two_block_second = (any(int(g) in (71, 72, 73) for g in gs) and "P" in w and "Q" in w) or \
+                               (any(int(g) in (74, 75, 76) for g in gs) and any(a in w for a in ("X", "Z", "U", "W")))
+            if st.feed is None and "F" not in w and two_block_second:
                 add("critical", n, "cycle_without_feed", "cycle block without a feed rate (F)")
             if not st.spindle_on:
                 add("major", n, "cycle_spindle_off", "machining cycle while the spindle is stopped")
@@ -358,9 +362,33 @@ def _check_arc(n, w, prev, st, lathe, add):
                 + ("; I is a RADIUS value on the lathe" if lathe else "") + ")")
 
 
+def stock_from_config(dialect_name: str) -> dict | None:
+    """Bounds for the static checks, taken from the CONFIRMED stock in shared_experiment_config.json.
+    Lathe: diameter, and 'length' = free length in front of the chuck (bar length - grip - face allowance).
+    Mill: z_top = top-facing allowance (Z0 = finished top), z_bottom = -(block height)."""
+    try:
+        cfg = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))["ai_visible"]
+    except (OSError, KeyError, ValueError):
+        return None
+    entry = cfg.get("APSD-LATHE" if dialect_name == "lathelab" else "APSD-MILLING", {}).get("stock", {})
+    v = entry.get("value")
+    if entry.get("status") != "CONFIRMED" or not isinstance(v, dict):
+        return None
+    try:
+        if dialect_name == "lathelab":
+            free = v["length_mm"] - v.get("length_held_in_jaws_mm", 0) - v.get("face_allowance_beyond_Z0_mm", 0)
+            return {"diameter": float(v["diameter_mm"]), "length": float(free), "source": "shared config (setup-1 stock)"}
+        return {"z_top": float(v.get("top_facing_allowance_mm", 0)), "z_bottom": -float(v["height_Z_mm"]),
+                "source": "shared config (setup-1 stock)"}
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
 def check_file(path: Path, dialect_name: str | None = None, stock: dict | None = None) -> dict:
     text = path.read_text(encoding="utf-8", errors="replace")
     name = dialect_name or guess_dialect(path, text)
+    if stock is None:
+        stock = stock_from_config(name)
     res = check_program(text, name, stock=stock)
     res["file"] = str(path)
     return res

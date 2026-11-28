@@ -1,0 +1,623 @@
+## 1. Recognized features
+```json features
+{"features": [
+ {"id": "F01", "type": "rotation_axis", "description": "Turning axis = CAD world X. CAD a=0 at the spigot end face, a=210 at the threaded end face. Transform used for all NC values: S1 Z = a - 210; S2 Z = -a; X = 2 x radius (diameter).", "dimensions": {"overall_length_mm": 210.0, "max_diameter_mm": 100.0}, "location": "CAD a = 0..210", "source": "L-AXIS, bounding_box", "confidence": "high", "needs_human_verification": false},
+ {"id": "F02", "type": "end_face", "description": "Front (threaded-end) face, annulus D30..D50. Area check: pi/4*(50^2-30^2) = 1256.637 mm2 minus 235.052 mm2 (external thread groove, same value as F22) = 1021.585 mm2, which matches CAD exactly.", "dimensions": {"axial_position_mm": 210.0, "outer_diameter_mm": 50.0, "inner_diameter_mm": 30.0}, "location": "CAD a=210 -> S1 Z0 (finished front face)", "source": "L-FACE-09", "confidence": "high", "needs_human_verification": false},
+ {"id": "F03", "type": "end_face", "description": "Rear (spigot-end) face. The area 594.705 mm2 does not close with a D12 bore (D29.9 annulus + key section = 614.03 mm2) or with a D14 bore (573.2 mm2). The difference to D12 (19.3 mm2) is consistent with an internal thread groove cut outside D12, but this is not resolved.", "dimensions": {"axial_position_mm": 0.0, "area_mm2": 594.705}, "location": "CAD a=0 -> S2 Z0 (finished rear face)", "source": "L-FACE-01", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F04", "type": "external_cylinder", "description": "OD D50, carries the external thread F20", "dimensions": {"diameter_mm": 50.0, "length_mm": 125.0}, "location": "CAD a=85..210 -> S1 X50, Z0..-125", "source": "L-OD-04", "confidence": "high", "needs_human_verification": false},
+ {"id": "F05", "type": "concave_fillet", "description": "Concave R5 between D50 and shoulder F06. Tangent points are (a=85, D50) and (a=80, D60); centre is (a=85, D60), derived from the blend span and the F06 inner diameter.", "dimensions": {"radius_mm": 5.0}, "location": "S1: G02 from X50 Z-125 to X60 Z-130, centre X60 Z-125", "source": "L-BLEND-02", "confidence": "high", "needs_human_verification": false},
+ {"id": "F06", "type": "shoulder_face", "description": "Flange face towards the thread end, annulus D60..D100. Inner D60 is inferred from the area: pi/4*(100^2-60^2) = 5026.548 mm2 = CAD area.", "dimensions": {"axial_position_mm": 80.0, "outer_diameter_mm": 100.0, "inner_diameter_mm": 60.0}, "location": "CAD a=80 -> S1 Z-130", "source": "L-FACE-06", "confidence": "high", "needs_human_verification": false},
+ {"id": "F07", "type": "external_cylinder", "description": "Flange OD D100, 20 mm thick", "dimensions": {"diameter_mm": 100.0, "length_mm": 20.0}, "location": "CAD a=60..80 -> S1 Z-130..-150 (turned in S1 to Z-152 as overlap); S2 Z-60..-80", "source": "L-OD-03, L-REL-02", "confidence": "high", "needs_human_verification": false},
+ {"id": "F08", "type": "shoulder_face", "description": "Flange face towards the spigot end, annulus D70..D100. Area check: pi/4*(100^2-70^2) = 4005.53 mm2 = CAD area.", "dimensions": {"axial_position_mm": 60.0, "outer_diameter_mm": 100.0, "inner_diameter_mm": 70.0}, "location": "CAD a=60 -> S2 Z-60", "source": "L-FACE-05", "confidence": "high", "needs_human_verification": false},
+ {"id": "F09", "type": "concave_fillet", "description": "Concave R5 between D60 and shoulder F08. Tangent points are (a=55, D60) and (a=60, D70); centre is (a=55, D70).", "dimensions": {"radius_mm": 5.0}, "location": "S2: G02 from X60 Z-55 to X70 Z-60, centre X70 Z-55", "source": "L-BLEND-01", "confidence": "high", "needs_human_verification": false},
+ {"id": "F10", "type": "external_cylinder", "description": "OD D60", "dimensions": {"diameter_mm": 60.0, "length_mm": 35.0}, "location": "CAD a=20..55 -> S2 X60, Z-20..-55", "source": "L-OD-02", "confidence": "high", "needs_human_verification": false},
+ {"id": "F11", "type": "shoulder_face", "description": "Face at the spigot root, annulus D29.9..D60 less 6 holes and the key section. Area check: 2125.29 - 58.39 - 24.97 = 2041.94 mm2 vs CAD 2041.918. The lathe faces it from D36.7 to D60 only; the rest is made by the mill.", "dimensions": {"axial_position_mm": 20.0, "outer_diameter_mm": 60.0, "inner_diameter_mm": 29.9}, "location": "CAD a=20 -> S2 Z-20", "source": "L-FACE-02", "confidence": "high", "needs_human_verification": false},
+ {"id": "F12", "type": "external_cylinder", "description": "Spigot D29.9 carrying the raised key F13. A turned D29.9 would destroy the key, so the lathe leaves a D36.7 envelope and the D29.9 is produced off-lathe around the key.", "dimensions": {"diameter_mm": 29.9, "length_mm": 20.0, "turned_envelope_diameter_mm": 36.7}, "location": "CAD a=0..20 -> S2 Z0..-20", "source": "L-OD-01, L-KEY-01", "confidence": "high", "needs_human_verification": true},
+ {"id": "F13", "type": "raised_key", "description": "Raised key on the spigot: flat top 17.9 mm from the axis, side flats 7.98 apart. Corner radius sqrt(17.9^2+3.99^2) = 18.339 mm gives a minimum turned envelope of D36.68.", "dimensions": {"width_mm": 7.98, "top_distance_from_axis_mm": 17.9, "length_mm": 20.0, "corner_envelope_diameter_mm": 36.68}, "location": "CAD a=0..20 -> S2 Z0..-20, angular position unknown", "source": "L-KEY-01", "confidence": "high", "needs_human_verification": false},
+ {"id": "F14", "type": "axial_hole_pattern", "description": "6 x D3.52 blind holes parallel to the axis on PCD46, 60 deg spacing, entering face F11. Off-axis, not turnable.", "dimensions": {"diameter_mm": 3.52, "pitch_circle_diameter_mm": 46.0, "depth_mm": 4.1}, "location": "CAD a=20..24.1 -> S2 Z-20..-24.1", "source": "L-HOLES-01", "confidence": "high", "needs_human_verification": false},
+ {"id": "F15", "type": "internal_cylinder", "description": "Bore D30 open at the front face", "dimensions": {"diameter_mm": 30.0, "length_mm": 40.0}, "location": "CAD a=170..210 -> S1 X30, Z0..-40", "source": "L-BORE-03", "confidence": "high", "needs_human_verification": false},
+ {"id": "F16", "type": "internal_shoulder", "description": "Bottom of the D30 bore, annulus D13..D30. Area check: pi/4*(30^2-13^2) = 574.13 mm2 = CAD area.", "dimensions": {"axial_position_mm": 170.0, "outer_diameter_mm": 30.0, "inner_diameter_mm": 13.0}, "location": "CAD a=170 -> S1 Z-40", "source": "L-FACE-08", "confidence": "high", "needs_human_verification": false},
+ {"id": "F17", "type": "internal_cylinder", "description": "Bore D13. It ends 168.58 mm from the front face and 41.42 mm from the rear face.", "dimensions": {"diameter_mm": 13.0, "length_mm": 128.58}, "location": "CAD a=41.42..170 -> S1 Z-40..-168.58 / S2 Z-41.42..-170", "source": "L-BORE-02", "confidence": "high", "needs_human_verification": false},
+ {"id": "F18", "type": "internal_cylinder", "description": "Bore D12 open at the rear face (internal thread region). The CAD Hole feature says D14 x 41.42, while the evaluated geometry says D12.", "dimensions": {"diameter_mm": 12.0, "length_mm": 41.42}, "location": "CAD a=0..41.42 -> S2 Z0..-41.42", "source": "L-BORE-01", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F19", "type": "internal_step", "description": "Two small planar faces at the D12/D13 step (7.472 + 7.782 mm2 against a full step annulus of 19.635 mm2). The remainder is presumably consumed by the thread groove.", "dimensions": {"axial_position_mm": 41.42}, "location": "CAD a=41.42 -> S2 Z-41.42 / S1 Z-168.58", "source": "L-FACE-03, L-FACE-04", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F20", "type": "external_thread", "description": "Modelled external thread, pitch 5, right-hand, on D50. Designation, depth and class are UNKNOWN; the majorDiameter parameter 25 is not usable.", "dimensions": {"pitch_mm": 5.0, "nominal_region_diameter_mm": 50.0}, "location": "CAD a ~82.7..210 (loose box) -> S1 Z0..~-125", "source": "L-THREAD-EXT-01", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F21", "type": "internal_thread", "description": "Modelled internal thread, pitch 2, right-hand, near D12/D13. Designation, depth and class are UNKNOWN; the majorDiameter parameter 25 is not usable.", "dimensions": {"pitch_mm": 2.0}, "location": "CAD a ~0..42.3 (loose box) -> S2 Z0..~-42.3", "source": "L-THREAD-INT-01", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F22", "type": "planar_face_interpreted", "description": "Planar face at a=85 with area 235.052 mm2. This equals exactly the thread-groove area missing from F02, so it is interpreted as the end cap of the modelled thread at the fillet tangent, not as a turned shoulder. This is my interpretation.", "dimensions": {"axial_position_mm": 85.0, "area_mm2": 235.052}, "location": "CAD a=85 -> S1 Z-125", "source": "L-FACE-07", "confidence": "medium", "needs_human_verification": true}
+],
+ "unclear_or_missing": [
+  {"item": "External thread designation, standard, class, thread depth and major-diameter tolerance", "why": "UNKNOWN in CAD; threadCreator text and majorDiameter=25 are not usable. OP80 uses an ASSUMED ISO 60 deg basic depth of 0.6134 x P = 3.067 mm on major D50 (assumption A10).", "affects": ["OP70", "OP80"]},
+  {"item": "External thread end and runout", "why": "The modelled thread runs to a=85, the fillet tangent (F22), with no undercut or runout. A single-point thread cannot end there. OP80 ends at Z-120 (a=90) as an assumption.", "affects": ["OP80"]},
+  {"item": "Internal thread p=2: designation and producibility", "why": "Designation is UNKNOWN. T09 cannot cut it: its 12 mm bar does not fit a D12 bore, and its reach of 15 mm is less than the 41.42 mm length.", "affects": ["OP150"]},
+  {"item": "D12 vs D14 bore and face-area mismatches", "why": "The Hole feature says D14, the geometry says D12, and the F03/F19 areas do not close with either value.", "affects": ["OP140", "OP150"]},
+  {"item": "Tool for the D12 bore from solid", "why": "The tool table has no D12 or smaller drill, except the T10 spot drill with reach 10. T05 D13 would oversize the bore. The boring bars need a pilot hole.", "affects": ["OP140"]},
+  {"item": "D13 bore depth vs drill reach", "why": "From the front the bore ends 168.58 mm deep, but T05 reach is 70 mm. From the rear, a D13 drill would destroy the D12 section. Only a=~145..170 is producible.", "affects": ["OP40", "OP160"]},
+  {"item": "Tolerances, fits and surface finish", "why": "UNKNOWN (not returned by the API). It is also unknown whether the drilled D13 is acceptable as a finished bore.", "affects": ["OP20", "OP40", "OP60", "OP70", "OP120", "OP130"]},
+  {"item": "Chamfers and edge breaks", "why": "None modelled, so none are programmed and all edges are sharp.", "affects": ["OP70", "OP130", "OP60"]},
+  {"item": "Setup 2 grip surface and clearance", "why": "The team has not specified it (accepted). The programs assume nothing protrudes in front of S2 Z-82, i.e. a protected grip on D50.", "affects": ["OP110", "OP120", "OP130"]},
+  {"item": "Real blank length in setup 2", "why": "The real part carries 29 mm of excess length beyond a=0 (240 - 210 - 1). The LatheLab stock dialog for S2 loads a raw bar with only 1 mm face allowance.", "affects": ["OP110"]},
+  {"item": "Meaning of tool 'reach' for OD turning tools", "why": "The S1 shoulder at a=80 is 25 mm radial (D50 to D100) and the S2 shoulder at a=60 is 15 mm, against T01/T02 reach of 15. These may be flagged by LatheLab.", "affects": ["OP20", "OP70", "OP120", "OP130"]},
+  {"item": "Angular orientation of the key vs the hole pattern", "why": "UNKNOWN; needed only off-lathe.", "affects": ["OP310", "OP320", "OP330"]},
+  {"item": "Material", "why": "CAD material is null. Configuration C45 (HUMAN_APPROVED) is used.", "affects": ["OP10", "OP20", "OP40", "OP50", "OP60", "OP70", "OP80", "OP110", "OP120", "OP130"]}
+ ]}
+```
+
+## 2. Operation plan
+```json operations
+{"setups": [
+ {"id": "S1", "orientation_and_workholding": "Raw bar D105 x 240 in a 3-jaw chuck, 25 mm held (Z-214..-239); thread end out.", "work_zero": "X0 spindle centre line (diameter); Z0 finished front face = CAD a=210; raw face at Z+1; S1 Z = a - 210",
+  "operations": [
+   {"id": "OP10", "name": "Face front end", "features": ["F02"], "tool": "T01", "strategy": "facing", "spindle": "G97 S500 M03", "feed": "G99 F0.15 mm/rev", "depth_of_cut": "1.0 mm axial, 1 pass (G94)", "simulator_supported": true, "nc_file": "op_10_face_front.nc"},
+   {"id": "OP20", "name": "OD rough front profile", "features": ["F04", "F05", "F06", "F07"], "tool": "T01", "strategy": "roughing", "spindle": "G97 S500 M03", "feed": "G99 F0.20 mm/rev", "depth_of_cut": "2.5 mm radial per pass (G71), leaves U1.0 / W0.5", "simulator_supported": true, "nc_file": "op_20_od_rough.nc"},
+   {"id": "OP30", "name": "Spot drill centre", "features": ["F15", "F17"], "tool": "T10", "strategy": "centre drilling", "spindle": "G97 S800 M03", "feed": "G99 F0.08 mm/rev", "depth_of_cut": "2 mm deep", "simulator_supported": true, "nc_file": "op_30_spot_drill.nc"},
+   {"id": "OP40", "name": "Peck drill D13 to reach limit", "features": ["F17", "F15"], "tool": "T05", "strategy": "drilling", "spindle": "G97 S600 M03", "feed": "G99 F0.12 mm/rev", "depth_of_cut": "10 mm pecks, full retract to Z5, tip to Z-69 (full D13 to Z-65.1, a=144.9)", "simulator_supported": true, "nc_file": "op_40_drill_d13.nc", "notes": "Produces only part of F17; see OP160"},
+   {"id": "OP50", "name": "Bore D30 rough", "features": ["F15", "F16"], "tool": "T06", "strategy": "roughing", "spindle": "G97 S600 M03", "feed": "G99 F0.10 mm/rev", "depth_of_cut": "1.0 mm radial per pass (G90 ID box), 8 passes, leaves 0.5 radial and 0.5 on the bottom", "simulator_supported": true, "nc_file": "op_50_bore_d30_rough.nc"},
+   {"id": "OP60", "name": "Bore D30 finish incl. bottom face", "features": ["F15", "F16"], "tool": "T06", "strategy": "finishing", "spindle": "G97 S600 M03", "feed": "G99 F0.08 mm/rev", "depth_of_cut": "0.5 mm, G41", "simulator_supported": true, "nc_file": "op_60_bore_d30_finish.nc"},
+   {"id": "OP70", "name": "OD finish front profile", "features": ["F04", "F05", "F06", "F07"], "tool": "T02", "strategy": "finishing", "spindle": "G97 S500 M03 (profile/radius data)", "feed": "G99 F0.10 mm/rev", "depth_of_cut": "0.5 mm, G42", "simulator_supported": true, "nc_file": "op_70_od_finish.nc"},
+   {"id": "OP80", "name": "External thread P5 RH on D50", "features": ["F20"], "tool": "T04", "strategy": "threading", "spindle": "G97 S150 M03", "feed": "F5.0 (= pitch)", "depth_of_cut": "12 radial-infeed passes to 3.067 mm radial (ASSUMED) + spring pass, G92", "simulator_supported": true, "nc_file": "op_80_thread_ext_p5.nc", "notes": "BLOCKED at G1: depth and end point are assumptions A10. Placed after M00 in the consolidated program."}
+  ]},
+ {"id": "S2", "orientation_and_workholding": "Part reversed, protected grip on a finished surface (not specified, accepted). Assumed: grip on D50 so that the flange F07 and everything in front of S2 Z-82 is free.", "work_zero": "X0 spindle centre line (diameter); Z0 finished rear face = CAD a=0; S2 Z = -a. Real blank end at Z+29, simulator stock end at Z+1.",
+  "operations": [
+   {"id": "OP110", "name": "Face rear end and remove excess length", "features": ["F03"], "tool": "T01", "strategy": "facing", "spindle": "G97 S500 M03", "feed": "G99 F0.15 mm/rev", "depth_of_cut": "2.5 mm axial per pass (assumed), 12 G94 passes Z26.5..Z0; in LatheLab only the last pass cuts", "simulator_supported": true, "nc_file": "op_110_face_rear.nc"},
+   {"id": "OP120", "name": "OD rough rear profile (spigot envelope, D60, R5, flange face)", "features": ["F12", "F13", "F11", "F10", "F09", "F08"], "tool": "T01", "strategy": "roughing", "spindle": "G97 S500 M03", "feed": "G99 F0.20 mm/rev", "depth_of_cut": "2.5 mm radial per pass (G71), leaves U1.0 / W0.5", "simulator_supported": true, "nc_file": "op_120_od_rough_rear.nc"},
+   {"id": "OP130", "name": "OD finish rear profile", "features": ["F12", "F13", "F11", "F10", "F09", "F08"], "tool": "T02", "strategy": "finishing", "spindle": "G97 S500 M03", "feed": "G99 F0.10 mm/rev", "depth_of_cut": "0.5 mm, G42", "simulator_supported": true, "nc_file": "op_130_od_finish_rear.nc"},
+   {"id": "OP140", "name": "Bore D12, a=0..41.42", "features": ["F18"], "tool": "none suitable in tool table", "strategy": "drilling/boring", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null, "notes": "No D12 drill; D13 would oversize; bars need a pilot. D12/D14 conflict unresolved."},
+   {"id": "OP150", "name": "Internal thread P2 RH", "features": ["F21"], "tool": "T09 (not usable)", "strategy": "threading", "spindle": "n/a (approved data: 150 rpm)", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null, "notes": "Designation unknown; T09 bar D12 cannot enter a D12 bore; reach 15 < 41.42."},
+   {"id": "OP160", "name": "Bore D13 remainder, a=41.42..~145", "features": ["F17", "F19"], "tool": "none (T05 reach 70)", "strategy": "drilling", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null, "notes": "Needs a longer D13 drill from S1 or a team decision."}
+  ]},
+ {"id": "S3", "orientation_and_workholding": "3-axis mill secondary setup (route sheet ops 230-250). OUT OF SCOPE for the lathe NC programs.", "work_zero": "not defined here",
+  "operations": [
+   {"id": "OP310", "name": "Contour-mill spigot D29.9 around the key, incl. face a=20 inside D36.7", "features": ["F12", "F11"], "tool": "mill tooling (not in lathe table)", "strategy": "milling", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null},
+   {"id": "OP320", "name": "Mill key top (17.9 from axis) and side flats (7.98)", "features": ["F13"], "tool": "mill tooling", "strategy": "milling", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null},
+   {"id": "OP330", "name": "Drill 6 x D3.52 x 4.1 on PCD46", "features": ["F14"], "tool": "mill tooling", "strategy": "drilling", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null}
+  ]}
+ ],
+ "assumptions": [
+  "A1: S2 workholding grips the D50 section with protection; nothing protrudes in front of S2 Z-82. If the D100 flange is gripped, the X106 exit at Z-60 in OP120/OP130 must be re-checked.",
+  "A2: The real S2 blank carries 29 mm excess beyond a=0 (240 - 210 - 1 faced in S1), so OP110 faces from Z+29. In LatheLab (raw end Z+1) the first 11 passes are air cuts. Delete them if the team saws to length instead.",
+  "A3: Axial facing depth 2.5 mm per pass. Not approved; taken by analogy with the approved 2.5 mm radial roughing depth.",
+  "A4: 'Roughing leaves 0.5 mm per side' is read as 0.5 mm normal to every surface, i.e. G71 U1.0 (diameter) W0.5; ID roughing 0.5 radial and 0.5 on the bore bottom.",
+  "A5: G71 retract R1.0 mm. Not specified.",
+  "A6: Feeds chosen inside the approved ranges: T01 roughing 0.20, T06 roughing 0.10 / finishing 0.08, T02 whole contour 0.10 at 500 rpm, because each contour contains an R5.",
+  "A7: Peck depth 10 mm with full retract to Z5; rapid re-entry inside the drilled hole to 1 mm above the previous depth. Peck depth is not specified.",
+  "A8: Drill tip depth Z-69, within reach 70; the 118 deg point (3.91 mm) gives full D13 to Z-65.1.",
+  "A9: Spigot turned to a D36.7 envelope (key corners need >= D36.68). The final D29.9 and key are milled (OP310/OP320).",
+  "A10: External thread = ISO 60 deg basic profile, external depth h3 = 0.6134 x 5 = 3.067 mm, major = turned D50, RH, end at Z-120 (a=90, 1 pitch before the fillet tangent). The F02/F22 groove area of 235 mm2 is plausible for a 60 deg groove of about 3 mm depth on D50, but that is only a plausibility check, not a designation.",
+  "A11: The D100 in S1 is turned 2 mm past a=60 (to Z-152) so that the S2 face cut at a=60 blends without a step.",
+  "A12: M03 for all tools; no coolant commanded (not in the configuration).",
+  "A13: Nose-radius compensation only in finishing passes (G42 OD, G41 ID) with R/T from the offset page; roughing is uncompensated.",
+  "A14: No G54 programmed; the work zero comes from the LatheLab stock dialog per the configuration.",
+  "A15: Material C45 from the configuration (CAD material is null).",
+  "A16: Unused: T03, T07, T08, T11, T12 (no approved cutting data); T09 is not usable (see OP150)."
+ ]}
+```
+
+## 3. Toolpath assumptions
+- **Frame transform.** S1: Z = a − 210. S2: Z = −a. X is always the diameter. All NC coordinates are derived this way, with no other offsets.
+- **Approach and retract.**
+  - Approach point is X110 Z2 before every cut (2.5 mm radial clearance over the D105 bar).
+  - Drills approach on the axis at X0 Z2 and retract to Z5.
+  - Threading starts at Z10, X56 (3 mm radial clearance over D50).
+  - S2 excess facing starts at Z31, reached along X110, so the tool stays radially outside the real Z+29 blank end.
+  - Before every tool change: `G28 U0 W0`, then `M05`.
+- **Facing (G94).**
+  - Facing goes to X−1.6 (2 × nose radius past centre) so no pip remains.
+  - S1 is one 1 mm pass.
+  - S2 is 12 passes of 2.5 mm. Each pass starts 2 mm above the previous face, which keeps the feed retract of the cycle short.
+- **OD roughing (G71 type I).**
+  - 2.5 mm radial per pass, R1.0, U1.0 W0.5, F0.20.
+  - Both profiles are monotonic in X, start with an X-only `G00` block and end with an exit to X106, above the stock.
+  - The first passes from X110 are partly in air.
+  - Roughing is uncompensated; the nose R0.8 error on the R5 arcs is covered by the allowance.
+- **OD finishing (T02).**
+  - One explicit contour per setup with G42 instead of G70. This keeps each op file self-contained and avoids G70/P-Q dependence across files.
+  - The whole contour runs at 500 rpm / F0.10. The 800 rpm straight-pass data is not used, to avoid a speed change mid-contour.
+  - Exit is G01 up the step face to X106, then a rapid at X110.
+- **Bore D30 (T06).**
+  - The G90 ID box cycle starts at X11 Z2, inside the D13 pilot and in front of the face.
+  - Passes are 1 mm radial (X15 … X29). The return stroke of each box faces the bore bottom.
+  - The finish pass with G41 runs down the wall, then across the bottom face to X12, which is 0.5 mm inside the D13 hole. Compensation is cancelled on the move to X11, then the tool retracts along the axis.
+- **Drilling.**
+  - A 2 mm spot is drilled first.
+  - D13 is peck-drilled in 10 mm pecks to tip Z−69.
+  - Re-entry is G00 inside the already-drilled hole, 1 mm short of the previous depth. The team should check this against the rule "G00 only outside material."
+- **Thread.**
+  - G92 radial infeed with decreasing depth, d_n = 3.067 · √(n/12), so the chip area stays roughly constant. First pass 0.885 mm radial, last 0.131 mm, plus one spring pass.
+  - G97 S150, F = pitch 5.0.
+  - Cycle end Z−120. At the major diameter the insert flank reaches about Z−122.2, leaving about 2.8 mm to the fillet tangent.
+- **Why each tool fits.**
+  - T01 (80°, R0.8): robust insert for facing and roughing, with approved data.
+  - T02 (35° VNMG, 93°): its nose R0.4 is smaller than R5, so it can generate both concave fillets and finish the shoulders while moving +X.
+  - T06 (D10 bar): the only boring bar with approved data, and the only one that can enter the D13 pilot. T12 has no data, and its 16 mm bar is larger than the 13 mm hole.
+  - T04 (60°): matches the assumed 60° profile; its reach of 15 exceeds the 3.07 mm depth.
+  - T10: the 2 mm spot depth is well within its reach of 10.
+  - T05 (D13): equals the F17 diameter.
+- **Safe zones.**
+  - No motion goes beyond S1 Z−152 (the jaws start at Z−214).
+  - No motion goes beyond S2 Z−60 below X106.
+
+## 4. NC programs
+
+```gcode file=op_10_face_front.nc setup=S1 op=OP10
+(APSD-LATHE S1 OP10 - FACE FRONT END - SIMULATION-ONLY CANDIDATE)
+(STOCK D105 X 240, 25 IN JAWS, RAW FACE Z+1, Z0 = FINISHED FRONT FACE = CAD A210)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0101 (T01 OD ROUGH CNMG 80DEG R0.8)
+G97 S500 M03 (CONSTANT 500 RPM, SPINDLE CW)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G94 X-1.6 Z0.0 F0.15 (FACING BOX CYCLE, Z+1 TO Z0, PAST CENTRE)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_20_od_rough.nc setup=S1 op=OP20
+(APSD-LATHE S1 OP20 - OD ROUGH D50 / R5 / SHOULDER A80 / D100 - G71)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0101 (T01 OD ROUGH CNMG 80DEG R0.8)
+G97 S500 M03 (CONSTANT 500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT = G71 START POINT)
+G71 U2.5 R1.0 (2.5 RADIAL PER PASS, RETRACT 1.0 ASSUMED)
+G71 P100 Q150 U1.0 W0.5 F0.20 (LEAVE 0.5 PER SIDE)
+N100 G00 X50.0 (PROFILE START, FINISHED D50)
+N110 G01 Z-125.0 (D50 TO FILLET TANGENT A85)
+N120 G02 X60.0 Z-130.0 R5.0 (CONCAVE R5 TO SHOULDER A80)
+N130 G01 X100.0 (SHOULDER FACE A80)
+N140 Z-152.0 (D100 TO 2 MM PAST A60, OVERLAP FOR S2)
+N150 X106.0 (EXIT ABOVE STOCK D105)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_30_spot_drill.nc setup=S1 op=OP30
+(APSD-LATHE S1 OP30 - CENTRE SPOT FOR D13 DRILL)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T1010 (T10 SPOT DRILL D6 90DEG)
+G97 S800 M03 (CONSTANT 800 RPM)
+G00 X0.0 Z2.0 (ON-AXIS APPROACH)
+G01 Z-2.0 F0.08 (SPOT 2 MM DEEP)
+G00 Z5.0 (RETRACT ON AXIS)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_40_drill_d13.nc setup=S1 op=OP40
+(APSD-LATHE S1 OP40 - PECK DRILL D13 TO REACH LIMIT, TIP Z-69)
+(PARTIAL F17: FULL D13 ONLY TO Z-65.1 = A144.9 - SEE OP160)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0505 (T05 DRILL D13 118DEG)
+G97 S600 M03 (CONSTANT 600 RPM)
+G00 X0.0 Z2.0 (ON-AXIS APPROACH)
+G01 Z-10.0 F0.12 (PECK 1)
+G00 Z5.0 (CHIP CLEAR)
+G00 Z-9.0 (RE-ENTER IN HOLE)
+G01 Z-20.0 (PECK 2)
+G00 Z5.0
+G00 Z-19.0
+G01 Z-30.0 (PECK 3)
+G00 Z5.0
+G00 Z-29.0
+G01 Z-40.0 (PECK 4)
+G00 Z5.0
+G00 Z-39.0
+G01 Z-50.0 (PECK 5)
+G00 Z5.0
+G00 Z-49.0
+G01 Z-60.0 (PECK 6)
+G00 Z5.0
+G00 Z-59.0
+G01 Z-69.0 (PECK 7, FINAL TIP DEPTH)
+G00 Z5.0 (RETRACT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_50_bore_d30_rough.nc setup=S1 op=OP50
+(APSD-LATHE S1 OP50 - ROUGH BORE D30 X 40 FROM D13 PILOT - G90 ID BOX)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0606 (T06 BORING BAR D10 DCMT R0.4)
+G97 S600 M03 (CONSTANT 600 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 X11.0 (CYCLE START INSIDE PILOT, 2 MM IN FRONT OF FACE)
+G90 X15.0 Z-39.5 F0.10 (PASS 1, 1.0 RADIAL)
+G90 X17.0 Z-39.5 F0.10 (PASS 2)
+G90 X19.0 Z-39.5 F0.10 (PASS 3)
+G90 X21.0 Z-39.5 F0.10 (PASS 4)
+G90 X23.0 Z-39.5 F0.10 (PASS 5)
+G90 X25.0 Z-39.5 F0.10 (PASS 6)
+G90 X27.0 Z-39.5 F0.10 (PASS 7)
+G90 X29.0 Z-39.5 F0.10 (PASS 8, LEAVES 0.5 WALL AND BOTTOM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_60_bore_d30_finish.nc setup=S1 op=OP60
+(APSD-LATHE S1 OP60 - FINISH BORE D30 AND BOTTOM FACE A170 - G41)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0606 (T06 BORING BAR D10 DCMT R0.4)
+G97 S600 M03 (CONSTANT 600 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 X26.0 (IN FRONT OF ROUGHED BORE)
+G41 G01 X30.0 F0.08 (TNRC LEFT ON, ID)
+G01 Z-40.0 (FINISH WALL D30)
+X12.0 (FINISH BOTTOM FACE INTO D13 HOLE)
+G40 G01 X11.0 (TNRC OFF, CLEAR OF WALLS)
+G00 Z2.0 (RETRACT ON AXIS THROUGH HOLE)
+G00 X110.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_70_od_finish.nc setup=S1 op=OP70
+(APSD-LATHE S1 OP70 - OD FINISH D50 / R5 / SHOULDER A80 / D100 - G42)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0202 (T02 OD FINISH VNMG 35DEG R0.4)
+G97 S500 M03 (500 RPM PROFILE / RADIUS DATA)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G42 G00 X50.0 Z2.0 (TNRC RIGHT ON, OD)
+G01 Z-125.0 F0.10 (FINISH D50)
+G02 X60.0 Z-130.0 R5.0 (CONCAVE R5)
+G01 X100.0 (SHOULDER FACE A80)
+Z-152.0 (FINISH D100 WITH OVERLAP)
+X106.0 (FEED OUT ABOVE STOCK)
+G40 G00 X110.0 (TNRC OFF)
+G00 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_80_thread_ext_p5.nc setup=S1 op=OP80
+(APSD-LATHE S1 OP80 - EXTERNAL THREAD P5 RH ON D50 - G92)
+(BLOCKED AT G1: DEPTH 3.067 AND END Z-120 ARE ASSUMPTION A10)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0404 (T04 OD THREAD 60DEG)
+G97 S150 M03 (CONSTANT 150 RPM FOR THREADING)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 Z10.0 (THREAD START CLEARANCE)
+G00 X56.0 (CYCLE START POINT)
+G92 X48.230 Z-120.0 F5.0 (PASS 1)
+G92 X47.496 Z-120.0 F5.0 (PASS 2)
+G92 X46.933 Z-120.0 F5.0 (PASS 3)
+G92 X46.459 Z-120.0 F5.0 (PASS 4)
+G92 X46.041 Z-120.0 F5.0 (PASS 5)
+G92 X45.663 Z-120.0 F5.0 (PASS 6)
+G92 X45.315 Z-120.0 F5.0 (PASS 7)
+G92 X44.992 Z-120.0 F5.0 (PASS 8)
+G92 X44.688 Z-120.0 F5.0 (PASS 9)
+G92 X44.400 Z-120.0 F5.0 (PASS 10)
+G92 X44.127 Z-120.0 F5.0 (PASS 11)
+G92 X43.866 Z-120.0 F5.0 (PASS 12, ASSUMED MINOR D43.866)
+G92 X43.866 Z-120.0 F5.0 (SPRING PASS)
+G00 X110.0 (CLEAR)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_110_face_rear.nc setup=S2 op=OP110
+(APSD-LATHE S2 OP110 - FACE REAR END, REMOVE 29 MM EXCESS - G94)
+(Z0 = FINISHED REAR FACE = CAD A0; REAL BLANK END Z+29, LATHELAB STOCK END Z+1)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0101 (T01 OD ROUGH CNMG 80DEG R0.8)
+G97 S500 M03 (CONSTANT 500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT, RADIALLY OUTSIDE D105)
+G00 Z31.0 (IN FRONT OF REAL BLANK END)
+G94 X-1.6 Z26.5 F0.15 (PASS 1)
+G00 Z28.5
+G94 X-1.6 Z24.0 F0.15 (PASS 2)
+G00 Z26.0
+G94 X-1.6 Z21.5 F0.15 (PASS 3)
+G00 Z23.5
+G94 X-1.6 Z19.0 F0.15 (PASS 4)
+G00 Z21.0
+G94 X-1.6 Z16.5 F0.15 (PASS 5)
+G00 Z18.5
+G94 X-1.6 Z14.0 F0.15 (PASS 6)
+G00 Z16.0
+G94 X-1.6 Z11.5 F0.15 (PASS 7)
+G00 Z13.5
+G94 X-1.6 Z9.0 F0.15 (PASS 8)
+G00 Z11.0
+G94 X-1.6 Z6.5 F0.15 (PASS 9)
+G00 Z8.5
+G94 X-1.6 Z4.0 F0.15 (PASS 10)
+G00 Z6.0
+G94 X-1.6 Z1.5 F0.15 (PASS 11)
+G00 Z3.5
+G94 X-1.6 Z0.0 F0.15 (PASS 12, FINISHED REAR FACE)
+G00 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_120_od_rough_rear.nc setup=S2 op=OP120
+(APSD-LATHE S2 OP120 - OD ROUGH SPIGOT ENVELOPE D36.7 / D60 / R5 / FACE A60 - G71)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0101 (T01 OD ROUGH CNMG 80DEG R0.8)
+G97 S500 M03 (CONSTANT 500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT = G71 START POINT)
+G71 U2.5 R1.0 (2.5 RADIAL PER PASS, RETRACT 1.0 ASSUMED)
+G71 P100 Q160 U1.0 W0.5 F0.20 (LEAVE 0.5 PER SIDE)
+N100 G00 X36.7 (SPIGOT ENVELOPE, KEY CORNERS NEED D36.68)
+N110 G01 Z-20.0 (SPIGOT LENGTH TO FACE A20)
+N120 X60.0 (FACE A20)
+N130 Z-55.0 (D60 TO FILLET TANGENT A55)
+N140 G02 X70.0 Z-60.0 R5.0 (CONCAVE R5 TO FACE A60)
+N150 G01 X100.0 (FLANGE FACE A60)
+N160 X106.0 (EXIT ABOVE STOCK)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=op_130_od_finish_rear.nc setup=S2 op=OP130
+(APSD-LATHE S2 OP130 - OD FINISH REAR PROFILE - G42)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+T0202 (T02 OD FINISH VNMG 35DEG R0.4)
+G97 S500 M03 (500 RPM PROFILE / RADIUS DATA)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G42 G00 X36.7 Z2.0 (TNRC RIGHT ON, OD)
+G01 Z-20.0 F0.10 (FINISH SPIGOT ENVELOPE)
+X60.0 (FINISH FACE A20)
+Z-55.0 (FINISH D60)
+G02 X70.0 Z-60.0 R5.0 (CONCAVE R5)
+G01 X100.0 (FINISH FLANGE FACE A60)
+X106.0 (FEED OUT)
+G40 G00 X110.0 (TNRC OFF)
+G00 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=setup_01_complete.nc setup=S1 op=ALL
+(APSD-LATHE SETUP 1 COMPLETE - FRONT / THREAD END - SIMULATION-ONLY CANDIDATE)
+(STOCK D105 X 240, 25 IN JAWS, RAW FACE Z+1, Z0 = FINISHED FRONT FACE = CAD A210)
+(OP80 THREAD IS ASSUMPTION-DEPENDENT AND FOLLOWS AN M00)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+(OP10 FACE FRONT - T01)
+T0101 (T01 OD ROUGH CNMG 80DEG R0.8)
+G97 S500 M03 (500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G94 X-1.6 Z0.0 F0.15 (FACE Z+1 TO Z0)
+(OP20 OD ROUGH - SAME TOOL)
+G00 X110.0 Z2.0 (APPROACH POINT = G71 START)
+G71 U2.5 R1.0 (2.5 RADIAL, RETRACT 1.0)
+G71 P100 Q150 U1.0 W0.5 F0.20 (LEAVE 0.5 PER SIDE)
+N100 G00 X50.0 (D50)
+N110 G01 Z-125.0 (TO FILLET TANGENT)
+N120 G02 X60.0 Z-130.0 R5.0 (CONCAVE R5)
+N130 G01 X100.0 (SHOULDER A80)
+N140 Z-152.0 (D100 WITH OVERLAP)
+N150 X106.0 (EXIT)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE BEFORE TOOL CHANGE)
+M05 (SPINDLE STOP)
+(OP30 SPOT DRILL - T10)
+T1010 (T10 SPOT DRILL D6 90DEG)
+G97 S800 M03 (800 RPM)
+G00 X0.0 Z2.0 (ON-AXIS APPROACH)
+G01 Z-2.0 F0.08 (SPOT 2 MM)
+G00 Z5.0 (RETRACT)
+G28 U0 W0 (REFERENCE BEFORE TOOL CHANGE)
+M05 (SPINDLE STOP)
+(OP40 PECK DRILL D13 - T05)
+T0505 (T05 DRILL D13)
+G97 S600 M03 (600 RPM)
+G00 X0.0 Z2.0 (ON-AXIS APPROACH)
+G01 Z-10.0 F0.12 (PECK 1)
+G00 Z5.0
+G00 Z-9.0
+G01 Z-20.0 (PECK 2)
+G00 Z5.0
+G00 Z-19.0
+G01 Z-30.0 (PECK 3)
+G00 Z5.0
+G00 Z-29.0
+G01 Z-40.0 (PECK 4)
+G00 Z5.0
+G00 Z-39.0
+G01 Z-50.0 (PECK 5)
+G00 Z5.0
+G00 Z-49.0
+G01 Z-60.0 (PECK 6)
+G00 Z5.0
+G00 Z-59.0
+G01 Z-69.0 (PECK 7, TIP DEPTH)
+G00 Z5.0 (RETRACT)
+G28 U0 W0 (REFERENCE BEFORE TOOL CHANGE)
+M05 (SPINDLE STOP)
+(OP50 ROUGH BORE D30 - T06)
+T0606 (T06 BORING BAR D10 R0.4)
+G97 S600 M03 (600 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 X11.0 (CYCLE START IN PILOT)
+G90 X15.0 Z-39.5 F0.10 (PASS 1)
+G90 X17.0 Z-39.5 F0.10 (PASS 2)
+G90 X19.0 Z-39.5 F0.10 (PASS 3)
+G90 X21.0 Z-39.5 F0.10 (PASS 4)
+G90 X23.0 Z-39.5 F0.10 (PASS 5)
+G90 X25.0 Z-39.5 F0.10 (PASS 6)
+G90 X27.0 Z-39.5 F0.10 (PASS 7)
+G90 X29.0 Z-39.5 F0.10 (PASS 8)
+(OP60 FINISH BORE D30 - SAME TOOL)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 X26.0 (IN FRONT OF BORE)
+G41 G01 X30.0 F0.08 (TNRC LEFT ON)
+G01 Z-40.0 (WALL D30)
+X12.0 (BOTTOM FACE)
+G40 G01 X11.0 (TNRC OFF)
+G00 Z2.0 (RETRACT ON AXIS)
+G00 X110.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE BEFORE TOOL CHANGE)
+M05 (SPINDLE STOP)
+(OP70 OD FINISH - T02)
+T0202 (T02 OD FINISH VNMG R0.4)
+G97 S500 M03 (500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G42 G00 X50.0 Z2.0 (TNRC RIGHT ON)
+G01 Z-125.0 F0.10 (D50)
+G02 X60.0 Z-130.0 R5.0 (CONCAVE R5)
+G01 X100.0 (SHOULDER A80)
+Z-152.0 (D100)
+X106.0 (FEED OUT)
+G40 G00 X110.0 (TNRC OFF)
+G00 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE BEFORE TOOL CHANGE)
+M05 (SPINDLE STOP)
+M00 (STOP - OP80 USES ASSUMED THREAD DEPTH A10 - CONTINUE ONLY IF G1 ACCEPTED)
+(OP80 EXTERNAL THREAD P5 - T04)
+T0404 (T04 OD THREAD 60DEG)
+G97 S150 M03 (150 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 Z10.0 (THREAD START CLEARANCE)
+G00 X56.0 (CYCLE START)
+G92 X48.230 Z-120.0 F5.0 (PASS 1)
+G92 X47.496 Z-120.0 F5.0 (PASS 2)
+G92 X46.933 Z-120.0 F5.0 (PASS 3)
+G92 X46.459 Z-120.0 F5.0 (PASS 4)
+G92 X46.041 Z-120.0 F5.0 (PASS 5)
+G92 X45.663 Z-120.0 F5.0 (PASS 6)
+G92 X45.315 Z-120.0 F5.0 (PASS 7)
+G92 X44.992 Z-120.0 F5.0 (PASS 8)
+G92 X44.688 Z-120.0 F5.0 (PASS 9)
+G92 X44.400 Z-120.0 F5.0 (PASS 10)
+G92 X44.127 Z-120.0 F5.0 (PASS 11)
+G92 X43.866 Z-120.0 F5.0 (PASS 12)
+G92 X43.866 Z-120.0 F5.0 (SPRING PASS)
+G00 X110.0 (CLEAR)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+```gcode file=setup_02_complete.nc setup=S2 op=ALL
+(APSD-LATHE SETUP 2 COMPLETE - REAR / SPIGOT END - SIMULATION-ONLY CANDIDATE)
+(PART REVERSED, PROTECTED GRIP ASSUMED ON D50 BEHIND Z-82; Z0 = FINISHED REAR FACE = CAD A0)
+(REAL BLANK END Z+29; IN LATHELAB STOCK END IS Z+1, SO OP110 PASSES 1-11 ARE AIR CUTS)
+(NOT PROGRAMMED: OP140 BORE D12, OP150 INTERNAL THREAD, OP160 D13 REMAINDER, OP310-330 MILL)
+G21 G18 G40 G99 (METRIC, XZ PLANE, TNRC OFF, FEED PER REV)
+G28 U0 W0 (MACHINE REFERENCE)
+(OP110 FACE REAR AND REMOVE EXCESS - T01)
+T0101 (T01 OD ROUGH CNMG 80DEG R0.8)
+G97 S500 M03 (500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G00 Z31.0 (IN FRONT OF REAL BLANK END)
+G94 X-1.6 Z26.5 F0.15 (PASS 1)
+G00 Z28.5
+G94 X-1.6 Z24.0 F0.15 (PASS 2)
+G00 Z26.0
+G94 X-1.6 Z21.5 F0.15 (PASS 3)
+G00 Z23.5
+G94 X-1.6 Z19.0 F0.15 (PASS 4)
+G00 Z21.0
+G94 X-1.6 Z16.5 F0.15 (PASS 5)
+G00 Z18.5
+G94 X-1.6 Z14.0 F0.15 (PASS 6)
+G00 Z16.0
+G94 X-1.6 Z11.5 F0.15 (PASS 7)
+G00 Z13.5
+G94 X-1.6 Z9.0 F0.15 (PASS 8)
+G00 Z11.0
+G94 X-1.6 Z6.5 F0.15 (PASS 9)
+G00 Z8.5
+G94 X-1.6 Z4.0 F0.15 (PASS 10)
+G00 Z6.0
+G94 X-1.6 Z1.5 F0.15 (PASS 11)
+G00 Z3.5
+G94 X-1.6 Z0.0 F0.15 (PASS 12, FINISHED REAR FACE)
+G00 Z2.0 (APPROACH POINT)
+(OP120 OD ROUGH REAR - SAME TOOL)
+G00 X110.0 Z2.0 (G71 START POINT)
+G71 U2.5 R1.0 (2.5 RADIAL, RETRACT 1.0)
+G71 P100 Q160 U1.0 W0.5 F0.20 (LEAVE 0.5 PER SIDE)
+N100 G00 X36.7 (SPIGOT ENVELOPE)
+N110 G01 Z-20.0 (TO FACE A20)
+N120 X60.0 (FACE A20)
+N130 Z-55.0 (D60)
+N140 G02 X70.0 Z-60.0 R5.0 (CONCAVE R5)
+N150 G01 X100.0 (FACE A60)
+N160 X106.0 (EXIT)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE BEFORE TOOL CHANGE)
+M05 (SPINDLE STOP)
+(OP130 OD FINISH REAR - T02)
+T0202 (T02 OD FINISH VNMG R0.4)
+G97 S500 M03 (500 RPM)
+G00 X110.0 Z2.0 (APPROACH POINT)
+G42 G00 X36.7 Z2.0 (TNRC RIGHT ON)
+G01 Z-20.0 F0.10 (SPIGOT ENVELOPE)
+X60.0 (FACE A20)
+Z-55.0 (D60)
+G02 X70.0 Z-60.0 R5.0 (CONCAVE R5)
+G01 X100.0 (FACE A60)
+X106.0 (FEED OUT)
+G40 G00 X110.0 (TNRC OFF)
+G00 Z2.0 (APPROACH POINT)
+G28 U0 W0 (REFERENCE)
+M05 (SPINDLE STOP)
+M30 (PROGRAM END)
+```
+
+## 5. Uncertainty and limitations
+
+**G1 – geometry gate**
+- **External thread F20.** Designation, depth, class and turned major-diameter tolerance are UNKNOWN. OP70's D50 and all OP80 values rest on assumption A10 (ISO 60° basic depth 3.067 mm, end at Z−120). Approve or replace these before OP80 is accepted.
+- **Thread end.** The CAD thread runs to a=85, the fillet tangent (F22), with no runout or undercut. The CAD owner must decide the real thread end and whether a relief groove is wanted (T03 has no cutting data).
+- **Internal thread F21 and bore F18.** The thread designation is UNKNOWN, and the bore diameter conflicts (Ø12 in the geometry, Ø14 in the Hole feature). Neither F03 (594.705 mm²) nor F19 closes arithmetically with either value. The data hint that Ø12 is a thread minor diameter, but that is unverified.
+- **F22 interpretation.** I read the face at a=85 as the thread's end cap, not a shoulder. Please confirm.
+- **Key envelope.** The spigot is turned to Ø36.7 because the key's corners need Ø36.68; the Ø29.9 spigot and the key itself are milled. Confirm this split with the route sheet (ops 230–250).
+- **Missing specifications.** Tolerances, surface finish and chamfers are missing, so all edges are programmed sharp. The CAD material is null; C45 is taken from the configuration.
+
+**G2 – process gate**
+- **Internal features not producible with the configured tool table.**
+  - The Ø13 bore needs 168.58 mm depth from S1, but T05 reaches 70; only a=~145–170 is drilled.
+  - There is no tool for the Ø12 bore from solid.
+  - T09 cannot cut the internal thread: its 12 mm bar does not fit a Ø12 bore, and its reach of 15 mm is less than 41.42 mm.
+  - These are OP140–OP160, marked `simulator_supported: false`. The team decided not to change tools for reach, so this needs a decision: a longer drill, or a geometry or route change.
+- **Setup 2 workholding.** Grip surface and length are unspecified. The programs assume a protected grip on Ø50 with nothing in front of S2 Z−82. If the Ø100 flange is gripped, the X106 exits at Z−60 may collide.
+- **Setup 2 blank length.** The real part has 29 mm of excess beyond a=0, so OP110 faces it off in 12 passes. In LatheLab these are mostly air cuts. If the team saws to length instead, delete passes 1–11 and the Z31 approach.
+- **Values I chose (not approved).** Facing axial depth 2.5 mm, G71 R1.0, 10 mm pecks, rapid re-entry into the drilled hole, drill tip at Z−69, U1.0/W0.5 interpretation of "0.5 per side", feeds 0.20/0.10/0.08, no coolant, M03 for all tools.
+- **Tool reach vs shoulders.** The shoulders are 25 mm radial at a=80 and 15 mm at a=60, against a reach of 15 for T01/T02. Confirm what "reach" means for OD tools in LatheLab.
+- **T06 in the pilot hole.** Check that T06 (10 mm bar) can enter and retract in the Ø13 pilot without its body touching the wall.
+- **Drilled bore as finish.** Confirm whether the drilled Ø13 is acceptable as the finished bore.
+
+**G3 – code gate (test every command in LatheLab)**
+- **G71.** Check the two-block format, P/Q with N-words, `G02 … R` inside the profile, and the type-I rule that the first block must be X-only.
+- **G90 as an ID box cycle.** Check behaviour when target X is larger than start X.
+- **G94 to negative X.** Check that facing to X−1.6 is accepted.
+- **G92 thread passes.** Each line is written in full; check that F5.0 at 150 rpm is accepted.
+- **Compensation start-up and cancel.** Check G41/G42 start-up on G00/G01 moves and G40 cancel, with R/T taken from the offset page.
+- **Remaining checks.**
+  - `G28 U0 W0` path from each position.
+  - M00 stop behaviour.
+  - Comment parsing (ASCII only).
+  - No O-number and no G54 are used.
+  - G70/G74/G76/G96/G50 were deliberately avoided.
+- **Simulation limits.**
+  - Setup 2 is simulated from a raw bar, so S1 geometry, the flange and the bore will not appear.
+  - The Ø105 region beyond Z−60 stays uncut in the S2 simulation by design.
+  - "Check part" needs a correctly configured target for each setup.
+- **Safety scope.** `safety_scope` is still PENDING_HUMAN_REVIEW. These programs are simulation-only candidates and have not been verified for any physical machine.

@@ -1,5 +1,153 @@
 {
- "title": "G1 geometry worksheet - Mode II - lathe",
- "status": "NOT_YET_GENERATED",
- "note": "Created from the first imported AI attempt by apsd_part_e import-response; reviewers then map every reference feature to the AI features."
+ "title": "G1 geometry worksheet - Mode II - APSD-LATHE",
+ "status": "PENDING_HUMAN_REVIEW",
+ "source_run": "20261128T151802Z_modeII_lathe",
+ "ai_features_raw": "initial/20261128T151802Z_modeII_lathe/recognized_features_raw.json",
+ "ai_unclear_or_missing": [
+  {
+   "item": "External thread designation, standard, class, thread depth and major-diameter tolerance",
+   "why": "UNKNOWN in CAD; threadCreator text and majorDiameter=25 are not usable. OP80 uses an ASSUMED ISO 60 deg basic depth of 0.6134 x P = 3.067 mm on major D50 (assumption A10).",
+   "affects": [
+    "OP70",
+    "OP80"
+   ]
+  },
+  {
+   "item": "External thread end and runout",
+   "why": "The modelled thread runs to a=85, the fillet tangent (F22), with no undercut or runout. A single-point thread cannot end there. OP80 ends at Z-120 (a=90) as an assumption.",
+   "affects": [
+    "OP80"
+   ]
+  },
+  {
+   "item": "Internal thread p=2: designation and producibility",
+   "why": "Designation is UNKNOWN. T09 cannot cut it: its 12 mm bar does not fit a D12 bore, and its reach of 15 mm is less than the 41.42 mm length.",
+   "affects": [
+    "OP150"
+   ]
+  },
+  {
+   "item": "D12 vs D14 bore and face-area mismatches",
+   "why": "The Hole feature says D14, the geometry says D12, and the F03/F19 areas do not close with either value.",
+   "affects": [
+    "OP140",
+    "OP150"
+   ]
+  },
+  {
+   "item": "Tool for the D12 bore from solid",
+   "why": "The tool table has no D12 or smaller drill, except the T10 spot drill with reach 10. T05 D13 would oversize the bore. The boring bars need a pilot hole.",
+   "affects": [
+    "OP140"
+   ]
+  },
+  {
+   "item": "D13 bore depth vs drill reach",
+   "why": "From the front the bore ends 168.58 mm deep, but T05 reach is 70 mm. From the rear, a D13 drill would destroy the D12 section. Only a=~145..170 is producible.",
+   "affects": [
+    "OP40",
+    "OP160"
+   ]
+  },
+  {
+   "item": "Tolerances, fits and surface finish",
+   "why": "UNKNOWN (not returned by the API). It is also unknown whether the drilled D13 is acceptable as a finished bore.",
+   "affects": [
+    "OP20",
+    "OP40",
+    "OP60",
+    "OP70",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Chamfers and edge breaks",
+   "why": "None modelled, so none are programmed and all edges are sharp.",
+   "affects": [
+    "OP70",
+    "OP130",
+    "OP60"
+   ]
+  },
+  {
+   "item": "Setup 2 grip surface and clearance",
+   "why": "The team has not specified it (accepted). The programs assume nothing protrudes in front of S2 Z-82, i.e. a protected grip on D50.",
+   "affects": [
+    "OP110",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Real blank length in setup 2",
+   "why": "The real part carries 29 mm of excess length beyond a=0 (240 - 210 - 1). The LatheLab stock dialog for S2 loads a raw bar with only 1 mm face allowance.",
+   "affects": [
+    "OP110"
+   ]
+  },
+  {
+   "item": "Meaning of tool 'reach' for OD turning tools",
+   "why": "The S1 shoulder at a=80 is 25 mm radial (D50 to D100) and the S2 shoulder at a=60 is 15 mm, against T01/T02 reach of 15. These may be flagged by LatheLab.",
+   "affects": [
+    "OP20",
+    "OP70",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Angular orientation of the key vs the hole pattern",
+   "why": "UNKNOWN; needed only off-lathe.",
+   "affects": [
+    "OP310",
+    "OP320",
+    "OP330"
+   ]
+  },
+  {
+   "item": "Material",
+   "why": "CAD material is null. Configuration C45 (HUMAN_APPROVED) is used.",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP40",
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP110",
+    "OP120",
+    "OP130"
+   ]
+  }
+ ],
+ "instructions": "For every reference feature (07_Comparison_Validation/evaluation_reference) fill outcome = CORRECT | PARTIAL | INCORRECT | MISSED | FLAGGED_AS_UNCLEAR | INVENTED_VALUE, the AI feature ids, and ai_value for each compared dimension. Reviewer and date are mandatory. Do not edit ai_* fields.",
+ "reference_mapping": [],
+ "ai_feature_ids": [
+  "F01",
+  "F02",
+  "F03",
+  "F04",
+  "F05",
+  "F06",
+  "F07",
+  "F08",
+  "F09",
+  "F10",
+  "F11",
+  "F12",
+  "F13",
+  "F14",
+  "F15",
+  "F16",
+  "F17",
+  "F18",
+  "F19",
+  "F20",
+  "F21",
+  "F22"
+ ],
+ "reviewer": null,
+ "review_date": null
 }

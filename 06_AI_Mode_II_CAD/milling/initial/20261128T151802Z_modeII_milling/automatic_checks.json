@@ -1,0 +1,562 @@
+{
+ "op_10_boss2_top.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 17,
+  "extents": {
+   "X": [
+    145.0,
+    161.0
+   ],
+   "Y": [
+    40.0,
+    40.0
+   ],
+   "Z": [
+    -4.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_10_boss2_top.nc"
+ },
+ "op_20_boss_walls_rings.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 41,
+  "extents": {
+   "X": [
+    40.0,
+    145.0
+   ],
+   "Y": [
+    66.0,
+    77.0
+   ],
+   "Z": [
+    -9.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_20_boss_walls_rings.nc"
+ },
+ "op_30_window.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 101,
+  "extents": {
+   "X": [
+    65.337,
+    125.952
+   ],
+   "Y": [
+    42.5752,
+    68.3462
+   ],
+   "Z": [
+    -19.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_30_window.nc"
+ },
+ "op_40_outer_channel.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 37,
+  "extents": {
+   "X": [
+    21.5412,
+    161.6432
+   ],
+   "Y": [
+    13.853,
+    69.7367
+   ],
+   "Z": [
+    -19.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_40_outer_channel.nc"
+ },
+ "op_50_arm_strips.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 27,
+  "extents": {
+   "X": [
+    53.7631,
+    135.7322
+   ],
+   "Y": [
+    32.2328,
+    74.345
+   ],
+   "Z": [
+    -9.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_50_arm_strips.nc"
+ },
+ "op_60_bore30.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 42,
+  "extents": {
+   "X": [
+    40.0,
+    50.0
+   ],
+   "Y": [
+    40.0,
+    40.0
+   ],
+   "Z": [
+    -19.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_60_bore30.nc"
+ },
+ "op_70_hole20.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 28,
+  "extents": {
+   "X": [
+    145.0,
+    150.0
+   ],
+   "Y": [
+    40.0,
+    40.0
+   ],
+   "Z": [
+    -19.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_70_hole20.nc"
+ },
+ "op_80_boss1_top_pins.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 61,
+  "extents": {
+   "X": [
+    18.1438,
+    67.8
+   ],
+   "Y": [
+    17.4904,
+    62.5096
+   ],
+   "Z": [
+    -4.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_80_boss1_top_pins.nc"
+ },
+ "op_90_keyway.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 60,
+  "extents": {
+   "X": [
+    39.0,
+    41.0
+   ],
+   "Y": [
+    47.0,
+    55.0
+   ],
+   "Z": [
+    -19.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_90_keyway.nc"
+ },
+ "op_100_fillets_top.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 19,
+  "extents": {
+   "X": [
+    40.0,
+    145.0
+   ],
+   "Y": [
+    67.0,
+    76.0
+   ],
+   "Z": [
+    -9.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_100_fillets_top.nc"
+ },
+ "setup_01_complete.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 362,
+  "extents": {
+   "X": [
+    18.1438,
+    161.6432
+   ],
+   "Y": [
+    13.853,
+    77.0
+   ],
+   "Z": [
+    -19.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/setup_01_complete.nc"
+ },
+ "op_110_boss_walls_rings_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 33,
+  "extents": {
+   "X": [
+    25.0,
+    130.0
+   ],
+   "Y": [
+    66.0,
+    77.0
+   ],
+   "Z": [
+    -5.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_110_boss_walls_rings_s2.nc"
+ },
+ "op_120_window_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 47,
+  "extents": {
+   "X": [
+    44.048,
+    104.663
+   ],
+   "Y": [
+    42.5752,
+    68.3462
+   ],
+   "Z": [
+    -5.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_120_window_s2.nc"
+ },
+ "op_130_arm_strips_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 23,
+  "extents": {
+   "X": [
+    34.2678,
+    116.2369
+   ],
+   "Y": [
+    32.2328,
+    74.345
+   ],
+   "Z": [
+    -5.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_130_arm_strips_s2.nc"
+ },
+ "op_140_bore30_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 24,
+  "extents": {
+   "X": [
+    130.0,
+    140.0
+   ],
+   "Y": [
+    40.0,
+    40.0
+   ],
+   "Z": [
+    -5.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_140_bore30_s2.nc"
+ },
+ "op_150_hole20_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 20,
+  "extents": {
+   "X": [
+    25.0,
+    30.0
+   ],
+   "Y": [
+    40.0,
+    40.0
+   ],
+   "Z": [
+    -5.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_150_hole20_s2.nc"
+ },
+ "op_160_keyway_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 30,
+  "extents": {
+   "X": [
+    129.0,
+    131.0
+   ],
+   "Y": [
+    47.0,
+    55.0
+   ],
+   "Z": [
+    -5.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_160_keyway_s2.nc"
+ },
+ "op_170_fillets_bottom.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 19,
+  "extents": {
+   "X": [
+    25.0,
+    130.0
+   ],
+   "Y": [
+    67.0,
+    76.0
+   ],
+   "Z": [
+    -5.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_170_fillets_bottom.nc"
+ },
+ "op_180_outer_channel_s2.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 22,
+  "extents": {
+   "X": [
+    8.3568,
+    148.4588
+   ],
+   "Y": [
+    13.853,
+    69.7367
+   ],
+   "Z": [
+    -5.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_180_outer_channel_s2.nc"
+ },
+ "setup_02_complete.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 170,
+  "extents": {
+   "X": [
+    8.3568,
+    148.4588
+   ],
+   "Y": [
+    13.853,
+    77.0
+   ],
+   "Z": [
+    -5.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/setup_02_complete.nc"
+ }
+}

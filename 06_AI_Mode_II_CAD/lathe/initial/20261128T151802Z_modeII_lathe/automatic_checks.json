@@ -1,0 +1,394 @@
+{
+ "op_10_face_front.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 10,
+  "extents": {
+   "X": [
+    -1.6,
+    110.0
+   ],
+   "Z": [
+    0.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 2
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "past_centre",
+    "message": "X reaches -1.6 (facing past the centre line - fine if it equals about 2 x nose radius)"
+   },
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_10_face_front.nc"
+ },
+ "op_20_od_rough.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 17,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -152.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_20_od_rough.nc"
+ },
+ "op_30_spot_drill.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 10,
+  "extents": {
+   "X": [
+    0.0,
+    0.0
+   ],
+   "Z": [
+    -2.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_30_spot_drill.nc"
+ },
+ "op_40_drill_d13.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 28,
+  "extents": {
+   "X": [
+    0.0,
+    0.0
+   ],
+   "Z": [
+    -69.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_40_drill_d13.nc"
+ },
+ "op_50_bore_d30_rough.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 18,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -39.5,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G90 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_50_bore_d30_rough.nc"
+ },
+ "op_60_bore_d30_finish.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 15,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -40.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_60_bore_d30_finish.nc"
+ },
+ "op_70_od_finish.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 16,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -152.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_70_od_finish.nc"
+ },
+ "op_80_thread_ext_p5.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 24,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -120.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G92 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_80_thread_ext_p5.nc"
+ },
+ "op_110_face_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 33,
+  "extents": {
+   "X": [
+    -1.6,
+    110.0
+   ],
+   "Z": [
+    0.0,
+    31.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 2
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "past_centre",
+    "message": "X reaches -1.6 (facing past the centre line - fine if it equals about 2 x nose radius)"
+   },
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_110_face_rear.nc"
+ },
+ "op_120_od_rough_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 18,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -60.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_120_od_rough_rear.nc"
+ },
+ "op_130_od_finish_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 17,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -60.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/op_130_od_finish_rear.nc"
+ },
+ "setup_01_complete.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 108,
+  "extents": {
+   "X": [
+    -1.6,
+    110.0
+   ],
+   "Z": [
+    -152.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 2
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "past_centre",
+    "message": "X reaches -1.6 (facing past the centre line - fine if it equals about 2 x nose radius)"
+   },
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71, G90, G92, G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/setup_01_complete.nc"
+ },
+ "setup_02_complete.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 58,
+  "extents": {
+   "X": [
+    -1.6,
+    110.0
+   ],
+   "Z": [
+    -60.0,
+    31.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 2
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "past_centre",
+    "message": "X reaches -1.6 (facing past the centre line - fine if it equals about 2 x nose radius)"
+   },
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71, G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/06_AI_Mode_II_CAD/lathe/initial/20261128T151802Z_modeII_lathe/setup_02_complete.nc"
+ }
+}

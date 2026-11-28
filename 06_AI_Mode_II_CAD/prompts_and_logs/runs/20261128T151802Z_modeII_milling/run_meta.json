@@ -1,0 +1,264 @@
+{
+ "run_id": "20261128T151802Z_modeII_milling",
+ "mode": "II",
+ "workpiece": "APSD-MILLING",
+ "provider": "Anthropic",
+ "model_designation": "Opus 5.5 High (as shown in the claude.ai model selector)",
+ "model_designation_source": "as entered by the operator from the chat's model selector",
+ "interface": "claude.ai web chat, new conversation, no attachment (prompt with embedded CAD manifest); reply in 2 parts - operator typed 'continue' once; parts pasted in order into reply.txt",
+ "date_of_use": "2026-11-28",
+ "operator": "Julissa Barahona",
+ "conversation_ref": null,
+ "input_modalities": [
+  "text"
+ ],
+ "settings": "chat defaults (no temperature control in the web chat)",
+ "prompt_sha256": "de7cf10c9e811c1cd8c7b10a271e6728627fd1aae0ecbf850ecc6628401f9a01",
+ "reply_sha256": "46ce49b9afcc1093e451ac4d9c62e1faf86d246d23003ebd50ee03cecafd5fb7",
+ "imported_utc": "2026-11-28T16:45:01+00:00",
+ "parse_problems": [],
+ "extracted_files": [
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_10_boss2_top.nc",
+   "sha256": "4689f793616a663abed1f02faaa7b780bd71c010d72bbca31e38077b72ec0808",
+   "setup": "S1",
+   "op": "OP10",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_20_boss_walls_rings.nc",
+   "sha256": "563f8afb5d957607794e9ca782511901fc83b4708a2c5ff1902cad2a36f43894",
+   "setup": "S1",
+   "op": "OP20",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_30_window.nc",
+   "sha256": "76eb89718d79db73d8bf69821baad6c926575c0fd39c80f6862f99bf743703c1",
+   "setup": "S1",
+   "op": "OP30",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_40_outer_channel.nc",
+   "sha256": "c8f2ef23efe6bd13eafb029fec33514db7ad304f5c45efda3f164ea44a08c2db",
+   "setup": "S1",
+   "op": "OP40",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_50_arm_strips.nc",
+   "sha256": "fc396b2426f9a7f0277b7d47b18be39ac6354c56e79eb1799e5c594e94b5a084",
+   "setup": "S1",
+   "op": "OP50",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_60_bore30.nc",
+   "sha256": "452fd2745982ff8f6f0b0a23a1abd4f509f8b8e4e584343f6c8bedb89fbb8c2e",
+   "setup": "S1",
+   "op": "OP60",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_70_hole20.nc",
+   "sha256": "58915542a3bae18a09443c99861224067f9a02cc4872f79a5e9294015cbdcf4b",
+   "setup": "S1",
+   "op": "OP70",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_80_boss1_top_pins.nc",
+   "sha256": "f3055af9fdfc7443c70f022c3f3163cfc1d00f3132597c0c9e30e882da607f3f",
+   "setup": "S1",
+   "op": "OP80",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_90_keyway.nc",
+   "sha256": "e0558ace361dc071cf49de47a9ee2c818741e469a6428843de66466b982ca1f0",
+   "setup": "S1",
+   "op": "OP90",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_100_fillets_top.nc",
+   "sha256": "6b343f487246e39bec2f728616a8e00be6deb74bc9a115b02bc8350dec547e0b",
+   "setup": "S1",
+   "op": "OP100",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/setup_01_complete.nc",
+   "sha256": "c86af0d50937da997beeec8ba154c863b92f06bb7df224447d0af8c345f451ef",
+   "setup": "S1",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_110_boss_walls_rings_s2.nc",
+   "sha256": "7300e3eb50173e2bc4e1bea0db69195b766d2aa31e4f2ceecd3be4e99bd477ca",
+   "setup": "S2",
+   "op": "OP110",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_120_window_s2.nc",
+   "sha256": "792ab05f1bf305a4374dc8934de26491d132cdaaa994c0d56e01d22979713888",
+   "setup": "S2",
+   "op": "OP120",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_130_arm_strips_s2.nc",
+   "sha256": "1d7b777e4f6dd07104c35002d4e8a9caff9352b5ef8526d39b164ee435886150",
+   "setup": "S2",
+   "op": "OP130",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_140_bore30_s2.nc",
+   "sha256": "a44ea6d8e3c425c73ddc0dfa9c4eef7498938176b56a1e7067378f258747be96",
+   "setup": "S2",
+   "op": "OP140",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_150_hole20_s2.nc",
+   "sha256": "12827fd727451416924e8370e45766fa21d446634cd95956971cdf77fb165070",
+   "setup": "S2",
+   "op": "OP150",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_160_keyway_s2.nc",
+   "sha256": "c4c7ca8beadc02075ccfcf08c38d2cd04e073700db4764fe643a2bf332cd6f35",
+   "setup": "S2",
+   "op": "OP160",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_170_fillets_bottom.nc",
+   "sha256": "e83bc703f25a86d1787da6e8ecc4f901b6cf56482d0c58acb6ab5898a733d830",
+   "setup": "S2",
+   "op": "OP170",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/op_180_outer_channel_s2.nc",
+   "sha256": "a02b3e6b8c592545b7bc0ac0911a77c99bbe36da70ca0ab2dbba2d40d4b61b3e",
+   "setup": "S2",
+   "op": "OP180",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling/setup_02_complete.nc",
+   "sha256": "c4e888fbc05a3359ab365161cc93769cbeaa478c2e544d76dc16368a59227b5d",
+   "setup": "S2",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  }
+ ],
+ "initial_dir": "06_AI_Mode_II_CAD/milling/initial/20261128T151802Z_modeII_milling",
+ "status": "INITIAL AI PROPOSAL - UNVERIFIED (simulation-only candidate)"
+}

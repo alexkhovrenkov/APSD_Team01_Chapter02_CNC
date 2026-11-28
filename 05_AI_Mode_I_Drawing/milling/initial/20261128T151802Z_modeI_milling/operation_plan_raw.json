@@ -1,0 +1,264 @@
+{
+ "setups": [
+  {
+   "id": "S1",
+   "orientation_and_workholding": "Pins facing +Z. Raw block 170 x 85 x 24 (Al 6061) in a fixture; in MillLab a vise with the whole block height above the jaws.",
+   "work_zero": "G54 X0 Y0 at the front-left top corner, Z0 = block top = pin tops. Large boss axis X40 Y40, keyway towards +Y, second boss on +X at X40+d (d unknown).",
+   "operations": [
+    {
+     "id": "OP10",
+     "name": "Face the whole block to Z-4 around the pin ring (boss top faces)",
+     "features": [
+      "F12",
+      "F04"
+     ],
+     "tool": "T02",
+     "strategy": "roughing/facing, single level, zigzag + circular passes",
+     "spindle": "S4000 M03",
+     "feed": "F200; Z moves F60",
+     "depth_of_cut": "4.0 mm axial (Z0 to Z-4); stepover max 6.75 mm",
+     "simulator_supported": true,
+     "nc_file": "op_10_face_top_to_z4.nc"
+    },
+    {
+     "id": "OP20",
+     "name": "Mill bore D30 through",
+     "features": [
+      "F02"
+     ],
+     "tool": "T02",
+     "strategy": "centre plunge + circular interpolation rough (D29.6), finish pass D30 at full depth",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "2.0 mm per level, Z-4 to Z-24.5; finish 0.2 mm radial",
+     "simulator_supported": true,
+     "nc_file": "op_20_bore_d30.nc"
+    },
+    {
+     "id": "OP30",
+     "name": "Mill six pins D3.5 x 4 and clear the pin ring",
+     "features": [
+      "F04",
+      "F12"
+     ],
+     "tool": "T03",
+     "strategy": "two climb loops per pin per level (radius 10 and 4.75 about the pin axis)",
+     "spindle": "S4000 M03",
+     "feed": "F150; Z moves F60",
+     "depth_of_cut": "2.0 mm per level, 2 levels to Z-4",
+     "simulator_supported": true,
+     "nc_file": "op_30_pins_d3_5.nc"
+    },
+    {
+     "id": "OP40",
+     "name": "Mill keyway width 8, bottom 18 from axis, through",
+     "features": [
+      "F03"
+     ],
+     "tool": "T03",
+     "strategy": "rectangular climb loop per level, entry in the bore void",
+     "spindle": "S4000 M03",
+     "feed": "F150; Z moves F60",
+     "depth_of_cut": "2.0 mm per level, Z-4 to Z-24.5",
+     "simulator_supported": true,
+     "nc_file": "op_40_keyway_w8.nc"
+    },
+    {
+     "id": "OP45",
+     "name": "Keyway corners sharp per drawing (broaching/slotting, not on this machine)",
+     "features": [
+      "F03"
+     ],
+     "tool": "none in magazine (broach or slotting tool)",
+     "strategy": "secondary operation",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null
+    },
+    {
+     "id": "OP50",
+     "name": "Rough outside both bosses from Z-4 to arm top Z-9",
+     "features": [
+      "F01",
+      "F05",
+      "F10"
+     ],
+     "tool": "T02",
+     "strategy": "roughing",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "max 4.0 mm per level",
+     "simulator_supported": true,
+     "nc_file": "op_50_rough_outside_bosses_to_z9.nc",
+     "blocked_by": [
+      "centre distance d not dimensioned",
+      "arm height position not dimensioned"
+     ]
+    },
+    {
+     "id": "OP60",
+     "name": "Rough outside the part outline and the window from Z-9 to Z-19 (arm level)",
+     "features": [
+      "F07",
+      "F08",
+      "F09",
+      "F10"
+     ],
+     "tool": "T02",
+     "strategy": "roughing, 0.3 mm wall allowance",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "max 4.0 mm per level",
+     "simulator_supported": true,
+     "nc_file": "op_60_rough_arms_window_to_z19.nc",
+     "blocked_by": [
+      "centre distance d",
+      "R115/R60 centres",
+      "arm height position",
+      "arm edge construction"
+     ]
+    },
+    {
+     "id": "OP70",
+     "name": "Mill bore D20 through",
+     "features": [
+      "F06"
+     ],
+     "tool": "T02",
+     "strategy": "as OP20 (tool-centre circle R4.8 rough / R5 finish)",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "2.0 mm per level, Z-4 to Z-24.5",
+     "simulator_supported": true,
+     "nc_file": "op_70_bore_d20.nc",
+     "blocked_by": [
+      "centre distance d"
+     ]
+    },
+    {
+     "id": "OP80",
+     "name": "Finish boss walls (Z-4 to Z-19), arm edges and window with R8 corners",
+     "features": [
+      "F01",
+      "F05",
+      "F07",
+      "F08",
+      "F09"
+     ],
+     "tool": "T03",
+     "strategy": "finishing contour, climb",
+     "spindle": "S4000 M03",
+     "feed": "F150; plunge F60",
+     "depth_of_cut": "max 2.0 mm per level, 0.3 mm radial",
+     "simulator_supported": true,
+     "nc_file": "op_80_finish_walls_window_r8.nc",
+     "blocked_by": [
+      "centre distance d",
+      "R115/R60 centres",
+      "arm height position"
+     ]
+    },
+    {
+     "id": "OP90",
+     "name": "R2 fillets, arm top faces to boss walls; finish arm top face Z-9",
+     "features": [
+      "F11",
+      "F10"
+     ],
+     "tool": "T10",
+     "strategy": "2.5D contour with bull-nose corner R2 along the boss walls",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "finish 0.2 mm",
+     "simulator_supported": true,
+     "nc_file": "op_90_fillets_r2_top.nc",
+     "blocked_by": [
+      "centre distance d",
+      "arm height position",
+      "fillet extent"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "orientation_and_workholding": "Part turned over about the Y axis (X -> 170 - X), held in a dedicated support fixture protecting the S1 features. MillLab simulates from a raw block.",
+   "work_zero": "G54 front-left corner after flipping; Z0 = bottom faces of the bosses. Large boss axis X130 Y40; small boss at X130-d.",
+   "operations": [
+    {
+     "id": "OP110",
+     "name": "Clear outside both bosses Z0 to Z-5 (arm underside), finish lower boss walls",
+     "features": [
+      "F01",
+      "F05",
+      "F07",
+      "F08",
+      "F10"
+     ],
+     "tool": "T02",
+     "strategy": "roughing + finishing pass",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "max 4.0 mm per level",
+     "simulator_supported": true,
+     "nc_file": "op_110_clear_bottom_outside_bosses_to_z5.nc",
+     "blocked_by": [
+      "centre distance d",
+      "R115/R60 centres",
+      "arm height position"
+     ]
+    },
+    {
+     "id": "OP120",
+     "name": "R2 fillets, arm bottom faces to boss walls",
+     "features": [
+      "F11"
+     ],
+     "tool": "T10",
+     "strategy": "2.5D contour with bull-nose corner R2",
+     "spindle": "S4000 M03",
+     "feed": "F200; plunge F60",
+     "depth_of_cut": "finish 0.2 mm",
+     "simulator_supported": true,
+     "nc_file": "op_120_fillets_r2_bottom.nc",
+     "blocked_by": [
+      "centre distance d",
+      "arm height position",
+      "fillet extent"
+     ]
+    },
+    {
+     "id": "OP130",
+     "name": "Break sharp edges, remove burrs",
+     "features": [
+      "F13"
+     ],
+     "tool": "manual (T09 chamfer mill has no approved cutting data)",
+     "strategy": "manual deburring",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null
+    }
+   ]
+  }
+ ],
+ "assumptions": [
+  "Z0 (block top, nothing faced) = pin tops, because pin height 4 + boss height 20 = stock height 24.",
+  "Pins are integral to the part: 6 pins equally spaced at 30 + k*60 deg on radius 23, one on +Y (keyway side).",
+  "B-B dimension 23 = boss axis to pin centre; 18 = boss axis to keyway bottom.",
+  "Arms are centred in the boss height (S1 Z-9 to Z-19). Used only to describe the blocked operations.",
+  "R115 is internally tangent and R60 externally tangent to both bosses. If confirmed, the arc centres relative to the large boss axis, with d = boss centre distance, are: C115 x = (d^2 - 1611)/(2d), y = -sqrt(7225 - x^2); C60 x = (d^2 + 1539)/(2d), y = -sqrt(8100 - x^2). Window edges are R107 about C115 and R68 about C60, closed by the D60/D42 walls with R8 blends.",
+  "No value for d is assumed. All d-dependent NC is withheld rather than guessed.",
+  "T02 and T03 are centre-cutting, so OP20 plunges at the bore centre.",
+  "Through features are cut to Z-24.5 (0.5 mm breakthrough). The real fixture needs relief under both bores and the keyway.",
+  "Tool-centre programming with G40 (no G41/G42). Offsets use the approved radii T02 R5 and T03 R3.",
+  "No coolant is programmed because coolant is not in the approved data.",
+  "MillLab accepts full circles (G02/G03, same start and end point, I/J centre).",
+  "Not used: T01 and T12 (no cutting data), T04-T07, T09 and T11 (no cutting data), T08 (inconsistent row).",
+  "The individual op files assume the preceding ops of the same setup are done. For MillLab (raw block start), run setup_01_complete.nc."
+ ]
+}

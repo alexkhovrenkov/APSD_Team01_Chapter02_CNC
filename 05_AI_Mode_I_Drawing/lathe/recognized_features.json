@@ -1,5 +1,138 @@
 {
- "title": "G1 geometry worksheet - Mode I - lathe",
- "status": "NOT_YET_GENERATED",
- "note": "Created from the first imported AI attempt by apsd_part_e import-response; reviewers then map every reference feature to the AI features."
+ "title": "G1 geometry worksheet - Mode I - APSD-LATHE",
+ "status": "PENDING_HUMAN_REVIEW",
+ "source_run": "20261128T151802Z_modeI_lathe",
+ "ai_features_raw": "initial/20261128T151802Z_modeI_lathe/recognized_features_raw.json",
+ "ai_unclear_or_missing": [
+  {
+   "item": "Units",
+   "why": "Title block says dimensions are in INCHES; the team configuration says mm (CONFIRMED). mm assumed for every value.",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP30",
+    "OP40",
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP110",
+    "OP120",
+    "OP130",
+    "OP140",
+    "OP150"
+   ]
+  },
+  {
+   "item": "External thread specification (F02)",
+   "why": "No designation, class, hand or thread form. Pitch 5 read from a callout between crests. Major D50 comes from a radial dimension (25). Thread depth 3.067 per side assumed from the 60 deg metric profile (0.6134 x P).",
+   "affects": [
+    "OP20",
+    "OP30",
+    "OP80"
+   ]
+  },
+  {
+   "item": "Thread run-out / relief (F02, F03)",
+   "why": "Thread length 125 ends exactly at the R5 fillet; no undercut or relief groove. A 5 mm pitch tool cannot thread fully up to the fillet without cutting into it. The thread end is programmed at Z-122 as an assumption.",
+   "affects": [
+    "OP80"
+   ]
+  },
+  {
+   "item": "Axial position of the flange and length of the D60 body (F04, F06)",
+   "why": "Not dimensioned directly. Derived from 210 - 20 - 20 - 125 - 5, assuming the 125 extension line sits on the R5 tangent point.",
+   "affects": [
+    "OP20",
+    "OP30",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Bore F08 diameter",
+   "why": "Given only as R15 on a full circle in the end view (read as D30). Tolerance unknown; bottom shape assumed flat.",
+   "affects": [
+    "OP60",
+    "OP70"
+   ]
+  },
+  {
+   "item": "Spigot F07 tolerance",
+   "why": "D29.9 looks like a fit diameter, but no tolerance is given.",
+   "affects": [
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Internal thread F10",
+   "why": "Major diameter, pitch and class missing; only depth 41.42.",
+   "affects": [
+    "OP150",
+    "OP160"
+   ]
+  },
+  {
+   "item": "Dimension 2 (F13)",
+   "why": "Referenced feature not identifiable; not programmed.",
+   "affects": [
+    "OP110",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Holes F11",
+   "why": "Depth 4.1 is an interpretation; angular orientation relative to the keyway not dimensioned; hole count and pattern read from the views, not from a callout.",
+   "affects": [
+    "OP240"
+   ]
+  },
+  {
+   "item": "Keyway F12",
+   "why": "Only the width 7.98 is given. Depth, length and axial position are missing, and it is unclear whether the isometric block is a fitted key.",
+   "affects": [
+    "OP230"
+   ]
+  },
+  {
+   "item": "Chamfers and edge breaks",
+   "why": "Only the general note 'break all sharp edges'. No chamfer sizes, including the thread start chamfer.",
+   "affects": [
+    "OP30",
+    "OP80",
+    "OP130",
+    "OP250"
+   ]
+  },
+  {
+   "item": "Tolerances and surface finish",
+   "why": "Tolerance block and finish fields are empty.",
+   "affects": [
+    "OP30",
+    "OP70",
+    "OP130"
+   ]
+  }
+ ],
+ "instructions": "For every reference feature (07_Comparison_Validation/evaluation_reference) fill outcome = CORRECT | PARTIAL | INCORRECT | MISSED | FLAGGED_AS_UNCLEAR | INVENTED_VALUE, the AI feature ids, and ai_value for each compared dimension. Reviewer and date are mandatory. Do not edit ai_* fields.",
+ "reference_mapping": [],
+ "ai_feature_ids": [
+  "F01",
+  "F02",
+  "F03",
+  "F04",
+  "F05",
+  "F06",
+  "F07",
+  "F08",
+  "F09",
+  "F10",
+  "F11",
+  "F12",
+  "F13",
+  "F14"
+ ],
+ "reviewer": null,
+ "review_date": null
 }

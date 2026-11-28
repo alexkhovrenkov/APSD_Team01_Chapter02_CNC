@@ -1,0 +1,414 @@
+{
+ "features": [
+  {
+   "id": "F01",
+   "type": "rotation_axis",
+   "description": "Turning axis = CAD world X. CAD a=0 at the spigot end face, a=210 at the threaded end face. Transform used for all NC values: S1 Z = a - 210; S2 Z = -a; X = 2 x radius (diameter).",
+   "dimensions": {
+    "overall_length_mm": 210.0,
+    "max_diameter_mm": 100.0
+   },
+   "location": "CAD a = 0..210",
+   "source": "L-AXIS, bounding_box",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F02",
+   "type": "end_face",
+   "description": "Front (threaded-end) face, annulus D30..D50. Area check: pi/4*(50^2-30^2) = 1256.637 mm2 minus 235.052 mm2 (external thread groove, same value as F22) = 1021.585 mm2, which matches CAD exactly.",
+   "dimensions": {
+    "axial_position_mm": 210.0,
+    "outer_diameter_mm": 50.0,
+    "inner_diameter_mm": 30.0
+   },
+   "location": "CAD a=210 -> S1 Z0 (finished front face)",
+   "source": "L-FACE-09",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F03",
+   "type": "end_face",
+   "description": "Rear (spigot-end) face. The area 594.705 mm2 does not close with a D12 bore (D29.9 annulus + key section = 614.03 mm2) or with a D14 bore (573.2 mm2). The difference to D12 (19.3 mm2) is consistent with an internal thread groove cut outside D12, but this is not resolved.",
+   "dimensions": {
+    "axial_position_mm": 0.0,
+    "area_mm2": 594.705
+   },
+   "location": "CAD a=0 -> S2 Z0 (finished rear face)",
+   "source": "L-FACE-01",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F04",
+   "type": "external_cylinder",
+   "description": "OD D50, carries the external thread F20",
+   "dimensions": {
+    "diameter_mm": 50.0,
+    "length_mm": 125.0
+   },
+   "location": "CAD a=85..210 -> S1 X50, Z0..-125",
+   "source": "L-OD-04",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F05",
+   "type": "concave_fillet",
+   "description": "Concave R5 between D50 and shoulder F06. Tangent points are (a=85, D50) and (a=80, D60); centre is (a=85, D60), derived from the blend span and the F06 inner diameter.",
+   "dimensions": {
+    "radius_mm": 5.0
+   },
+   "location": "S1: G02 from X50 Z-125 to X60 Z-130, centre X60 Z-125",
+   "source": "L-BLEND-02",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F06",
+   "type": "shoulder_face",
+   "description": "Flange face towards the thread end, annulus D60..D100. Inner D60 is inferred from the area: pi/4*(100^2-60^2) = 5026.548 mm2 = CAD area.",
+   "dimensions": {
+    "axial_position_mm": 80.0,
+    "outer_diameter_mm": 100.0,
+    "inner_diameter_mm": 60.0
+   },
+   "location": "CAD a=80 -> S1 Z-130",
+   "source": "L-FACE-06",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F07",
+   "type": "external_cylinder",
+   "description": "Flange OD D100, 20 mm thick",
+   "dimensions": {
+    "diameter_mm": 100.0,
+    "length_mm": 20.0
+   },
+   "location": "CAD a=60..80 -> S1 Z-130..-150 (turned in S1 to Z-152 as overlap); S2 Z-60..-80",
+   "source": "L-OD-03, L-REL-02",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F08",
+   "type": "shoulder_face",
+   "description": "Flange face towards the spigot end, annulus D70..D100. Area check: pi/4*(100^2-70^2) = 4005.53 mm2 = CAD area.",
+   "dimensions": {
+    "axial_position_mm": 60.0,
+    "outer_diameter_mm": 100.0,
+    "inner_diameter_mm": 70.0
+   },
+   "location": "CAD a=60 -> S2 Z-60",
+   "source": "L-FACE-05",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F09",
+   "type": "concave_fillet",
+   "description": "Concave R5 between D60 and shoulder F08. Tangent points are (a=55, D60) and (a=60, D70); centre is (a=55, D70).",
+   "dimensions": {
+    "radius_mm": 5.0
+   },
+   "location": "S2: G02 from X60 Z-55 to X70 Z-60, centre X70 Z-55",
+   "source": "L-BLEND-01",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F10",
+   "type": "external_cylinder",
+   "description": "OD D60",
+   "dimensions": {
+    "diameter_mm": 60.0,
+    "length_mm": 35.0
+   },
+   "location": "CAD a=20..55 -> S2 X60, Z-20..-55",
+   "source": "L-OD-02",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F11",
+   "type": "shoulder_face",
+   "description": "Face at the spigot root, annulus D29.9..D60 less 6 holes and the key section. Area check: 2125.29 - 58.39 - 24.97 = 2041.94 mm2 vs CAD 2041.918. The lathe faces it from D36.7 to D60 only; the rest is made by the mill.",
+   "dimensions": {
+    "axial_position_mm": 20.0,
+    "outer_diameter_mm": 60.0,
+    "inner_diameter_mm": 29.9
+   },
+   "location": "CAD a=20 -> S2 Z-20",
+   "source": "L-FACE-02",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F12",
+   "type": "external_cylinder",
+   "description": "Spigot D29.9 carrying the raised key F13. A turned D29.9 would destroy the key, so the lathe leaves a D36.7 envelope and the D29.9 is produced off-lathe around the key.",
+   "dimensions": {
+    "diameter_mm": 29.9,
+    "length_mm": 20.0,
+    "turned_envelope_diameter_mm": 36.7
+   },
+   "location": "CAD a=0..20 -> S2 Z0..-20",
+   "source": "L-OD-01, L-KEY-01",
+   "confidence": "high",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F13",
+   "type": "raised_key",
+   "description": "Raised key on the spigot: flat top 17.9 mm from the axis, side flats 7.98 apart. Corner radius sqrt(17.9^2+3.99^2) = 18.339 mm gives a minimum turned envelope of D36.68.",
+   "dimensions": {
+    "width_mm": 7.98,
+    "top_distance_from_axis_mm": 17.9,
+    "length_mm": 20.0,
+    "corner_envelope_diameter_mm": 36.68
+   },
+   "location": "CAD a=0..20 -> S2 Z0..-20, angular position unknown",
+   "source": "L-KEY-01",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F14",
+   "type": "axial_hole_pattern",
+   "description": "6 x D3.52 blind holes parallel to the axis on PCD46, 60 deg spacing, entering face F11. Off-axis, not turnable.",
+   "dimensions": {
+    "diameter_mm": 3.52,
+    "pitch_circle_diameter_mm": 46.0,
+    "depth_mm": 4.1
+   },
+   "location": "CAD a=20..24.1 -> S2 Z-20..-24.1",
+   "source": "L-HOLES-01",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F15",
+   "type": "internal_cylinder",
+   "description": "Bore D30 open at the front face",
+   "dimensions": {
+    "diameter_mm": 30.0,
+    "length_mm": 40.0
+   },
+   "location": "CAD a=170..210 -> S1 X30, Z0..-40",
+   "source": "L-BORE-03",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F16",
+   "type": "internal_shoulder",
+   "description": "Bottom of the D30 bore, annulus D13..D30. Area check: pi/4*(30^2-13^2) = 574.13 mm2 = CAD area.",
+   "dimensions": {
+    "axial_position_mm": 170.0,
+    "outer_diameter_mm": 30.0,
+    "inner_diameter_mm": 13.0
+   },
+   "location": "CAD a=170 -> S1 Z-40",
+   "source": "L-FACE-08",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F17",
+   "type": "internal_cylinder",
+   "description": "Bore D13. It ends 168.58 mm from the front face and 41.42 mm from the rear face.",
+   "dimensions": {
+    "diameter_mm": 13.0,
+    "length_mm": 128.58
+   },
+   "location": "CAD a=41.42..170 -> S1 Z-40..-168.58 / S2 Z-41.42..-170",
+   "source": "L-BORE-02",
+   "confidence": "high",
+   "needs_human_verification": false
+  },
+  {
+   "id": "F18",
+   "type": "internal_cylinder",
+   "description": "Bore D12 open at the rear face (internal thread region). The CAD Hole feature says D14 x 41.42, while the evaluated geometry says D12.",
+   "dimensions": {
+    "diameter_mm": 12.0,
+    "length_mm": 41.42
+   },
+   "location": "CAD a=0..41.42 -> S2 Z0..-41.42",
+   "source": "L-BORE-01",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F19",
+   "type": "internal_step",
+   "description": "Two small planar faces at the D12/D13 step (7.472 + 7.782 mm2 against a full step annulus of 19.635 mm2). The remainder is presumably consumed by the thread groove.",
+   "dimensions": {
+    "axial_position_mm": 41.42
+   },
+   "location": "CAD a=41.42 -> S2 Z-41.42 / S1 Z-168.58",
+   "source": "L-FACE-03, L-FACE-04",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F20",
+   "type": "external_thread",
+   "description": "Modelled external thread, pitch 5, right-hand, on D50. Designation, depth and class are UNKNOWN; the majorDiameter parameter 25 is not usable.",
+   "dimensions": {
+    "pitch_mm": 5.0,
+    "nominal_region_diameter_mm": 50.0
+   },
+   "location": "CAD a ~82.7..210 (loose box) -> S1 Z0..~-125",
+   "source": "L-THREAD-EXT-01",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F21",
+   "type": "internal_thread",
+   "description": "Modelled internal thread, pitch 2, right-hand, near D12/D13. Designation, depth and class are UNKNOWN; the majorDiameter parameter 25 is not usable.",
+   "dimensions": {
+    "pitch_mm": 2.0
+   },
+   "location": "CAD a ~0..42.3 (loose box) -> S2 Z0..~-42.3",
+   "source": "L-THREAD-INT-01",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F22",
+   "type": "planar_face_interpreted",
+   "description": "Planar face at a=85 with area 235.052 mm2. This equals exactly the thread-groove area missing from F02, so it is interpreted as the end cap of the modelled thread at the fillet tangent, not as a turned shoulder. This is my interpretation.",
+   "dimensions": {
+    "axial_position_mm": 85.0,
+    "area_mm2": 235.052
+   },
+   "location": "CAD a=85 -> S1 Z-125",
+   "source": "L-FACE-07",
+   "confidence": "medium",
+   "needs_human_verification": true
+  }
+ ],
+ "unclear_or_missing": [
+  {
+   "item": "External thread designation, standard, class, thread depth and major-diameter tolerance",
+   "why": "UNKNOWN in CAD; threadCreator text and majorDiameter=25 are not usable. OP80 uses an ASSUMED ISO 60 deg basic depth of 0.6134 x P = 3.067 mm on major D50 (assumption A10).",
+   "affects": [
+    "OP70",
+    "OP80"
+   ]
+  },
+  {
+   "item": "External thread end and runout",
+   "why": "The modelled thread runs to a=85, the fillet tangent (F22), with no undercut or runout. A single-point thread cannot end there. OP80 ends at Z-120 (a=90) as an assumption.",
+   "affects": [
+    "OP80"
+   ]
+  },
+  {
+   "item": "Internal thread p=2: designation and producibility",
+   "why": "Designation is UNKNOWN. T09 cannot cut it: its 12 mm bar does not fit a D12 bore, and its reach of 15 mm is less than the 41.42 mm length.",
+   "affects": [
+    "OP150"
+   ]
+  },
+  {
+   "item": "D12 vs D14 bore and face-area mismatches",
+   "why": "The Hole feature says D14, the geometry says D12, and the F03/F19 areas do not close with either value.",
+   "affects": [
+    "OP140",
+    "OP150"
+   ]
+  },
+  {
+   "item": "Tool for the D12 bore from solid",
+   "why": "The tool table has no D12 or smaller drill, except the T10 spot drill with reach 10. T05 D13 would oversize the bore. The boring bars need a pilot hole.",
+   "affects": [
+    "OP140"
+   ]
+  },
+  {
+   "item": "D13 bore depth vs drill reach",
+   "why": "From the front the bore ends 168.58 mm deep, but T05 reach is 70 mm. From the rear, a D13 drill would destroy the D12 section. Only a=~145..170 is producible.",
+   "affects": [
+    "OP40",
+    "OP160"
+   ]
+  },
+  {
+   "item": "Tolerances, fits and surface finish",
+   "why": "UNKNOWN (not returned by the API). It is also unknown whether the drilled D13 is acceptable as a finished bore.",
+   "affects": [
+    "OP20",
+    "OP40",
+    "OP60",
+    "OP70",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Chamfers and edge breaks",
+   "why": "None modelled, so none are programmed and all edges are sharp.",
+   "affects": [
+    "OP70",
+    "OP130",
+    "OP60"
+   ]
+  },
+  {
+   "item": "Setup 2 grip surface and clearance",
+   "why": "The team has not specified it (accepted). The programs assume nothing protrudes in front of S2 Z-82, i.e. a protected grip on D50.",
+   "affects": [
+    "OP110",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Real blank length in setup 2",
+   "why": "The real part carries 29 mm of excess length beyond a=0 (240 - 210 - 1). The LatheLab stock dialog for S2 loads a raw bar with only 1 mm face allowance.",
+   "affects": [
+    "OP110"
+   ]
+  },
+  {
+   "item": "Meaning of tool 'reach' for OD turning tools",
+   "why": "The S1 shoulder at a=80 is 25 mm radial (D50 to D100) and the S2 shoulder at a=60 is 15 mm, against T01/T02 reach of 15. These may be flagged by LatheLab.",
+   "affects": [
+    "OP20",
+    "OP70",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Angular orientation of the key vs the hole pattern",
+   "why": "UNKNOWN; needed only off-lathe.",
+   "affects": [
+    "OP310",
+    "OP320",
+    "OP330"
+   ]
+  },
+  {
+   "item": "Material",
+   "why": "CAD material is null. Configuration C45 (HUMAN_APPROVED) is used.",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP40",
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP110",
+    "OP120",
+    "OP130"
+   ]
+  }
+ ]
+}

@@ -1,5 +1,90 @@
 {
- "title": "G1 geometry worksheet - Mode II - milling",
- "status": "NOT_YET_GENERATED",
- "note": "Created from the first imported AI attempt by apsd_part_e import-response; reviewers then map every reference feature to the AI features."
+ "title": "G1 geometry worksheet - Mode II - APSD-MILLING",
+ "status": "PENDING_HUMAN_REVIEW",
+ "source_run": "20261128T151802Z_modeII_milling",
+ "ai_features_raw": "initial/20261128T151802Z_modeII_milling/recognized_features_raw.json",
+ "ai_unclear_or_missing": [
+  {
+   "item": "Tolerances/fits of D30 bore, D20 hole, keyway, pins; surface finish",
+   "why": "UNKNOWN in manifest (no drawing annotations via API)",
+   "affects": [
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP90",
+    "OP140",
+    "OP150",
+    "OP160"
+   ]
+  },
+  {
+   "item": "Keyway closed-end internal corners",
+   "why": "CAD corners are sharp; any rotating cutter leaves R3 with T03",
+   "affects": [
+    "OP90",
+    "OP95",
+    "OP160"
+   ]
+  },
+  {
+   "item": "Edge breaks / chamfers",
+   "why": "UNKNOWN; T09 has no cutting data; none programmed",
+   "affects": [
+    "all"
+   ]
+  },
+  {
+   "item": "Raw block height = part height (24 mm), facing allowance 0",
+   "why": "Pin tops (F01) and boss bottoms (F05) are raw-stock faces; real block tolerance unknown",
+   "affects": [
+    "OP80",
+    "OP110"
+   ]
+  },
+  {
+   "item": "Material",
+   "why": "null in CAD; Aluminium 6061 taken from team configuration",
+   "affects": [
+    "all"
+   ]
+  },
+  {
+   "item": "CAD revision identity",
+   "why": "config model_microversion 4d05edae... vs manifest element_microversion 6e87bc46...; manifest 'named_version' holds the version id",
+   "affects": [
+    "all"
+   ]
+  },
+  {
+   "item": "Angular limits of the R2 fillets",
+   "why": "manifest gives torus radius/height only; limits derived from contour/window tangent points",
+   "affects": [
+    "OP20",
+    "OP100",
+    "OP110",
+    "OP170"
+   ]
+  }
+ ],
+ "instructions": "For every reference feature (07_Comparison_Validation/evaluation_reference) fill outcome = CORRECT | PARTIAL | INCORRECT | MISSED | FLAGGED_AS_UNCLEAR | INVENTED_VALUE, the AI feature ids, and ai_value for each compared dimension. Reviewer and date are mandatory. Do not edit ai_* fields.",
+ "reference_mapping": [],
+ "ai_feature_ids": [
+  "F01",
+  "F02",
+  "F03",
+  "F04",
+  "F05",
+  "F06",
+  "F07",
+  "F08",
+  "F09",
+  "F10",
+  "F11",
+  "F12",
+  "F13",
+  "F14",
+  "F15"
+ ],
+ "reviewer": null,
+ "review_date": null
 }

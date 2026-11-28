@@ -1,0 +1,300 @@
+{
+ "features": [
+  {
+   "id": "F01",
+   "type": "overall_length",
+   "description": "Overall part length between the thread-end face and the spigot-end face",
+   "dimensions": {
+    "length_mm": 210.0
+   },
+   "location": "S1: Z0 to Z-210 / S2: Z0 to Z-210",
+   "source": "Front view, overall dimension 210",
+   "confidence": "high",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F02",
+   "type": "external_thread",
+   "description": "External thread on the front end. Form, designation, class and hand are not given; 60 deg metric form and right-hand assumed. Runs from the thread-end face directly into the R5 fillet; no relief groove is drawn.",
+   "dimensions": {
+    "major_diameter_mm": 50.0,
+    "pitch_mm": 5.0,
+    "thread_length_mm": 125.0,
+    "thread_depth_per_side_mm": null
+   },
+   "location": "S1: Z0 to Z-125",
+   "source": "Section A-A: radial dimension 25 from the axis to the thread crest (major dia = 2 x 25); front view: callout 5 between two adjacent crests (read as pitch); section A-A: 125",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F03",
+   "type": "fillet_concave",
+   "description": "R5 fillet between the thread major diameter and the flange right face (tangent to D50 at Z-125, tangent to the face at D60)",
+   "dimensions": {
+    "radius_mm": 5.0,
+    "start_diameter_mm": 50.0,
+    "end_diameter_mm": 60.0
+   },
+   "location": "S1: Z-125 to Z-130",
+   "source": "Front view R5 leader at the flange/thread junction; end diameter derived (50 + 2 x 5)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F04",
+   "type": "flange",
+   "description": "Cylindrical flange",
+   "dimensions": {
+    "diameter_mm": 100.0,
+    "thickness_mm": 20.0
+   },
+   "location": "S1: Z-130 to Z-150 / S2: Z-60 to Z-80 (axial position derived, see unclear_or_missing)",
+   "source": "Left view D100; front view 20 (flange width)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F05",
+   "type": "fillet_concave",
+   "description": "R5 fillet between the D60 body and the flange left face; its tangent edge on the flange face is the D70 circle in the right view",
+   "dimensions": {
+    "radius_mm": 5.0,
+    "start_diameter_mm": 60.0,
+    "end_diameter_mm": 70.0
+   },
+   "location": "S2: Z-55 to Z-60",
+   "source": "Front view R5 leader at body/flange junction; right view D70 (tangent edge)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F06",
+   "type": "cylinder",
+   "description": "Body diameter between the spigot shoulder and the flange. Length not dimensioned directly; derived as 210 - 20 (spigot) - 20 (flange) - 125 (thread) - 5 (right fillet) = 40, including the left R5 fillet",
+   "dimensions": {
+    "diameter_mm": 60.0,
+    "length_including_fillet_mm": 40.0
+   },
+   "location": "S2: Z-20 to Z-60",
+   "source": "Right view D60; length derived from the front-view chain 210/20/20 and section 125",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F07",
+   "type": "spigot",
+   "description": "Spigot on the rear end, carries the keyway F12",
+   "dimensions": {
+    "diameter_mm": 29.9,
+    "length_mm": 20.0
+   },
+   "location": "S2: Z0 to Z-20",
+   "source": "Right view D29.9 (end view of the spigot end, first-angle projection); front view 20 (bottom dimension)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F08",
+   "type": "bore",
+   "description": "Blind counterbore in the thread end; flat bottom assumed (section shows a square bottom)",
+   "dimensions": {
+    "diameter_mm": 30.0,
+    "depth_mm": 40.0
+   },
+   "location": "S1: Z0 to Z-40",
+   "source": "Left view R15 (read as bore radius -> D30); section A-A depth 40",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F09",
+   "type": "through_hole",
+   "description": "Axial hole connecting the D30 bore and the internal thread; probably also the core/tap-drill diameter of F10",
+   "dimensions": {
+    "diameter_mm": 13.0
+   },
+   "location": "S1: Z-40 to Z-168.58 (and as core hole of F10 to Z-210)",
+   "source": "Left view D13; section A-A continuous hole",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F10",
+   "type": "internal_thread",
+   "description": "Internal thread in the spigot end. Size, pitch, class and hand are NOT dimensioned; only the depth is given",
+   "dimensions": {
+    "depth_mm": 41.42,
+    "major_diameter_mm": null,
+    "pitch_mm": null
+   },
+   "location": "S2: Z0 to Z-41.42",
+   "source": "Section A-A: blackened thread region, dimension 41.42 from the spigot-end face",
+   "confidence": "low",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F11",
+   "type": "axial_hole_pattern_off_axis",
+   "description": "6 axial holes, 60 deg pitch, on the shoulder face between spigot and D60 body (positions read from the right view). Radial position from dimension 23 (axis to hole centre) -> PCD 46. The 4.1 callout at the shoulder face is read as hole depth.",
+   "dimensions": {
+    "hole_diameter_mm": 3.52,
+    "pcd_mm": 46.0,
+    "count": 6,
+    "depth_mm": 4.1
+   },
+   "location": "Shoulder face at S2 Z-20",
+   "source": "Right view D3.52 and hole positions; front view radial dimension 23; front view 4.1",
+   "confidence": "low",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F12",
+   "type": "keyway",
+   "description": "Keyway on the D29.9 spigot (isometric shows a key/key block); depth, length and axial position not dimensioned",
+   "dimensions": {
+    "width_mm": 7.98,
+    "depth_mm": null,
+    "length_mm": null
+   },
+   "location": "Spigot, S2 Z0 to Z-20 region, top",
+   "source": "Right view 7.98; isometric view; left view hidden outline",
+   "confidence": "low",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F13",
+   "type": "unidentified",
+   "description": "Axial dimension 2 at the spigot-end face; the referenced feature (chamfer on D29.9, thread lead-in or keyway start) cannot be identified",
+   "dimensions": {
+    "axial_mm": 2.0
+   },
+   "location": "S2: Z0 to Z-2",
+   "source": "Section A-A, dimension 2 (top left)",
+   "confidence": "low",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F14",
+   "type": "general_note",
+   "description": "Title block notes: BREAK ALL SHARP EDGES AND REMOVE BURRS; FIRST ANGLE PROJECTION; 'DIMENSIONS ARE IN INCHES' (template text, conflicts with team units mm); tolerance and finish fields empty",
+   "dimensions": {},
+   "location": "All edges",
+   "source": "Title block",
+   "confidence": "high",
+   "needs_human_verification": true
+  }
+ ],
+ "unclear_or_missing": [
+  {
+   "item": "Units",
+   "why": "Title block says dimensions are in INCHES; the team configuration says mm (CONFIRMED). mm assumed for every value.",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP30",
+    "OP40",
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP110",
+    "OP120",
+    "OP130",
+    "OP140",
+    "OP150"
+   ]
+  },
+  {
+   "item": "External thread specification (F02)",
+   "why": "No designation, class, hand or thread form. Pitch 5 read from a callout between crests. Major D50 comes from a radial dimension (25). Thread depth 3.067 per side assumed from the 60 deg metric profile (0.6134 x P).",
+   "affects": [
+    "OP20",
+    "OP30",
+    "OP80"
+   ]
+  },
+  {
+   "item": "Thread run-out / relief (F02, F03)",
+   "why": "Thread length 125 ends exactly at the R5 fillet; no undercut or relief groove. A 5 mm pitch tool cannot thread fully up to the fillet without cutting into it. The thread end is programmed at Z-122 as an assumption.",
+   "affects": [
+    "OP80"
+   ]
+  },
+  {
+   "item": "Axial position of the flange and length of the D60 body (F04, F06)",
+   "why": "Not dimensioned directly. Derived from 210 - 20 - 20 - 125 - 5, assuming the 125 extension line sits on the R5 tangent point.",
+   "affects": [
+    "OP20",
+    "OP30",
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Bore F08 diameter",
+   "why": "Given only as R15 on a full circle in the end view (read as D30). Tolerance unknown; bottom shape assumed flat.",
+   "affects": [
+    "OP60",
+    "OP70"
+   ]
+  },
+  {
+   "item": "Spigot F07 tolerance",
+   "why": "D29.9 looks like a fit diameter, but no tolerance is given.",
+   "affects": [
+    "OP120",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Internal thread F10",
+   "why": "Major diameter, pitch and class missing; only depth 41.42.",
+   "affects": [
+    "OP150",
+    "OP160"
+   ]
+  },
+  {
+   "item": "Dimension 2 (F13)",
+   "why": "Referenced feature not identifiable; not programmed.",
+   "affects": [
+    "OP110",
+    "OP130"
+   ]
+  },
+  {
+   "item": "Holes F11",
+   "why": "Depth 4.1 is an interpretation; angular orientation relative to the keyway not dimensioned; hole count and pattern read from the views, not from a callout.",
+   "affects": [
+    "OP240"
+   ]
+  },
+  {
+   "item": "Keyway F12",
+   "why": "Only the width 7.98 is given. Depth, length and axial position are missing, and it is unclear whether the isometric block is a fitted key.",
+   "affects": [
+    "OP230"
+   ]
+  },
+  {
+   "item": "Chamfers and edge breaks",
+   "why": "Only the general note 'break all sharp edges'. No chamfer sizes, including the thread start chamfer.",
+   "affects": [
+    "OP30",
+    "OP80",
+    "OP130",
+    "OP250"
+   ]
+  },
+  {
+   "item": "Tolerances and surface finish",
+   "why": "Tolerance block and finish fields are empty.",
+   "affects": [
+    "OP30",
+    "OP70",
+    "OP130"
+   ]
+  }
+ ]
+}

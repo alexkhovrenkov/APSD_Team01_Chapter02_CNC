@@ -1,0 +1,80 @@
+{
+ "record_type": "human_review_record",
+ "workpiece": "APSD-LATHE",
+ "input_mode": "Mode I",
+ "program": "op_20_rough_od.nc",
+ "program_version": "v00_initial",
+ "program_path": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_20_rough_od.nc",
+ "program_sha256": "bf78538196aaba1a90c46141788aab82a79963083ac9928cd66069859ad62eb1",
+ "run_id": "20261128T151802Z_modeI_lathe",
+ "created_utc": "2026-11-28T15:35:40+00:00",
+ "created_by": "apsd_part_e import tool (no human decision recorded by the tool)",
+ "automatic_static_check": {
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "automatic_checks.json"
+ },
+ "gates": {
+  "G1_geometry": {
+   "status": "PENDING_HUMAN_REVIEW",
+   "issues": [],
+   "evidence": [],
+   "recommended_correction": null,
+   "ai_review_suggestion": null,
+   "decision": null,
+   "reviewer": null,
+   "review_date": null
+  },
+  "G2_process": {
+   "status": "PENDING_HUMAN_REVIEW",
+   "issues": [],
+   "evidence": [],
+   "recommended_correction": null,
+   "ai_review_suggestion": null,
+   "decision": null,
+   "reviewer": null,
+   "review_date": null
+  },
+  "G3_code": {
+   "status": "PENDING_HUMAN_REVIEW",
+   "issues": [],
+   "evidence": [],
+   "recommended_correction": null,
+   "ai_review_suggestion": null,
+   "decision": null,
+   "reviewer": null,
+   "review_date": null
+  },
+  "G4_simulation": {
+   "status": "PENDING_SIMULATION",
+   "issues": [],
+   "evidence": [],
+   "recommended_correction": null,
+   "ai_review_suggestion": null,
+   "decision": null,
+   "reviewer": null,
+   "review_date": null
+  }
+ },
+ "allowed_status_values": [
+  "PENDING_HUMAN_REVIEW",
+  "APPROVED",
+  "REJECTED",
+  "REQUIRES_CORRECTION",
+  "PENDING_SIMULATION"
+ ],
+ "issue_format": {
+  "id": "I01",
+  "gate": "G3_code",
+  "severity": "critical|major|minor",
+  "description": "...",
+  "evidence": "file:line or screenshot",
+  "recommended_correction": "...",
+  "found_by": "human|static_check|simulator|ai_review"
+ }
+}

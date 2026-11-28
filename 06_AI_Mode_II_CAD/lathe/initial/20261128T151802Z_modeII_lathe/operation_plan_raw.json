@@ -1,0 +1,308 @@
+{
+ "setups": [
+  {
+   "id": "S1",
+   "orientation_and_workholding": "Raw bar D105 x 240 in a 3-jaw chuck, 25 mm held (Z-214..-239); thread end out.",
+   "work_zero": "X0 spindle centre line (diameter); Z0 finished front face = CAD a=210; raw face at Z+1; S1 Z = a - 210",
+   "operations": [
+    {
+     "id": "OP10",
+     "name": "Face front end",
+     "features": [
+      "F02"
+     ],
+     "tool": "T01",
+     "strategy": "facing",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.15 mm/rev",
+     "depth_of_cut": "1.0 mm axial, 1 pass (G94)",
+     "simulator_supported": true,
+     "nc_file": "op_10_face_front.nc"
+    },
+    {
+     "id": "OP20",
+     "name": "OD rough front profile",
+     "features": [
+      "F04",
+      "F05",
+      "F06",
+      "F07"
+     ],
+     "tool": "T01",
+     "strategy": "roughing",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.20 mm/rev",
+     "depth_of_cut": "2.5 mm radial per pass (G71), leaves U1.0 / W0.5",
+     "simulator_supported": true,
+     "nc_file": "op_20_od_rough.nc"
+    },
+    {
+     "id": "OP30",
+     "name": "Spot drill centre",
+     "features": [
+      "F15",
+      "F17"
+     ],
+     "tool": "T10",
+     "strategy": "centre drilling",
+     "spindle": "G97 S800 M03",
+     "feed": "G99 F0.08 mm/rev",
+     "depth_of_cut": "2 mm deep",
+     "simulator_supported": true,
+     "nc_file": "op_30_spot_drill.nc"
+    },
+    {
+     "id": "OP40",
+     "name": "Peck drill D13 to reach limit",
+     "features": [
+      "F17",
+      "F15"
+     ],
+     "tool": "T05",
+     "strategy": "drilling",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.12 mm/rev",
+     "depth_of_cut": "10 mm pecks, full retract to Z5, tip to Z-69 (full D13 to Z-65.1, a=144.9)",
+     "simulator_supported": true,
+     "nc_file": "op_40_drill_d13.nc",
+     "notes": "Produces only part of F17; see OP160"
+    },
+    {
+     "id": "OP50",
+     "name": "Bore D30 rough",
+     "features": [
+      "F15",
+      "F16"
+     ],
+     "tool": "T06",
+     "strategy": "roughing",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.10 mm/rev",
+     "depth_of_cut": "1.0 mm radial per pass (G90 ID box), 8 passes, leaves 0.5 radial and 0.5 on the bottom",
+     "simulator_supported": true,
+     "nc_file": "op_50_bore_d30_rough.nc"
+    },
+    {
+     "id": "OP60",
+     "name": "Bore D30 finish incl. bottom face",
+     "features": [
+      "F15",
+      "F16"
+     ],
+     "tool": "T06",
+     "strategy": "finishing",
+     "spindle": "G97 S600 M03",
+     "feed": "G99 F0.08 mm/rev",
+     "depth_of_cut": "0.5 mm, G41",
+     "simulator_supported": true,
+     "nc_file": "op_60_bore_d30_finish.nc"
+    },
+    {
+     "id": "OP70",
+     "name": "OD finish front profile",
+     "features": [
+      "F04",
+      "F05",
+      "F06",
+      "F07"
+     ],
+     "tool": "T02",
+     "strategy": "finishing",
+     "spindle": "G97 S500 M03 (profile/radius data)",
+     "feed": "G99 F0.10 mm/rev",
+     "depth_of_cut": "0.5 mm, G42",
+     "simulator_supported": true,
+     "nc_file": "op_70_od_finish.nc"
+    },
+    {
+     "id": "OP80",
+     "name": "External thread P5 RH on D50",
+     "features": [
+      "F20"
+     ],
+     "tool": "T04",
+     "strategy": "threading",
+     "spindle": "G97 S150 M03",
+     "feed": "F5.0 (= pitch)",
+     "depth_of_cut": "12 radial-infeed passes to 3.067 mm radial (ASSUMED) + spring pass, G92",
+     "simulator_supported": true,
+     "nc_file": "op_80_thread_ext_p5.nc",
+     "notes": "BLOCKED at G1: depth and end point are assumptions A10. Placed after M00 in the consolidated program."
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "orientation_and_workholding": "Part reversed, protected grip on a finished surface (not specified, accepted). Assumed: grip on D50 so that the flange F07 and everything in front of S2 Z-82 is free.",
+   "work_zero": "X0 spindle centre line (diameter); Z0 finished rear face = CAD a=0; S2 Z = -a. Real blank end at Z+29, simulator stock end at Z+1.",
+   "operations": [
+    {
+     "id": "OP110",
+     "name": "Face rear end and remove excess length",
+     "features": [
+      "F03"
+     ],
+     "tool": "T01",
+     "strategy": "facing",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.15 mm/rev",
+     "depth_of_cut": "2.5 mm axial per pass (assumed), 12 G94 passes Z26.5..Z0; in LatheLab only the last pass cuts",
+     "simulator_supported": true,
+     "nc_file": "op_110_face_rear.nc"
+    },
+    {
+     "id": "OP120",
+     "name": "OD rough rear profile (spigot envelope, D60, R5, flange face)",
+     "features": [
+      "F12",
+      "F13",
+      "F11",
+      "F10",
+      "F09",
+      "F08"
+     ],
+     "tool": "T01",
+     "strategy": "roughing",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.20 mm/rev",
+     "depth_of_cut": "2.5 mm radial per pass (G71), leaves U1.0 / W0.5",
+     "simulator_supported": true,
+     "nc_file": "op_120_od_rough_rear.nc"
+    },
+    {
+     "id": "OP130",
+     "name": "OD finish rear profile",
+     "features": [
+      "F12",
+      "F13",
+      "F11",
+      "F10",
+      "F09",
+      "F08"
+     ],
+     "tool": "T02",
+     "strategy": "finishing",
+     "spindle": "G97 S500 M03",
+     "feed": "G99 F0.10 mm/rev",
+     "depth_of_cut": "0.5 mm, G42",
+     "simulator_supported": true,
+     "nc_file": "op_130_od_finish_rear.nc"
+    },
+    {
+     "id": "OP140",
+     "name": "Bore D12, a=0..41.42",
+     "features": [
+      "F18"
+     ],
+     "tool": "none suitable in tool table",
+     "strategy": "drilling/boring",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null,
+     "notes": "No D12 drill; D13 would oversize; bars need a pilot. D12/D14 conflict unresolved."
+    },
+    {
+     "id": "OP150",
+     "name": "Internal thread P2 RH",
+     "features": [
+      "F21"
+     ],
+     "tool": "T09 (not usable)",
+     "strategy": "threading",
+     "spindle": "n/a (approved data: 150 rpm)",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null,
+     "notes": "Designation unknown; T09 bar D12 cannot enter a D12 bore; reach 15 < 41.42."
+    },
+    {
+     "id": "OP160",
+     "name": "Bore D13 remainder, a=41.42..~145",
+     "features": [
+      "F17",
+      "F19"
+     ],
+     "tool": "none (T05 reach 70)",
+     "strategy": "drilling",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null,
+     "notes": "Needs a longer D13 drill from S1 or a team decision."
+    }
+   ]
+  },
+  {
+   "id": "S3",
+   "orientation_and_workholding": "3-axis mill secondary setup (route sheet ops 230-250). OUT OF SCOPE for the lathe NC programs.",
+   "work_zero": "not defined here",
+   "operations": [
+    {
+     "id": "OP310",
+     "name": "Contour-mill spigot D29.9 around the key, incl. face a=20 inside D36.7",
+     "features": [
+      "F12",
+      "F11"
+     ],
+     "tool": "mill tooling (not in lathe table)",
+     "strategy": "milling",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null
+    },
+    {
+     "id": "OP320",
+     "name": "Mill key top (17.9 from axis) and side flats (7.98)",
+     "features": [
+      "F13"
+     ],
+     "tool": "mill tooling",
+     "strategy": "milling",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null
+    },
+    {
+     "id": "OP330",
+     "name": "Drill 6 x D3.52 x 4.1 on PCD46",
+     "features": [
+      "F14"
+     ],
+     "tool": "mill tooling",
+     "strategy": "drilling",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null
+    }
+   ]
+  }
+ ],
+ "assumptions": [
+  "A1: S2 workholding grips the D50 section with protection; nothing protrudes in front of S2 Z-82. If the D100 flange is gripped, the X106 exit at Z-60 in OP120/OP130 must be re-checked.",
+  "A2: The real S2 blank carries 29 mm excess beyond a=0 (240 - 210 - 1 faced in S1), so OP110 faces from Z+29. In LatheLab (raw end Z+1) the first 11 passes are air cuts. Delete them if the team saws to length instead.",
+  "A3: Axial facing depth 2.5 mm per pass. Not approved; taken by analogy with the approved 2.5 mm radial roughing depth.",
+  "A4: 'Roughing leaves 0.5 mm per side' is read as 0.5 mm normal to every surface, i.e. G71 U1.0 (diameter) W0.5; ID roughing 0.5 radial and 0.5 on the bore bottom.",
+  "A5: G71 retract R1.0 mm. Not specified.",
+  "A6: Feeds chosen inside the approved ranges: T01 roughing 0.20, T06 roughing 0.10 / finishing 0.08, T02 whole contour 0.10 at 500 rpm, because each contour contains an R5.",
+  "A7: Peck depth 10 mm with full retract to Z5; rapid re-entry inside the drilled hole to 1 mm above the previous depth. Peck depth is not specified.",
+  "A8: Drill tip depth Z-69, within reach 70; the 118 deg point (3.91 mm) gives full D13 to Z-65.1.",
+  "A9: Spigot turned to a D36.7 envelope (key corners need >= D36.68). The final D29.9 and key are milled (OP310/OP320).",
+  "A10: External thread = ISO 60 deg basic profile, external depth h3 = 0.6134 x 5 = 3.067 mm, major = turned D50, RH, end at Z-120 (a=90, 1 pitch before the fillet tangent). The F02/F22 groove area of 235 mm2 is plausible for a 60 deg groove of about 3 mm depth on D50, but that is only a plausibility check, not a designation.",
+  "A11: The D100 in S1 is turned 2 mm past a=60 (to Z-152) so that the S2 face cut at a=60 blends without a step.",
+  "A12: M03 for all tools; no coolant commanded (not in the configuration).",
+  "A13: Nose-radius compensation only in finishing passes (G42 OD, G41 ID) with R/T from the offset page; roughing is uncompensated.",
+  "A14: No G54 programmed; the work zero comes from the LatheLab stock dialog per the configuration.",
+  "A15: Material C45 from the configuration (CAD material is null).",
+  "A16: Unused: T03, T07, T08, T11, T12 (no approved cutting data); T09 is not usable (see OP150)."
+ ]
+}

@@ -49,7 +49,14 @@
   }
  ],
  "decision": {
-  "mode_I_drawing": "PENDING_HUMAN_REVIEW",
-  "recommendation": "Use the team drawings (same named version Ch2-Final as the Mode II manifests), after Part A fixes the lathe title block (mm, A4/A3). Record the choice here and in each run's input_manifest."
+  "mode_I_drawing": "TEAM_DRAWINGS",
+  "files": {
+   "APSD-LATHE": "APSD_LATHE_team_drawing_vdd8cc179_300dpi.png",
+   "APSD-MILLING": "APSD_MILLING_team_drawing_vdd8cc179_300dpi.png"
+  },
+  "decided": "2026-11-28 by a team member (Part E), in the Claude Code session",
+  "reason": "same named version Ch2-Final as the Mode II manifests (same part revision in both modes, brief 2.7)",
+  "known_defect_accepted": "the lathe team drawing title block says 'DIMENSIONS ARE IN INCHES' (with inch tolerances) and is a Letter sheet, although all values are in mm. Not fixed before the runs; G1 must record whether the AI is misled by it.",
+  "pdf_note": "01_Onshape_Drawings PDFs were re-exported later (different file hash); a pixel comparison on 2026-11-28 showed identical geometry and dimensions, only text rendering differs."
  }
 }

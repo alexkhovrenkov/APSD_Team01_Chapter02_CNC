@@ -1,0 +1,424 @@
+{
+ "op_10_face_front.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 12,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    0.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_10_face_front.nc"
+ },
+ "op_20_rough_od.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 19,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -152.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_20_rough_od.nc"
+ },
+ "op_30_finish_od.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 18,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -152.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_30_finish_od.nc"
+ },
+ "op_40_centre_drill.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 13,
+  "extents": {
+   "X": [
+    0.0,
+    0.0
+   ],
+   "Z": [
+    -2.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_40_centre_drill.nc"
+ },
+ "op_50_drill_d13.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 31,
+  "extents": {
+   "X": [
+    0.0,
+    0.0
+   ],
+   "Z": [
+    -65.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_50_drill_d13.nc"
+ },
+ "op_60_rough_bore.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 21,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -39.5,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G90 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_60_rough_bore.nc"
+ },
+ "op_70_finish_bore.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 18,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -40.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_70_finish_bore.nc"
+ },
+ "op_80_thread_ext.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 16,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    0.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "critical",
+    "line": 12,
+    "code": "cycle_without_feed",
+    "message": "cycle block without a feed rate (F)"
+   },
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G76 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_80_thread_ext.nc"
+ },
+ "setup_01_complete.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 110,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -152.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71, G76, G90, G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/setup_01_complete.nc"
+ },
+ "op_110_face_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 12,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    0.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_110_face_rear.nc"
+ },
+ "op_120_rough_od_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 19,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -60.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_120_rough_od_rear.nc"
+ },
+ "op_130_finish_od_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 18,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -60.0,
+    2.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_130_finish_od_rear.nc"
+ },
+ "op_140_centre_drill_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 13,
+  "extents": {
+   "X": [
+    0.0,
+    0.0
+   ],
+   "Z": [
+    -2.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_140_centre_drill_rear.nc"
+ },
+ "op_150_drill_d13_rear.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 31,
+  "extents": {
+   "X": [
+    0.0,
+    0.0
+   ],
+   "Z": [
+    -65.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_150_drill_d13_rear.nc"
+ },
+ "setup_02_complete.nc": {
+  "dialect": "lathelab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 74,
+  "extents": {
+   "X": [
+    0.0,
+    110.0
+   ],
+   "Z": [
+    -65.0,
+    5.0
+   ]
+  },
+  "x_is_diameter": true,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 1
+  },
+  "findings": [
+   {
+    "severity": "info",
+    "line": null,
+    "code": "cycles_used",
+    "message": "cycles used: G71, G94 (cycle internals are not checked statically)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/setup_02_complete.nc"
+ }
+}

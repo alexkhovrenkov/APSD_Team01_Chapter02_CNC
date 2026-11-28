@@ -1,0 +1,310 @@
+{
+ "setups": [
+  {
+   "id": "S1",
+   "orientation_and_workholding": "Pins up (+Z); block 170x85x24 in fixture (MillLab: vise, whole block above jaws). Frame around the part is kept; 4.5 mm skin (CAD Z-10..-5.5) left under all through-features",
+   "work_zero": "G54 front-left block corner, Z0 block top. CAD->S1: X=Xc+40, Y=Yc+40, Z=Zc-14",
+   "operations": [
+    {
+     "id": "OP10",
+     "name": "Boss2 top face",
+     "features": [
+      "F02",
+      "F08"
+     ],
+     "tool": "T02",
+     "strategy": "facing (centre plunge + 2 circles)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "4 mm, 1 pass to Z-4",
+     "simulator_supported": true,
+     "nc_file": "op_10_boss2_top.nc"
+    },
+    {
+     "id": "OP20",
+     "name": "Boss walls and arm-top rings",
+     "features": [
+      "F07",
+      "F08",
+      "F03"
+     ],
+     "tool": "T02",
+     "strategy": "contouring",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "walls 3.5 mm to Z-7; rings 3 mm to Z-9",
+     "simulator_supported": true,
+     "nc_file": "op_20_boss_walls_rings.nc"
+    },
+    {
+     "id": "OP30",
+     "name": "Window pocket",
+     "features": [
+      "F12"
+     ],
+     "tool": "T02",
+     "strategy": "roughing+finishing (3 rows + offset loop, climb)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "3.9 mm x 5 to Z-19.5",
+     "simulator_supported": true,
+     "nc_file": "op_30_window.nc"
+    },
+    {
+     "id": "OP40",
+     "name": "Outer contour channel",
+     "features": [
+      "F06",
+      "F07",
+      "F08"
+     ],
+     "tool": "T02",
+     "strategy": "contouring (climb, tool-centre path)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "3.9 mm x 5 to Z-19.5",
+     "simulator_supported": true,
+     "nc_file": "op_40_outer_channel.nc"
+    },
+    {
+     "id": "OP50",
+     "name": "Arm-top strips",
+     "features": [
+      "F03",
+      "F15"
+     ],
+     "tool": "T02",
+     "strategy": "roughing+finishing (centre-line arcs R111 / R64)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "3 mm x 3 to Z-9",
+     "simulator_supported": true,
+     "nc_file": "op_50_arm_strips.nc"
+    },
+    {
+     "id": "OP60",
+     "name": "Bore D30",
+     "features": [
+      "F09"
+     ],
+     "tool": "T02",
+     "strategy": "circular milling (centre plunge, r5, r10)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "3.9 mm x 5 to Z-19.5",
+     "simulator_supported": true,
+     "nc_file": "op_60_bore30.nc"
+    },
+    {
+     "id": "OP70",
+     "name": "Hole D20",
+     "features": [
+      "F11"
+     ],
+     "tool": "T02",
+     "strategy": "circular milling (centre plunge, r5)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "3.875 mm x 4, Z-4 to Z-19.5",
+     "simulator_supported": true,
+     "nc_file": "op_70_hole20.nc"
+    },
+    {
+     "id": "OP80",
+     "name": "Boss1 top face around pins",
+     "features": [
+      "F02",
+      "F07",
+      "F13"
+     ],
+     "tool": "T03",
+     "strategy": "facing + pin profiling (climb)",
+     "spindle": "4000 rpm M03",
+     "feed": "150 mm/min, plunge 60",
+     "depth_of_cut": "2 mm x 2 to Z-4",
+     "simulator_supported": true,
+     "nc_file": "op_80_boss1_top_pins.nc"
+    },
+    {
+     "id": "OP90",
+     "name": "Keyway",
+     "features": [
+      "F10"
+     ],
+     "tool": "T03",
+     "strategy": "slotting (2 passes x=39/41)",
+     "spindle": "4000 rpm M03",
+     "feed": "150 mm/min, plunge 60",
+     "depth_of_cut": "2 mm, Z-4 to Z-19.5 (8 passes)",
+     "simulator_supported": true,
+     "nc_file": "op_90_keyway.nc"
+    },
+    {
+     "id": "OP95",
+     "name": "Keyway sharp end corners",
+     "features": [
+      "F10"
+     ],
+     "tool": "none (broach / EDM / hand file)",
+     "strategy": "secondary operation",
+     "spindle": "n/a",
+     "feed": "n/a",
+     "depth_of_cut": "n/a",
+     "simulator_supported": false,
+     "nc_file": null
+    },
+    {
+     "id": "OP100",
+     "name": "R2 fillets, top side",
+     "features": [
+      "F14",
+      "F03"
+     ],
+     "tool": "T10",
+     "strategy": "finishing (bull-nose corner forms fillet)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "Z-9, 1 pass",
+     "simulator_supported": true,
+     "nc_file": "op_100_fillets_top.nc"
+    }
+   ]
+  },
+  {
+   "id": "S2",
+   "orientation_and_workholding": "Turned over about Y; dedicated support fixture protecting S1 features (MillLab: raw block in vise). Part separates from the frame in OP180",
+   "work_zero": "G54 front-left corner after flipping, Z0 on boss bottom faces. CAD->S2: X=130-Xc, Y=Yc+40, Z=-10-Zc",
+   "operations": [
+    {
+     "id": "OP110",
+     "name": "Boss walls and arm-bottom rings",
+     "features": [
+      "F07",
+      "F08",
+      "F04"
+     ],
+     "tool": "T02",
+     "strategy": "contouring",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "walls 3 mm to Z-3; rings 2.5 mm to Z-5",
+     "simulator_supported": true,
+     "nc_file": "op_110_boss_walls_rings_s2.nc"
+    },
+    {
+     "id": "OP120",
+     "name": "Window pocket (bottom)",
+     "features": [
+      "F12"
+     ],
+     "tool": "T02",
+     "strategy": "roughing+finishing",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "2.75 mm x 2 to Z-5.5",
+     "simulator_supported": true,
+     "nc_file": "op_120_window_s2.nc"
+    },
+    {
+     "id": "OP130",
+     "name": "Arm-bottom strips",
+     "features": [
+      "F04",
+      "F15"
+     ],
+     "tool": "T02",
+     "strategy": "roughing+finishing",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "2.5 mm x 2 to Z-5",
+     "simulator_supported": true,
+     "nc_file": "op_130_arm_strips_s2.nc"
+    },
+    {
+     "id": "OP140",
+     "name": "Bore D30 (bottom)",
+     "features": [
+      "F09"
+     ],
+     "tool": "T02",
+     "strategy": "circular milling",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "2.75 mm x 2 to Z-5.5",
+     "simulator_supported": true,
+     "nc_file": "op_140_bore30_s2.nc"
+    },
+    {
+     "id": "OP150",
+     "name": "Hole D20 (bottom)",
+     "features": [
+      "F11"
+     ],
+     "tool": "T02",
+     "strategy": "circular milling",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "2.75 mm x 2 to Z-5.5",
+     "simulator_supported": true,
+     "nc_file": "op_150_hole20_s2.nc"
+    },
+    {
+     "id": "OP160",
+     "name": "Keyway (bottom)",
+     "features": [
+      "F10"
+     ],
+     "tool": "T03",
+     "strategy": "slotting",
+     "spindle": "4000 rpm M03",
+     "feed": "150 mm/min, plunge 60",
+     "depth_of_cut": "2/2/1.5 mm to Z-5.5",
+     "simulator_supported": true,
+     "nc_file": "op_160_keyway_s2.nc"
+    },
+    {
+     "id": "OP170",
+     "name": "R2 fillets, bottom side",
+     "features": [
+      "F14",
+      "F04"
+     ],
+     "tool": "T10",
+     "strategy": "finishing",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "Z-5, 1 pass",
+     "simulator_supported": true,
+     "nc_file": "op_170_fillets_bottom.nc"
+    },
+    {
+     "id": "OP180",
+     "name": "Outer channel, separation",
+     "features": [
+      "F06",
+      "F07",
+      "F08"
+     ],
+     "tool": "T02",
+     "strategy": "contouring (climb)",
+     "spindle": "4000 rpm M03",
+     "feed": "200 mm/min, plunge 60",
+     "depth_of_cut": "2.75 mm x 2 to Z-5.5",
+     "simulator_supported": true,
+     "nc_file": "op_180_outer_channel_s2.nc"
+    }
+   ]
+  }
+ ],
+ "assumptions": [
+  "Split plane between setups = arm bottom (CAD Z-5). All voids (window, channel, bore, hole, keyway) go 0.5 mm past it on both sides (S1 Z-19.5, S2 Z-5.5) for a clean break-through.",
+  "Only T02, T03, T10 have approved cutting data; drills, tap, reamer, face mill, chamfer mill and D16 are not used. T08 excluded (open item).",
+  "Tool-centre programming with G40; offsets computed by hand from magazine radii (T02 R5, T03 R3, T10 R6), wear 0. No G41/G42.",
+  "T02 and T03 assumed centre-cutting (vertical plunges at the approved 60 mm/min).",
+  "Single pass to final size; no finishing allowance, because no tolerances are given.",
+  "Raw block faces are the finished pin tops and boss bottoms (allowance 0 as configured).",
+  "Waste frame kept for clamping; the part is freed during the last S2 pass (OP180).",
+  "No coolant programmed (not specified).",
+  "Flat tools never go below CAD Z+/-7 within 2 mm of a boss wall in arm regions, so T10 can form the R2 fillets."
+ ]
+}

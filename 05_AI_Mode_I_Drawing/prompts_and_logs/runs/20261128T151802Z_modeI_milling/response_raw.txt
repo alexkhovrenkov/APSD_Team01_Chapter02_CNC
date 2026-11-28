@@ -1,0 +1,727 @@
+## 1. Recognized features
+```json features
+{"features": [
+ {"id": "F01", "type": "cylindrical boss", "description": "Large boss, outer diameter 60, height 20. Its top face carries the pins and it contains the keyed bore.", "dimensions": {"diameter_mm": 60.0, "height_mm": 20.0}, "location": "S1: axis X40 Y40 (work_origin, HUMAN_APPROVED); top face Z-4, bottom face Z-24", "source": "Top view callout Ø60; front view callout 20 (left)", "confidence": "high", "needs_human_verification": true},
+ {"id": "F02", "type": "through bore", "description": "Bore D30 through the large boss, coaxial with F01. The callout is underlined (ISO convention: not drawn to scale).", "dimensions": {"diameter_mm": 30.0, "depth_mm": 20.0}, "location": "S1: axis X40 Y40, Z-4 to Z-24", "source": "Top view callout Ø30 (underlined); section B-B shows the bore through the full boss height", "confidence": "high", "needs_human_verification": true},
+ {"id": "F03", "type": "axial keyway (through)", "description": "Keyway in the D30 bore, width 8, bottom 18 from the bore axis (3 beyond the bore wall), through the boss height, pointing +Y. Drawn with sharp internal corners.", "dimensions": {"width_mm": 8.0, "bottom_distance_from_bore_axis_mm": 18.0, "depth_beyond_bore_wall_mm": 3.0, "length_mm": 20.0}, "location": "S1: walls X36 and X44, bottom at Y58, Z-4 to Z-24", "source": "Section C-C callout 8 (keyway width); section B-B callout 18 (from axis)", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F04", "type": "cylindrical pins (assumed integral)", "description": "Six pins D3.5, 4 high, on the top face of the large boss. Centres are on radius 23 from the boss axis. The layout is read as six equally spaced at 30 + k*60 deg, with one on +Y (the keyway side).", "dimensions": {"diameter_mm": 3.5, "height_mm": 4.0, "pitch_circle_radius_mm": 23.0, "pitch_circle_diameter_mm": 46.0}, "location": "S1 centres: (59.919, 51.5), (40, 63), (20.081, 51.5), (20.081, 28.5), (40, 17), (59.919, 28.5); Z-4 to Z0", "source": "Top view callout Ø3,5; section B-B callouts 4 and 23; isometric view", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F05", "type": "cylindrical boss", "description": "Small boss, outer diameter 42, height 20. Top and bottom faces are in the same planes as F01 (front view).", "dimensions": {"diameter_mm": 42.0, "height_mm": 20.0}, "location": "S1: axis on Y40 at X = 40 + d. The centre distance d is NOT DIMENSIONED. Top Z-4, bottom Z-24.", "source": "Top view callout Ø42; front view callout 20 (right)", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F06", "type": "through bore", "description": "Bore D20 through the small boss, coaxial with F05", "dimensions": {"diameter_mm": 20.0, "depth_mm": 20.0}, "location": "S1: axis X = 40 + d (unknown), Y40; Z-4 to Z-24", "source": "Top view callout Ø20; section A-A", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F07", "type": "curved arm (outer rim)", "description": "Outer arm on the +Y side between the bosses. Convex outer edge R115, radial width 8, thickness 10. The edge appears internally tangent to both bosses (no edge line is drawn at the junctions).", "dimensions": {"outer_edge_radius_mm": 115.0, "width_mm": 8.0, "thickness_mm": 10.0, "inner_edge_radius_if_concentric_mm": 107.0}, "location": "Between F01 and F05, +Y side; arc centre not dimensioned (on the -Y side of the boss axis line)", "source": "Top view callouts R115 and 8 (upper); section B-B callout 10; section A-A", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F08", "type": "curved arm (inner arm)", "description": "Inner arm. Its lower edge is a concave arc R60 that appears externally tangent to both bosses. Width 8, thickness 10.", "dimensions": {"lower_edge_radius_mm": 60.0, "width_mm": 8.0, "thickness_mm": 10.0, "upper_edge_radius_if_concentric_mm": 68.0}, "location": "Between F01 and F05, -Y side; arc centre not dimensioned (on the -Y side)", "source": "Top view callouts R60 and 8 (lower), leader carried down to C-C", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F09", "type": "through window", "description": "Opening between the two arms, through the arm thickness. It is bounded by the arm inner edges and the D60 and D42 boss walls, with four R8 corner blends.", "dimensions": {"corner_radius_mm": 8.0, "depth_mm": 10.0}, "location": "Between the bosses at arm level", "source": "Section C-C (4x R8 callouts); top view; isometric view", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F10", "type": "arm height position", "description": "Arms 10 thick, drawn centred in the 20 boss height. The offset from the boss faces is not dimensioned.", "dimensions": {"thickness_mm": 10.0, "assumed_offset_from_boss_faces_mm": 5.0}, "location": "Assumed S1 Z-9 to Z-19 (S2 Z-5 to Z-15)", "source": "Section B-B callout 10; front view; section A-A (layout only)", "confidence": "low", "needs_human_verification": true},
+ {"id": "F11", "type": "fillets", "description": "R2 concave fillets where the arm top and bottom faces meet the boss walls", "dimensions": {"radius_mm": 2.0}, "location": "Arm/D60 junction and arm/D42 junction, top and bottom of arms", "source": "Front view R2 (2x); section A-A R2 (2x)", "confidence": "medium", "needs_human_verification": true},
+ {"id": "F12", "type": "planar faces", "description": "Top faces of both bosses, 4 below the pin tops. Overall height 20 + 4 = 24, equal to the stock height, so Z0 (block top) = pin tops.", "dimensions": {"pin_height_mm": 4.0, "overall_height_mm": 24.0}, "location": "S1 Z-4 (top faces); S2 Z0 (bottom faces)", "source": "Section B-B callout 4; front view callouts 20", "confidence": "high", "needs_human_verification": true},
+ {"id": "F13", "type": "general note", "description": "Break all sharp edges and remove burrs. No tolerances, surface-finish value, material or title are entered on the drawing.", "dimensions": {}, "location": "Whole part", "source": "Title block", "confidence": "high", "needs_human_verification": true}
+],
+ "unclear_or_missing": [
+ {"item": "Centre distance d between the D60 and D42 boss axes", "why": "There is no horizontal dimension in the top view, front view or C-C. Scaling is not allowed, so the position of F05, F06, F07, F08 and F09 cannot be fixed.", "affects": ["OP50", "OP60", "OP70", "OP80", "OP90", "OP110", "OP120"]},
+ {"item": "Centres of arcs R115 and R60", "why": "Not dimensioned. Tangency to the bosses is only implied (no junction edge lines). Even if tangency is confirmed, the centres still need d.", "affects": ["OP60", "OP80", "OP90", "OP110", "OP120"]},
+ {"item": "Height position of the 10-thick arms within the 20 boss height", "why": "Only the thickness 10 is given. The centred position is read from the layout, not from a dimension.", "affects": ["OP50", "OP60", "OP80", "OP90", "OP110", "OP120"]},
+ {"item": "Arm width 8: edge construction", "why": "Each 8 callout is measured at one place. It is not stated whether the inner edges are concentric offsets (R107, R68).", "affects": ["OP60", "OP80", "OP110"]},
+ {"item": "Pin count and angular positions", "why": "The Ø3,5 callout has no '6x' and there are no angular dimensions. Six pins at 60 deg spacing with one on +Y is read from the view symmetry.", "affects": ["OP10", "OP30"]},
+ {"item": "Meaning of 23 and 18 in section B-B", "why": "Read as axis-to-pin-centre (23) and axis-to-keyway-bottom (18). The extension lines are close together and both start at the boss axis.", "affects": ["OP10", "OP30", "OP40"]},
+ {"item": "Keyway corner form and tolerance", "why": "Sharp internal corners cannot be produced by a rotating end mill; a D6 tool leaves R3. No width tolerance or fit is given.", "affects": ["OP40", "OP45"]},
+ {"item": "Pins integral or inserted dowels", "why": "Not stated. They are assumed integral because overall height 24 equals the stock height.", "affects": ["OP10", "OP30"]},
+ {"item": "Extent of R2 fillets and of plan-view blends at the arm/boss junctions", "why": "R2 is shown only in the front view and A-A. Thin tangent lines in the top view suggest blends, but these are not dimensioned.", "affects": ["OP80", "OP90", "OP120"]},
+ {"item": "Tolerances, surface finish, material", "why": "These title-block fields are empty. Material is taken from the approved configuration (Al 6061).", "affects": ["OP10", "OP20", "OP30", "OP40", "OP50", "OP60", "OP70", "OP80", "OP90", "OP110", "OP120"]},
+ {"item": "Z0 'finished top' = pin tops", "why": "Configuration says Z0 = block top, nothing faced. This matches pin tops only because 20 + 4 = 24 = stock height.", "affects": ["OP10", "OP20", "OP30", "OP40"]}
+]}
+```
+
+## 2. Operation plan
+```json operations
+{"setups": [
+ {"id": "S1", "orientation_and_workholding": "Pins facing +Z. Raw block 170 x 85 x 24 (Al 6061) in a fixture; in MillLab a vise with the whole block height above the jaws.", "work_zero": "G54 X0 Y0 at the front-left top corner, Z0 = block top = pin tops. Large boss axis X40 Y40, keyway towards +Y, second boss on +X at X40+d (d unknown).",
+  "operations": [
+   {"id": "OP10", "name": "Face the whole block to Z-4 around the pin ring (boss top faces)", "features": ["F12", "F04"], "tool": "T02", "strategy": "roughing/facing, single level, zigzag + circular passes", "spindle": "S4000 M03", "feed": "F200; Z moves F60", "depth_of_cut": "4.0 mm axial (Z0 to Z-4); stepover max 6.75 mm", "simulator_supported": true, "nc_file": "op_10_face_top_to_z4.nc"},
+   {"id": "OP20", "name": "Mill bore D30 through", "features": ["F02"], "tool": "T02", "strategy": "centre plunge + circular interpolation rough (D29.6), finish pass D30 at full depth", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "2.0 mm per level, Z-4 to Z-24.5; finish 0.2 mm radial", "simulator_supported": true, "nc_file": "op_20_bore_d30.nc"},
+   {"id": "OP30", "name": "Mill six pins D3.5 x 4 and clear the pin ring", "features": ["F04", "F12"], "tool": "T03", "strategy": "two climb loops per pin per level (radius 10 and 4.75 about the pin axis)", "spindle": "S4000 M03", "feed": "F150; Z moves F60", "depth_of_cut": "2.0 mm per level, 2 levels to Z-4", "simulator_supported": true, "nc_file": "op_30_pins_d3_5.nc"},
+   {"id": "OP40", "name": "Mill keyway width 8, bottom 18 from axis, through", "features": ["F03"], "tool": "T03", "strategy": "rectangular climb loop per level, entry in the bore void", "spindle": "S4000 M03", "feed": "F150; Z moves F60", "depth_of_cut": "2.0 mm per level, Z-4 to Z-24.5", "simulator_supported": true, "nc_file": "op_40_keyway_w8.nc"},
+   {"id": "OP45", "name": "Keyway corners sharp per drawing (broaching/slotting, not on this machine)", "features": ["F03"], "tool": "none in magazine (broach or slotting tool)", "strategy": "secondary operation", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null},
+   {"id": "OP50", "name": "Rough outside both bosses from Z-4 to arm top Z-9", "features": ["F01", "F05", "F10"], "tool": "T02", "strategy": "roughing", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "max 4.0 mm per level", "simulator_supported": true, "nc_file": "op_50_rough_outside_bosses_to_z9.nc", "blocked_by": ["centre distance d not dimensioned", "arm height position not dimensioned"]},
+   {"id": "OP60", "name": "Rough outside the part outline and the window from Z-9 to Z-19 (arm level)", "features": ["F07", "F08", "F09", "F10"], "tool": "T02", "strategy": "roughing, 0.3 mm wall allowance", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "max 4.0 mm per level", "simulator_supported": true, "nc_file": "op_60_rough_arms_window_to_z19.nc", "blocked_by": ["centre distance d", "R115/R60 centres", "arm height position", "arm edge construction"]},
+   {"id": "OP70", "name": "Mill bore D20 through", "features": ["F06"], "tool": "T02", "strategy": "as OP20 (tool-centre circle R4.8 rough / R5 finish)", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "2.0 mm per level, Z-4 to Z-24.5", "simulator_supported": true, "nc_file": "op_70_bore_d20.nc", "blocked_by": ["centre distance d"]},
+   {"id": "OP80", "name": "Finish boss walls (Z-4 to Z-19), arm edges and window with R8 corners", "features": ["F01", "F05", "F07", "F08", "F09"], "tool": "T03", "strategy": "finishing contour, climb", "spindle": "S4000 M03", "feed": "F150; plunge F60", "depth_of_cut": "max 2.0 mm per level, 0.3 mm radial", "simulator_supported": true, "nc_file": "op_80_finish_walls_window_r8.nc", "blocked_by": ["centre distance d", "R115/R60 centres", "arm height position"]},
+   {"id": "OP90", "name": "R2 fillets, arm top faces to boss walls; finish arm top face Z-9", "features": ["F11", "F10"], "tool": "T10", "strategy": "2.5D contour with bull-nose corner R2 along the boss walls", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "finish 0.2 mm", "simulator_supported": true, "nc_file": "op_90_fillets_r2_top.nc", "blocked_by": ["centre distance d", "arm height position", "fillet extent"]}
+  ]},
+ {"id": "S2", "orientation_and_workholding": "Part turned over about the Y axis (X -> 170 - X), held in a dedicated support fixture protecting the S1 features. MillLab simulates from a raw block.", "work_zero": "G54 front-left corner after flipping; Z0 = bottom faces of the bosses. Large boss axis X130 Y40; small boss at X130-d.",
+  "operations": [
+   {"id": "OP110", "name": "Clear outside both bosses Z0 to Z-5 (arm underside), finish lower boss walls", "features": ["F01", "F05", "F07", "F08", "F10"], "tool": "T02", "strategy": "roughing + finishing pass", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "max 4.0 mm per level", "simulator_supported": true, "nc_file": "op_110_clear_bottom_outside_bosses_to_z5.nc", "blocked_by": ["centre distance d", "R115/R60 centres", "arm height position"]},
+   {"id": "OP120", "name": "R2 fillets, arm bottom faces to boss walls", "features": ["F11"], "tool": "T10", "strategy": "2.5D contour with bull-nose corner R2", "spindle": "S4000 M03", "feed": "F200; plunge F60", "depth_of_cut": "finish 0.2 mm", "simulator_supported": true, "nc_file": "op_120_fillets_r2_bottom.nc", "blocked_by": ["centre distance d", "arm height position", "fillet extent"]},
+   {"id": "OP130", "name": "Break sharp edges, remove burrs", "features": ["F13"], "tool": "manual (T09 chamfer mill has no approved cutting data)", "strategy": "manual deburring", "spindle": "n/a", "feed": "n/a", "depth_of_cut": "n/a", "simulator_supported": false, "nc_file": null}
+  ]}
+],
+ "assumptions": [
+  "Z0 (block top, nothing faced) = pin tops, because pin height 4 + boss height 20 = stock height 24.",
+  "Pins are integral to the part: 6 pins equally spaced at 30 + k*60 deg on radius 23, one on +Y (keyway side).",
+  "B-B dimension 23 = boss axis to pin centre; 18 = boss axis to keyway bottom.",
+  "Arms are centred in the boss height (S1 Z-9 to Z-19). Used only to describe the blocked operations.",
+  "R115 is internally tangent and R60 externally tangent to both bosses. If confirmed, the arc centres relative to the large boss axis, with d = boss centre distance, are: C115 x = (d^2 - 1611)/(2d), y = -sqrt(7225 - x^2); C60 x = (d^2 + 1539)/(2d), y = -sqrt(8100 - x^2). Window edges are R107 about C115 and R68 about C60, closed by the D60/D42 walls with R8 blends.",
+  "No value for d is assumed. All d-dependent NC is withheld rather than guessed.",
+  "T02 and T03 are centre-cutting, so OP20 plunges at the bore centre.",
+  "Through features are cut to Z-24.5 (0.5 mm breakthrough). The real fixture needs relief under both bores and the keyway.",
+  "Tool-centre programming with G40 (no G41/G42). Offsets use the approved radii T02 R5 and T03 R3.",
+  "No coolant is programmed because coolant is not in the approved data.",
+  "MillLab accepts full circles (G02/G03, same start and end point, I/J centre).",
+  "Not used: T01 and T12 (no cutting data), T04-T07, T09 and T11 (no cutting data), T08 (inconsistent row).",
+  "The individual op files assume the preceding ops of the same setup are done. For MillLab (raw block start), run setup_01_complete.nc."
+ ]}
+```
+
+## 3. Toolpath assumptions
+- **Safe heights.** All XY rapids are at Z10. Rapid descent stops at Z1, and every move below Z1 is fed at F60, even where the material is already removed.
+- **Tool changes.** Each change follows the same sequence: Z10, M05, G49, Tnn M06, S4000 M03, G00 G43 Hnn Z10. G40 and G80 are modal from the header.
+- **Compensation.** There is no G41/G42; tool-centre paths are computed from T02 R5 and T03 R3. G43 Hnn is used with nn = tool number.
+- **OP10 (T02), one 4 mm level.** This is the approved maximum for general removal.
+  - Zigzag strips enter from outside the block at X-7 or X177. Stepover is 6 to 6.75 mm.
+  - The T02 centre stays outside a square |X-40|, |Y-40| ≤ 30.25. That keeps it at least 7.25 mm from every pin centre (1.75 pin + 5 tool + 0.5 clearance).
+  - The material left inside the square is then removed by:
+    - a circle at tool-centre R30.75 (covers r 25.75–35.75, which includes the square corners);
+    - a slot along Y40 between pins 1 and 6 (11.5 mm from each pin axis);
+    - circles at R8 and R15.75 (covers r ≤ 20.75).
+  - Only the ring r 20.75–25.75 around the pins remains for OP30.
+  - Because the whole block is faced to Z-4, the small boss top face is produced wherever the boss ends up, so OP10 does not depend on d.
+- **OP20 bore D30 (T02).**
+  - At each level the tool plunges at the bore centre (removes r < 5), moves out to tool-centre R9.8, does a full CCW circle (climb), and returns to centre.
+  - Levels are 2 mm because radial engagement is full width.
+  - Finish is one CCW circle at R10 over the full depth: 0.2 mm radial engagement, with the 25 mm flute covering Z-24.5 to Z+0.5.
+- **OP30 pins (T03, 2 levels of 2 mm).** Each pin gets two full CW (climb) loops per level:
+  - a loop of radius 10 about the pin axis, clearing 7–13 mm from the axis;
+  - a loop of radius 4.75, finishing the D3.5 pin.
+  - Entry and exit are radially outward at r33 and r27.75 from the boss axis, which is already cleared air.
+  - The farthest leftover point midway between two pins is 12.9 mm from the nearest pin axis, so it is covered.
+  - The closest approach to a neighbouring pin is 10 mm.
+- **OP40 keyway (T03).**
+  - CCW (climb) rectangle with tool centre X39–41, Y50–55, in 2 mm levels from Z-6 to Z-24.5.
+  - Z moves happen inside the D30 bore void, at most 13.05 mm from the axis, which is less than 15.
+  - The result is width 8, bottom flat at Y58 (18 from the axis), with R3 bottom corners instead of sharp (see OP45).
+  - The tool stays 3.25 mm clear of pin 2.
+- **Why these tools.**
+  - T02 and T03 are the only end mills with approved data.
+  - D10 suits the D30 and D20 bores and open areas.
+  - D6 is under the keyway width of 8 and fits around the D3.5 pins.
+  - D6 (R3) can make the R8 window corners later.
+  - T10 (corner R2) is the only tool that can generate the R2 fillets.
+  - The maximum depth of 24.5 is within the 25 mm flute length of T02 and T03, but only by 0.5 mm.
+
+## 4. NC programs
+```gcode file=op_10_face_top_to_z4.nc setup=S1 op=OP10
+(APSD-MILLING S1 OP10 - FACE BLOCK TO Z-4 AROUND PIN RING - T02 END MILL D10)
+(SIMULATION-ONLY CANDIDATE - NOT VERIFIED)
+(G54 X0 Y0 FRONT-LEFT CORNER, Z0 BLOCK TOP = PIN TOPS, TOOL CENTRE PATHS)
+G21 G17 G40 G49 G80 G90 G94 (METRIC, XY PLANE, CANCEL COMP/CYCLES, ABS, MM/MIN)
+G54 (WORK OFFSET)
+T02 M06 (END MILL D10 3FL)
+S4000 M03 (SPINDLE CW)
+G00 G43 H02 Z10. (LENGTH COMP, SAFE HEIGHT)
+(BOTTOM STRIP)
+G00 X-7. Y3. (OUTSIDE BLOCK)
+G00 Z1.
+G01 Z-4. F60 (FEED DOWN OUTSIDE BLOCK)
+G01 X177. F200
+G01 Y9.75
+G01 X-7.
+(LEFT STRIP)
+G01 X3.
+G01 Y70.25
+G01 X9.75
+G01 Y9.75
+G01 Y70.25 (BACK THROUGH CUT AREA)
+(TOP STRIP)
+G01 X-7.
+G01 X177.
+G01 Y76.25
+G01 X-7.
+G01 Y82.
+G01 X177.
+(RIGHT AREA ZIGZAG, STEP 6)
+G01 Y63.75
+G01 X70.25
+G01 Y57.75
+G01 X177.
+G01 Y51.75
+G01 X70.25
+G01 Y45.75
+G01 X177.
+G01 Y39.75
+G01 X70.25
+G01 Y33.75
+G01 X177.
+G01 Y27.75
+G01 X70.25
+G01 Y21.75
+G01 X177.
+G01 Y15.75
+G01 X70.25
+(RING OUTSIDE PIN CIRCLE, TOOL CENTRE R30.75)
+G01 X70.75 Y40.
+G03 X70.75 Y40. I-30.75 J0
+(INSIDE PIN CIRCLE)
+G01 X40. Y40. (SLOT ALONG Y40 BETWEEN PINS 1 AND 6)
+G01 X48.
+G03 X48. Y40. I-8. J0 (TOOL CENTRE R8)
+G01 X55.75
+G03 X55.75 Y40. I-15.75 J0 (TOOL CENTRE R15.75)
+G00 Z10. (RETRACT)
+M05
+G49
+M30
+```
+```gcode file=op_20_bore_d30.nc setup=S1 op=OP20
+(APSD-MILLING S1 OP20 - BORE D30 THROUGH - T02 END MILL D10)
+(REQUIRES OP10. CENTRE PLUNGE + CIRCLE R9.8 PER 2 MM, FINISH R10)
+G21 G17 G40 G49 G80 G90 G94
+G54
+T02 M06 (END MILL D10)
+S4000 M03
+G00 G43 H02 Z10.
+G00 X40. Y40. (BORE CENTRE)
+G00 Z1.
+G01 Z-6. F60 (LEVEL 1)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-8. F60 (LEVEL 2)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-10. F60 (LEVEL 3)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-12. F60 (LEVEL 4)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-14. F60 (LEVEL 5)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-16. F60 (LEVEL 6)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-18. F60 (LEVEL 7)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-20. F60 (LEVEL 8)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-22. F60 (LEVEL 9)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-24. F60 (LEVEL 10)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-24.5 F60 (LEVEL 11 - 0.5 BREAKTHROUGH)
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+(FINISH D30 FULL DEPTH, CLIMB)
+G01 X50. F200
+G03 X50. Y40. I-10. J0
+G01 X40.
+G00 Z10.
+M05
+G49
+M30
+```
+```gcode file=op_30_pins_d3_5.nc setup=S1 op=OP30
+(APSD-MILLING S1 OP30 - SIX PINS D3.5 X 4, CLEAR PIN RING - T03 END MILL D6)
+(REQUIRES OP10. PER PIN: CW LOOP R10 + CW LOOP R4.75 ABOUT PIN AXIS, LEVELS Z-2 / Z-4)
+G21 G17 G40 G49 G80 G90 G94
+G54
+T03 M06 (END MILL D6 3FL)
+S4000 M03
+G00 G43 H03 Z10.
+(PIN 1 AT X59.919 Y51.5)
+G00 X68.579 Y56.5
+G00 Z1.
+G01 Z-2. F60
+G02 X68.579 Y56.5 I-8.66 J-5. F150
+G01 X64.032 Y53.875
+G02 X64.032 Y53.875 I-4.114 J-2.375
+G01 X68.579 Y56.5
+G01 Z-4. F60
+G02 X68.579 Y56.5 I-8.66 J-5. F150
+G01 X64.032 Y53.875
+G02 X64.032 Y53.875 I-4.114 J-2.375
+G00 Z10.
+(PIN 2 AT X40 Y63)
+G00 X40. Y73.
+G00 Z1.
+G01 Z-2. F60
+G02 X40. Y73. I0 J-10. F150
+G01 X40. Y67.75
+G02 X40. Y67.75 I0 J-4.75
+G01 X40. Y73.
+G01 Z-4. F60
+G02 X40. Y73. I0 J-10. F150
+G01 X40. Y67.75
+G02 X40. Y67.75 I0 J-4.75
+G00 Z10.
+(PIN 3 AT X20.081 Y51.5)
+G00 X11.421 Y56.5
+G00 Z1.
+G01 Z-2. F60
+G02 X11.421 Y56.5 I8.66 J-5. F150
+G01 X15.968 Y53.875
+G02 X15.968 Y53.875 I4.114 J-2.375
+G01 X11.421 Y56.5
+G01 Z-4. F60
+G02 X11.421 Y56.5 I8.66 J-5. F150
+G01 X15.968 Y53.875
+G02 X15.968 Y53.875 I4.114 J-2.375
+G00 Z10.
+(PIN 4 AT X20.081 Y28.5)
+G00 X11.421 Y23.5
+G00 Z1.
+G01 Z-2. F60
+G02 X11.421 Y23.5 I8.66 J5. F150
+G01 X15.968 Y26.125
+G02 X15.968 Y26.125 I4.114 J2.375
+G01 X11.421 Y23.5
+G01 Z-4. F60
+G02 X11.421 Y23.5 I8.66 J5. F150
+G01 X15.968 Y26.125
+G02 X15.968 Y26.125 I4.114 J2.375
+G00 Z10.
+(PIN 5 AT X40 Y17)
+G00 X40. Y7.
+G00 Z1.
+G01 Z-2. F60
+G02 X40. Y7. I0 J10. F150
+G01 X40. Y12.25
+G02 X40. Y12.25 I0 J4.75
+G01 X40. Y7.
+G01 Z-4. F60
+G02 X40. Y7. I0 J10. F150
+G01 X40. Y12.25
+G02 X40. Y12.25 I0 J4.75
+G00 Z10.
+(PIN 6 AT X59.919 Y28.5)
+G00 X68.579 Y23.5
+G00 Z1.
+G01 Z-2. F60
+G02 X68.579 Y23.5 I-8.66 J5. F150
+G01 X64.032 Y26.125
+G02 X64.032 Y26.125 I-4.114 J2.375
+G01 X68.579 Y23.5
+G01 Z-4. F60
+G02 X68.579 Y23.5 I-8.66 J5. F150
+G01 X64.032 Y26.125
+G02 X64.032 Y26.125 I-4.114 J2.375
+G00 Z10.
+M05
+G49
+M30
+```
+```gcode file=op_40_keyway_w8.nc setup=S1 op=OP40
+(APSD-MILLING S1 OP40 - KEYWAY W8, BOTTOM Y58, THROUGH - T03 END MILL D6)
+(REQUIRES OP20. TOOL CENTRE X39-41 Y50-55, CCW CLIMB, LEAVES R3 BOTTOM CORNERS)
+G21 G17 G40 G49 G80 G90 G94
+G54
+T03 M06 (END MILL D6)
+S4000 M03
+G00 G43 H03 Z10.
+G00 X41. Y50. (INSIDE BORE VOID)
+G00 Z1.
+G01 Z-6. F60 (LEVEL 1)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-8. F60 (LEVEL 2)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-10. F60 (LEVEL 3)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-12. F60 (LEVEL 4)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-14. F60 (LEVEL 5)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-16. F60 (LEVEL 6)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-18. F60 (LEVEL 7)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-20. F60 (LEVEL 8)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-22. F60 (LEVEL 9)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-24. F60 (LEVEL 10)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-24.5 F60 (LEVEL 11 - BREAKTHROUGH)
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G00 Z10.
+M05
+G49
+M30
+```
+```gcode file=op_50_rough_outside_bosses_to_z9.nc setup=S1 op=OP50
+(OP50 ROUGH OUTSIDE BOTH BOSSES Z-4 TO Z-9 - T02 - NOT GENERATED)
+(BLOCKED: BOSS CENTRE DISTANCE AND ARM HEIGHT POSITION NOT DIMENSIONED)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=op_60_rough_arms_window_to_z19.nc setup=S1 op=OP60
+(OP60 ROUGH OUTSIDE OUTLINE AND WINDOW Z-9 TO Z-19 - T02 - NOT GENERATED)
+(BLOCKED: CENTRE DISTANCE, R115/R60 CENTRES, ARM HEIGHT, ARM EDGE CONSTRUCTION)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=op_70_bore_d20.nc setup=S1 op=OP70
+(OP70 BORE D20 THROUGH SMALL BOSS - T02 - NOT GENERATED)
+(BLOCKED: SMALL BOSS AXIS X POSITION UNKNOWN - CENTRE DISTANCE NOT DIMENSIONED)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=op_80_finish_walls_window_r8.nc setup=S1 op=OP80
+(OP80 FINISH BOSS WALLS, ARM EDGES, WINDOW R8 - T03 - NOT GENERATED)
+(BLOCKED: CENTRE DISTANCE, R115/R60 CENTRES, ARM HEIGHT POSITION)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=op_90_fillets_r2_top.nc setup=S1 op=OP90
+(OP90 R2 FILLETS ARM TOP TO BOSS WALLS - T10 BULL-NOSE D12 R2 - NOT GENERATED)
+(BLOCKED: CENTRE DISTANCE, ARM HEIGHT POSITION, FILLET EXTENT)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=setup_01_complete.nc setup=S1 op=ALL
+(APSD-MILLING SETUP S1 - OP10 OP20 OP30 OP40 ONLY - SIMULATION-ONLY CANDIDATE)
+(BLOCK 170X85X24 AL6061, G54 FRONT-LEFT TOP CORNER, Z0 = PIN TOPS)
+(LARGE BOSS AXIS X40 Y40, KEYWAY +Y. TOOLS T02 D10 H02, T03 D6 H03, NO CUTTER COMP)
+(OP50-OP90 NOT INCLUDED - BLOCKED BY MISSING DRAWING DIMENSIONS)
+G21 G17 G40 G49 G80 G90 G94
+G54
+T02 M06 (END MILL D10)
+S4000 M03
+G00 G43 H02 Z10.
+(=== OP10 FACE TO Z-4 AROUND PIN RING ===)
+G00 X-7. Y3.
+G00 Z1.
+G01 Z-4. F60
+G01 X177. F200
+G01 Y9.75
+G01 X-7.
+G01 X3.
+G01 Y70.25
+G01 X9.75
+G01 Y9.75
+G01 Y70.25
+G01 X-7.
+G01 X177.
+G01 Y76.25
+G01 X-7.
+G01 Y82.
+G01 X177.
+G01 Y63.75
+G01 X70.25
+G01 Y57.75
+G01 X177.
+G01 Y51.75
+G01 X70.25
+G01 Y45.75
+G01 X177.
+G01 Y39.75
+G01 X70.25
+G01 Y33.75
+G01 X177.
+G01 Y27.75
+G01 X70.25
+G01 Y21.75
+G01 X177.
+G01 Y15.75
+G01 X70.25
+G01 X70.75 Y40.
+G03 X70.75 Y40. I-30.75 J0 (RING OUTSIDE PINS)
+G01 X40. Y40. (SLOT BETWEEN PINS 1 AND 6)
+G01 X48.
+G03 X48. Y40. I-8. J0
+G01 X55.75
+G03 X55.75 Y40. I-15.75 J0 (RING INSIDE PINS)
+G00 Z10.
+(=== OP20 BORE D30 THROUGH ===)
+G00 X40. Y40.
+G00 Z1.
+G01 Z-6. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-8. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-10. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-12. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-14. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-16. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-18. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-20. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-22. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-24. F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 Z-24.5 F60
+G01 X49.8 F200
+G03 X49.8 Y40. I-9.8 J0
+G01 X40.
+G01 X50. F200 (FINISH D30)
+G03 X50. Y40. I-10. J0
+G01 X40.
+G00 Z10.
+(=== TOOL CHANGE T02 -> T03 ===)
+M05
+G49
+T03 M06 (END MILL D6)
+S4000 M03
+G00 G43 H03 Z10.
+(=== OP30 PINS D3.5 X 4 ===)
+(PIN 1)
+G00 X68.579 Y56.5
+G00 Z1.
+G01 Z-2. F60
+G02 X68.579 Y56.5 I-8.66 J-5. F150
+G01 X64.032 Y53.875
+G02 X64.032 Y53.875 I-4.114 J-2.375
+G01 X68.579 Y56.5
+G01 Z-4. F60
+G02 X68.579 Y56.5 I-8.66 J-5. F150
+G01 X64.032 Y53.875
+G02 X64.032 Y53.875 I-4.114 J-2.375
+G00 Z10.
+(PIN 2)
+G00 X40. Y73.
+G00 Z1.
+G01 Z-2. F60
+G02 X40. Y73. I0 J-10. F150
+G01 X40. Y67.75
+G02 X40. Y67.75 I0 J-4.75
+G01 X40. Y73.
+G01 Z-4. F60
+G02 X40. Y73. I0 J-10. F150
+G01 X40. Y67.75
+G02 X40. Y67.75 I0 J-4.75
+G00 Z10.
+(PIN 3)
+G00 X11.421 Y56.5
+G00 Z1.
+G01 Z-2. F60
+G02 X11.421 Y56.5 I8.66 J-5. F150
+G01 X15.968 Y53.875
+G02 X15.968 Y53.875 I4.114 J-2.375
+G01 X11.421 Y56.5
+G01 Z-4. F60
+G02 X11.421 Y56.5 I8.66 J-5. F150
+G01 X15.968 Y53.875
+G02 X15.968 Y53.875 I4.114 J-2.375
+G00 Z10.
+(PIN 4)
+G00 X11.421 Y23.5
+G00 Z1.
+G01 Z-2. F60
+G02 X11.421 Y23.5 I8.66 J5. F150
+G01 X15.968 Y26.125
+G02 X15.968 Y26.125 I4.114 J2.375
+G01 X11.421 Y23.5
+G01 Z-4. F60
+G02 X11.421 Y23.5 I8.66 J5. F150
+G01 X15.968 Y26.125
+G02 X15.968 Y26.125 I4.114 J2.375
+G00 Z10.
+(PIN 5)
+G00 X40. Y7.
+G00 Z1.
+G01 Z-2. F60
+G02 X40. Y7. I0 J10. F150
+G01 X40. Y12.25
+G02 X40. Y12.25 I0 J4.75
+G01 X40. Y7.
+G01 Z-4. F60
+G02 X40. Y7. I0 J10. F150
+G01 X40. Y12.25
+G02 X40. Y12.25 I0 J4.75
+G00 Z10.
+(PIN 6)
+G00 X68.579 Y23.5
+G00 Z1.
+G01 Z-2. F60
+G02 X68.579 Y23.5 I-8.66 J5. F150
+G01 X64.032 Y26.125
+G02 X64.032 Y26.125 I-4.114 J2.375
+G01 X68.579 Y23.5
+G01 Z-4. F60
+G02 X68.579 Y23.5 I-8.66 J5. F150
+G01 X64.032 Y26.125
+G02 X64.032 Y26.125 I-4.114 J2.375
+G00 Z10.
+(=== OP40 KEYWAY W8 ===)
+G00 X41. Y50.
+G00 Z1.
+G01 Z-6. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-8. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-10. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-12. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-14. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-16. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-18. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-20. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-22. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-24. F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G01 Z-24.5 F60
+G01 Y55. F150
+G01 X39.
+G01 Y50.
+G01 X41.
+G00 Z10.
+(=== END S1 ===)
+M05
+G49
+M30
+```
+```gcode file=op_110_clear_bottom_outside_bosses_to_z5.nc setup=S2 op=OP110
+(OP110 S2 CLEAR OUTSIDE BOSSES Z0 TO Z-5, ARM UNDERSIDE - T02 - NOT GENERATED)
+(BLOCKED: CENTRE DISTANCE, R115/R60 CENTRES, ARM HEIGHT POSITION)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=op_120_fillets_r2_bottom.nc setup=S2 op=OP120
+(OP120 S2 R2 FILLETS ARM BOTTOM TO BOSS WALLS - T10 - NOT GENERATED)
+(BLOCKED: CENTRE DISTANCE, ARM HEIGHT POSITION, FILLET EXTENT)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+```gcode file=setup_02_complete.nc setup=S2 op=ALL
+(APSD-MILLING SETUP S2 - NOT GENERATED)
+(ALL S2 OPERATIONS DEPEND ON THE UNDIMENSIONED BOSS CENTRE DISTANCE AND ARM HEIGHT POSITION)
+(G54 AFTER FLIP: LARGE BOSS AXIS X130 Y40, Z0 = BOSS BOTTOM FACES)
+(NO MOTION CODE ON PURPOSE - DO NOT SIMULATE)
+```
+
+## 5. Uncertainty and limitations
+
+**Overall status:** only OP10–OP40 have NC code. Every other operation depends on dimensions the drawing does not give. Once the team supplies the boss centre distance and confirms the arm height position and arc tangency, OP50–OP120 can be generated.
+
+**G1 – geometry gate**
+- **Boss centre distance.** It is missing from every view, so the small boss, the D20 bore, both arms, the window and all of S2 are blocked. Please supply it from the CAD revision "Ch2-Final" or a corrected drawing.
+- **Arm edges.** Confirm that R115 is internally tangent and R60 externally tangent to both bosses, and that the arm inner edges are concentric offsets (R107, R68). The formulas are in the operation-plan assumptions.
+- **Stock fit.** Once the centre distance is known, check that the part fits the stock: small boss at X40 + d + 21 ≤ 170, and rim apex Y ≤ 85.
+- **Arm height.** Confirm the 10-thick arms are centred in the 20 boss height (S1 Z-9 to Z-19).
+- **Pins.**
+  - Confirm six pins, equally spaced at 60 deg, one on +Y, on radius 23.
+  - Confirm the reading of 23 and 18 in B-B.
+  - Confirm the pins are integral and not inserted dowels.
+- **Keyway.** Sharp corners are drawn, but milling leaves R3. Is OP45 (broaching or slotting) required? A width tolerance is also missing.
+- **Fillets and title block.** Confirm the extent of the R2 fillets and of the plan-view blends. Tolerances, surface finish and material are blank on the drawing.
+- **Z0.** Confirm Z0 = pin tops, which relies on 20 + 4 = 24 = stock height.
+
+**G2 – process gate**
+- **Facing with an end mill.** Facing 170 × 85 at 4 mm depth with T02 is slow but uses only approved data. A face mill (T01) would need approved cutting data.
+- **Bore entry.** OP20 plunges a D10 end mill at 60 mm/min, so T02 must be centre-cutting. The alternative is helical entry, but MillLab support for helical G02/G03 with Z is unverified.
+- **Breakthrough.** The 0.5 mm breakthrough to Z-24.5 needs fixture relief under the bores and keyway. The real S2 fixture must support the part once the frame is separated.
+- **Finishing allowance.** There is none on the pins and keyway (single pass), and only 0.2 mm on the bore. Fit-critical diameters may need a separate finishing pass once tolerances are known.
+- **Coolant and deburring.** Coolant is not programmed. Deburring (F13) is manual.
+
+**G3 – code gate**
+- **Commands to test in MillLab:**
+  - full-circle G02/G03 with the same start and end point;
+  - G43 H02/H03 against the tool-table lengths;
+  - the tool-change sequence M05/G49/M06;
+  - feeds above Z0 in air;
+  - whether MillLab flags a vise or base collision at Z-24.5. If it does, use Z-24.0 and accept a possible skin.
+- **Flute margin.** The maximum depth of 24.5 against a 25 mm flute (T02, T03) leaves only 0.5 mm. Check for shank contact in the simulator.
+- **Clearance checks to re-verify independently:**
+  - pin-to-tool clearance in OP10 is 0.5 mm (square edges and the R15.75 circle) and 1.0 mm (the R30.75 circle);
+  - the OP30 loops and the OP40 keyway rectangle are within the bore void;
+  - the I/J values are rounded to 0.001.
+- **Individual op files.** They are not standalone from a raw block. Simulate with setup_01_complete.nc, since MillLab starts from a raw block. S2 will also start from a raw block in MillLab, so its result will not show the S1 features.

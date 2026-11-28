@@ -46,9 +46,19 @@ def test_unapproved_human_annotation_is_not_sent():
     assert m["human_annotations"] == [] and any("annotation" in r for r in removed)
 
 
-def test_preflight_blocks_without_baseline_and_part_b():
-    probs = prompts.preflight("lathe")
-    assert any("baseline" in p for p in probs) and any(".safety_clearances" in p for p in probs)
+def _has_baseline(part):
+    from apsd_part_e.paths import BASELINE_OF, NC_SUFFIXES
+    return any(p.is_file() and p.suffix.lower() in NC_SUFFIXES for p in BASELINE_OF[part].rglob("*"))
+
+
+@pytest.mark.parametrize("part", ["lathe", "milling"])
+def test_preflight_blocks_without_baseline_and_part_b(part):
+    probs = prompts.preflight(part)
+    assert any("baseline" in p for p in probs) == (not _has_baseline(part))
+    cfg = prompts.ai_visible_config(part)[prompts.PARTS[part]]
+    for k in prompts.REQUIRED_KEYS:
+        pending = cfg[k].get("status") != "CONFIRMED" or cfg[k].get("class") in ("MISSING", "UNVERIFIED_ASSUMPTION")
+        assert any(f".{k} " in p for p in probs) == pending, k
 
 
 def test_allowlist_needs_a_reason_and_only_covers_listed_numbers():
@@ -164,7 +174,9 @@ def test_coverage_definition():
 def test_current_matrix_reports_dependencies_not_numbers(tmp_path):
     rows = metrics.build_matrix(tmp_path / "m.csv")
     assert len(rows) == 6
-    manual = [r for r in rows if r["source_mode"] == "Manual baseline"]
-    assert all(r["initial_nc_result"].startswith("MISSING_DEPENDENCY") for r in manual)
+    for r in (r for r in rows if r["source_mode"] == "Manual baseline"):
+        part = "lathe" if r["workpiece"] == "APSD-LATHE" else "milling"
+        assert r["initial_nc_result"].startswith("MISSING_DEPENDENCY") == (not _has_baseline(part))
+        assert "human_corrections" in r and r["recognized_feature_coverage"] in ("NOT_MEASURED", "MISSING_DEPENDENCY")
     ai = [r for r in rows if r["source_mode"] != "Manual baseline"]
     assert all(r["recognized_feature_coverage"] in ("NOT_RUN", "NOT_MEASURED") for r in ai)

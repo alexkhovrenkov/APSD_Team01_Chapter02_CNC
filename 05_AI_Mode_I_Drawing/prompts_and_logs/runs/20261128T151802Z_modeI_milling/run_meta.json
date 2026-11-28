@@ -1,0 +1,181 @@
+{
+ "run_id": "20261128T151802Z_modeI_milling",
+ "mode": "I",
+ "workpiece": "APSD-MILLING",
+ "provider": "Anthropic",
+ "model_designation": "Opus 5.5 High (as shown in the claude.ai model selector)",
+ "model_designation_source": "as entered by the operator from the chat's model selector",
+ "interface": "claude.ai web chat, new conversation, drawing PNG attached",
+ "date_of_use": "2026-11-28",
+ "operator": "Julissa Barahona",
+ "conversation_ref": null,
+ "input_modalities": [
+  "text",
+  "image"
+ ],
+ "settings": "chat defaults (no temperature control in the web chat)",
+ "prompt_sha256": "3d73e16231d2a4290d2ca1647ac3145d75e0ad17827eae268c3c0654b8cdcde0",
+ "reply_sha256": "7e6ceaed0743e97b710bc369971d1c54642d810bfca4d2960e8e0722c0d0e68f",
+ "imported_utc": "2026-11-28T15:54:49+00:00",
+ "parse_problems": [],
+ "extracted_files": [
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_10_face_top_to_z4.nc",
+   "sha256": "c02bcde6caad353aa614a4f38ee867f78ff0f1b66216549d786fcedcce99ab22",
+   "setup": "S1",
+   "op": "OP10",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_20_bore_d30.nc",
+   "sha256": "078c75ab50acef7672783be9da25b0aa7c03caecc397f9a92623e56d43e5cbbb",
+   "setup": "S1",
+   "op": "OP20",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 1,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_30_pins_d3_5.nc",
+   "sha256": "7c2d2b469957bd965615bbf7e0cb9a4860d22178920f61881ee0d3839d816f58",
+   "setup": "S1",
+   "op": "OP30",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_40_keyway_w8.nc",
+   "sha256": "72e55be83352c28fbfd640da8fe555e2e266ed4e2bae179c4101df261d473046",
+   "setup": "S1",
+   "op": "OP40",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 1,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_50_rough_outside_bosses_to_z9.nc",
+   "sha256": "26f83223a9162c18eb3b033c777bb68912379ca3f19ef99e397bee2e722c4986",
+   "setup": "S1",
+   "op": "OP50",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_60_rough_arms_window_to_z19.nc",
+   "sha256": "d8d382ceccc82994ef9a5621cc296da9d98380311d590e04fa62cdb39e0ae2cb",
+   "setup": "S1",
+   "op": "OP60",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_70_bore_d20.nc",
+   "sha256": "76be1591eaa605f5bf131a590bb0f9faa8a9ba9fc5f7d1f856c02d78ce16b24f",
+   "setup": "S1",
+   "op": "OP70",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_80_finish_walls_window_r8.nc",
+   "sha256": "9d4f31cde73f11d5494e015a3ad00f4d8f48fae6fcf09033f80e259fd4d85177",
+   "setup": "S1",
+   "op": "OP80",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_90_fillets_r2_top.nc",
+   "sha256": "4ab1f344c202fe37e6e7753e6ea2ebaea2eedae4a299a60373cbbb4b9a6c9c92",
+   "setup": "S1",
+   "op": "OP90",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/setup_01_complete.nc",
+   "sha256": "0f2107b32ed277ad6fc668810d81c8916bb5b6e82440e279cb5b0ca137783106",
+   "setup": "S1",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 1,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_110_clear_bottom_outside_bosses_to_z5.nc",
+   "sha256": "ba8a2f6a26a7e27a6f645a37185bd2bee8914af2b056e3631ab485fc9057cee6",
+   "setup": "S2",
+   "op": "OP110",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_120_fillets_r2_bottom.nc",
+   "sha256": "b4e477f7bf7a9448cc08000b6f99f1b7dfb91e5d451f6c4def4a8b9eecfcab22",
+   "setup": "S2",
+   "op": "OP120",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/setup_02_complete.nc",
+   "sha256": "e5ce8774f2b1f7c285c6b1edb6c09d63281278bd97046f84459ea9bfad787029",
+   "setup": "S2",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  }
+ ],
+ "initial_dir": "05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling",
+ "status": "INITIAL AI PROPOSAL - UNVERIFIED (simulation-only candidate)"
+}

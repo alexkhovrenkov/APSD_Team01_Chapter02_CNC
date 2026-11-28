@@ -1,0 +1,205 @@
+{
+ "run_id": "20261128T151802Z_modeI_lathe",
+ "mode": "I",
+ "workpiece": "APSD-LATHE",
+ "provider": "Anthropic",
+ "model_designation": "Opus 5.5 High (as shown in the claude.ai model selector)",
+ "model_designation_source": "as entered by the operator from the chat's model selector",
+ "interface": "claude.ai web chat, new conversation, drawing PNG attached",
+ "date_of_use": "2026-11-28",
+ "operator": "Julissa Barahona",
+ "conversation_ref": null,
+ "input_modalities": [
+  "text",
+  "image"
+ ],
+ "settings": "chat defaults (no temperature control in the web chat)",
+ "prompt_sha256": "a5ab93fedd39bed6adf555c85ab79a5b08b0f795214324fc9efce891b9efc898",
+ "reply_sha256": "7fd77e34b424ff3fe17f0e180aadfeab9de01c63772828b253bd473b40652a7b",
+ "imported_utc": "2026-11-28T15:35:40+00:00",
+ "parse_problems": [],
+ "extracted_files": [
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_10_face_front.nc",
+   "sha256": "1cc2b7876362cc7ed067c7999b09d1660599975aa2378828b20377c660b50078",
+   "setup": "S1",
+   "op": "OP10",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_20_rough_od.nc",
+   "sha256": "bf78538196aaba1a90c46141788aab82a79963083ac9928cd66069859ad62eb1",
+   "setup": "S1",
+   "op": "OP20",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_30_finish_od.nc",
+   "sha256": "1eea57267a09c70cffa4c403dd4353b4877db3b44b4fe2a374ce2fd72ddc1e5c",
+   "setup": "S1",
+   "op": "OP30",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_40_centre_drill.nc",
+   "sha256": "c006d16a76e7920499c47975ef6846e41b56152fc0a3dd34501dfb25076a9115",
+   "setup": "S1",
+   "op": "OP40",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_50_drill_d13.nc",
+   "sha256": "b31f4b666443af2d1031f246e37dad9d2620cb829210105f423f6e34e4b81322",
+   "setup": "S1",
+   "op": "OP50",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_60_rough_bore.nc",
+   "sha256": "8e6e2955fdc37123c7adec9d1e9d4456ef831ef700b0dc80fb405eb57bb65437",
+   "setup": "S1",
+   "op": "OP60",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_70_finish_bore.nc",
+   "sha256": "ae6f491d4ef30e52772151cb2ad5994177bfeed749936ef851592d84deff5acc",
+   "setup": "S1",
+   "op": "OP70",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_80_thread_ext.nc",
+   "sha256": "85106f6eedb8caf882036d7500d20b6e1799674bae1cfc5b993dbf8134e47248",
+   "setup": "S1",
+   "op": "OP80",
+   "static_check_counts": {
+    "critical": 1,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/setup_01_complete.nc",
+   "sha256": "56baad1a49d80984a89dc12852a37099eef53b0517f49c4194d06d6338acee6e",
+   "setup": "S1",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_110_face_rear.nc",
+   "sha256": "20fb05335cc806c90f1f5bd024e0c313e1d711fd4cb0cee2fcb3268f951b4605",
+   "setup": "S2",
+   "op": "OP110",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_120_rough_od_rear.nc",
+   "sha256": "fcdd2743e0404bc749ea628ae521f1a181cafa67ed1f7dbf58b391d0e690a89b",
+   "setup": "S2",
+   "op": "OP120",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_130_finish_od_rear.nc",
+   "sha256": "6cd438ee37100040eae71f5e26f76ff38f3e43312ff8590e57e520d61bba0e22",
+   "setup": "S2",
+   "op": "OP130",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_140_centre_drill_rear.nc",
+   "sha256": "091b30fc2e21d56d99646112e0a998d2103d9ee42749e5beeb0b70aee0706e40",
+   "setup": "S2",
+   "op": "OP140",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/op_150_drill_d13_rear.nc",
+   "sha256": "3440459eced4257a1e7e2337714b0f3be275748cc05f70ef4170d8d1591dfa2b",
+   "setup": "S2",
+   "op": "OP150",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 0
+   }
+  },
+  {
+   "file": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe/setup_02_complete.nc",
+   "sha256": "4c40ebab07084386e048672a8e195beef773c9a7c3c499d0eb10c5f89d01d367",
+   "setup": "S2",
+   "op": "ALL",
+   "static_check_counts": {
+    "critical": 0,
+    "major": 0,
+    "minor": 0,
+    "info": 1
+   }
+  }
+ ],
+ "initial_dir": "05_AI_Mode_I_Drawing/lathe/initial/20261128T151802Z_modeI_lathe",
+ "status": "INITIAL AI PROPOSAL - UNVERIFIED (simulation-only candidate)"
+}

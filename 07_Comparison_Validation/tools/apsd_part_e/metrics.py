@@ -148,12 +148,16 @@ def evaluate_case(part: str, case: str) -> dict:
             row["initial_nc_result"] = f"MISSING_DEPENDENCY: no human NC program in {rel(BASELINE_OF[part])}"
             row["evidence"] = rel(BASELINE_OF[part])
             return row
-        checks = [check_file(p, DIALECT_OF[part]) for p in files]
+        # A 'setup_*complete*' program is the full program of a setup; op_* files are excerpts of it.
+        # Measure the complete programs only (otherwise every issue is counted twice); fall back to all files.
+        complete = [p for p in files if p.name.lower().startswith("setup") and "complete" in p.name.lower()]
+        measured = complete or files
+        checks = [check_file(p, DIALECT_OF[part]) for p in measured]
         counts = {s: sum(c["counts"][s] for c in checks) for s in ("critical", "major", "minor")}
         recs = _records(workpiece=wp, mode_label="Manual baseline")
         row.update({"input_coverage": "Full drawing / CAPP (Parts C/D)", "recognized_features": "NOT_MEASURED (baseline G1 coverage worksheet not recorded)",
                     "missing_features": "NOT_MEASURED", "incorrect_features": "NOT_MEASURED", "recognized_feature_coverage": "NOT_MEASURED",
-                    "dimensional_discrepancies_mm": "NOT_MEASURED", "initial_nc_result": f"{len(files)} human NC file(s)",
+                    "dimensional_discrepancies_mm": "NOT_MEASURED", "initial_nc_result": f"{len(files)} human NC file(s); measured: {', '.join(p.name for p in measured)}",
                     "program_issues_by_severity": f"static: {counts}", "human_corrections": "n/a (human-authored)",
                     "simulator_validated_operations": sim["validated"] if sim["status"] == "RECORDED" else "PENDING_SIMULATION",
                     "failed_or_unsupported_operations": "; ".join(sim["failed_or_unsupported"]) or ("PENDING_SIMULATION" if sim["status"] != "RECORDED" else "none recorded"),
@@ -175,7 +179,11 @@ def evaluate_case(part: str, case: str) -> dict:
     cov = coverage(ws, reference, case)
     recs = _records(run_id=meta["run_id"])
     revs = _revisions(PARTS[part], f"Mode {case}")
-    static = {s: sum(f["static_check_counts"][s] for f in meta["extracted_files"]) for s in ("critical", "major", "minor")}
+    # Same rule as the baseline rows: current checker, complete setup programs only (op files are excerpts).
+    # The counts stored at import time stay in initial/<run>/automatic_checks.json as the historical record.
+    init_files = sorted(p for p in (REPO / meta["initial_dir"]).glob("*") if p.is_file() and p.suffix.lower() in NC_SUFFIXES)
+    measured = [p for p in init_files if p.name.lower().startswith("setup") and "complete" in p.name.lower()] or init_files
+    static = {s: sum(check_file(p, DIALECT_OF[part])["counts"][s] for p in measured) for s in ("critical", "major", "minor")}
     human_issues: dict[str, int] = {}
     for r in recs:
         for g in r["gates"].values():
@@ -195,7 +203,7 @@ def evaluate_case(part: str, case: str) -> dict:
         "recognized_feature_coverage": m["coverage"] if m else "NOT_MEASURED",
         "dimensional_discrepancies_mm": (f"n={m['dimensional']['compared']}, mean={m['dimensional']['mean_abs_error_mm']}, max={m['dimensional']['max_abs_error_mm']}, >0.05mm: {m['dimensional']['over_0.05mm']}") if m else "NOT_MEASURED",
         "initial_nc_result": f"{len(meta['extracted_files'])} NC file(s) from run {meta['run_id']} (model '{meta['model_designation']}', {meta['date_of_use']}); parse problems: {len(meta['parse_problems'])}",
-        "program_issues_by_severity": f"static: {static}; human-recorded: {human_issues or 'none recorded'}",
+        "program_issues_by_severity": f"static ({', '.join(p.name for p in measured)}): {static}; human-recorded: {human_issues or 'none recorded'}",
         "human_corrections": f"{sum(1 for r in revs if r['author_type'] == 'human')} human / {sum(1 for r in revs if r['author_type'] == 'AI' and r['version'] != 'v00_initial')} AI revisions",
         "simulator_validated_operations": sim["validated"] if sim["status"] == "RECORDED" else "PENDING_SIMULATION",
         "failed_or_unsupported_operations": "; ".join(sim["failed_or_unsupported"]) or ("PENDING_SIMULATION" if sim["status"] != "RECORDED" else "none recorded"),

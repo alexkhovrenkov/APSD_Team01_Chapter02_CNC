@@ -1,0 +1,84 @@
+{
+ "mode": "II",
+ "part": "APSD-LATHE",
+ "inputs": [
+  {
+   "role": "template",
+   "path": "07_Comparison_Validation/experiment_config/prompt_template.md",
+   "sha256": "9c813ce22c46eb3b5c981d501a83ab032fd25aa2f7b600296995c3f18887de6b"
+  },
+  {
+   "role": "shared_config",
+   "path": "07_Comparison_Validation/experiment_config/shared_experiment_config.json",
+   "sha256": "c2d3b3cf003af9fbb078cc4b149859af1f8104d8c300c415d668b1cb82f5e370",
+   "section": "ai_visible.common + ai_visible.APSD-LATHE"
+  },
+  {
+   "role": "dialect",
+   "path": "07_Comparison_Validation/experiment_config/simulator_dialect.json",
+   "sha256": "97bbb92d6f2196817c83b1b586f79c653ce012b1be53592a16c3e1ee4d593b2c"
+  },
+  {
+   "role": "cad_manifest (filtered, embedded below)",
+   "path": "06_AI_Mode_II_CAD/extractor_and_manifest/manifests/lathe_manifest.json",
+   "sha256": "7f20705b3228443115a22c527793f7983a34f1cc3d6d300fe1475889a3b71e86",
+   "embedded_sha256": "c603213001ed40a2adfa7dea5ceb23ca64a6c909e21d05e0ce149a5d6f75463f",
+   "removed_before_sending": [
+    "manufacturing_considerations (process hints; Mode I gets none)",
+    "extraction.feature_tree (designer's feature NAMES are not geometry)",
+    "1 human annotation(s) not approved for Mode II"
+   ]
+  }
+ ],
+ "attachments": [],
+ "prompt_sha256": "13f14ba35f646d5ac5ff73f0cd067fab21a8e5b04bbf6a4eb721d3641b0c6fa0",
+ "prompt_characters": 56744,
+ "isolation": {
+  "passed": true,
+  "checks": [
+   {
+    "check": "no evaluation-reference ids or files",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "no human-baseline NC line in the prompt",
+    "passed": true,
+    "detail": "603 baseline lines compared"
+   },
+   {
+    "check": "no Mode I output referenced",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "Mode II: no drawing image or drawing file",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "Mode II: manufacturing hints removed",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "check": "shared config contains no reference dimension of this part",
+    "passed": true,
+    "detail": "; allowed process values (see isolation_allowlist): ['13', '30', '60']"
+   },
+   {
+    "check": "template contains no reference dimension of this part",
+    "passed": true,
+    "detail": ""
+   }
+  ],
+  "limits": "These checks prove what the PROMPT contains. They cannot prove what the chat model saw elsewhere; that is controlled by the run protocol (new conversation, no Project, no memory, only the listed attachment)."
+ },
+ "run_id": "20261128T151802Z_modeII_lathe",
+ "created_utc": "2026-11-28T15:18:02+00:00",
+ "preflight_problems": [
+  "evaluation reference not yet verified at G1 (needed for metrics, not for generation)"
+ ],
+ "accepted_deviations": [],
+ "status": "PROMPT_READY - not yet sent"
+}

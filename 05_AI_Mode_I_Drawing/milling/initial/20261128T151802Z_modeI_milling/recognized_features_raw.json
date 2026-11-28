@@ -1,0 +1,293 @@
+{
+ "features": [
+  {
+   "id": "F01",
+   "type": "cylindrical boss",
+   "description": "Large boss, outer diameter 60, height 20. Its top face carries the pins and it contains the keyed bore.",
+   "dimensions": {
+    "diameter_mm": 60.0,
+    "height_mm": 20.0
+   },
+   "location": "S1: axis X40 Y40 (work_origin, HUMAN_APPROVED); top face Z-4, bottom face Z-24",
+   "source": "Top view callout Ø60; front view callout 20 (left)",
+   "confidence": "high",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F02",
+   "type": "through bore",
+   "description": "Bore D30 through the large boss, coaxial with F01. The callout is underlined (ISO convention: not drawn to scale).",
+   "dimensions": {
+    "diameter_mm": 30.0,
+    "depth_mm": 20.0
+   },
+   "location": "S1: axis X40 Y40, Z-4 to Z-24",
+   "source": "Top view callout Ø30 (underlined); section B-B shows the bore through the full boss height",
+   "confidence": "high",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F03",
+   "type": "axial keyway (through)",
+   "description": "Keyway in the D30 bore, width 8, bottom 18 from the bore axis (3 beyond the bore wall), through the boss height, pointing +Y. Drawn with sharp internal corners.",
+   "dimensions": {
+    "width_mm": 8.0,
+    "bottom_distance_from_bore_axis_mm": 18.0,
+    "depth_beyond_bore_wall_mm": 3.0,
+    "length_mm": 20.0
+   },
+   "location": "S1: walls X36 and X44, bottom at Y58, Z-4 to Z-24",
+   "source": "Section C-C callout 8 (keyway width); section B-B callout 18 (from axis)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F04",
+   "type": "cylindrical pins (assumed integral)",
+   "description": "Six pins D3.5, 4 high, on the top face of the large boss. Centres are on radius 23 from the boss axis. The layout is read as six equally spaced at 30 + k*60 deg, with one on +Y (the keyway side).",
+   "dimensions": {
+    "diameter_mm": 3.5,
+    "height_mm": 4.0,
+    "pitch_circle_radius_mm": 23.0,
+    "pitch_circle_diameter_mm": 46.0
+   },
+   "location": "S1 centres: (59.919, 51.5), (40, 63), (20.081, 51.5), (20.081, 28.5), (40, 17), (59.919, 28.5); Z-4 to Z0",
+   "source": "Top view callout Ø3,5; section B-B callouts 4 and 23; isometric view",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F05",
+   "type": "cylindrical boss",
+   "description": "Small boss, outer diameter 42, height 20. Top and bottom faces are in the same planes as F01 (front view).",
+   "dimensions": {
+    "diameter_mm": 42.0,
+    "height_mm": 20.0
+   },
+   "location": "S1: axis on Y40 at X = 40 + d. The centre distance d is NOT DIMENSIONED. Top Z-4, bottom Z-24.",
+   "source": "Top view callout Ø42; front view callout 20 (right)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F06",
+   "type": "through bore",
+   "description": "Bore D20 through the small boss, coaxial with F05",
+   "dimensions": {
+    "diameter_mm": 20.0,
+    "depth_mm": 20.0
+   },
+   "location": "S1: axis X = 40 + d (unknown), Y40; Z-4 to Z-24",
+   "source": "Top view callout Ø20; section A-A",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F07",
+   "type": "curved arm (outer rim)",
+   "description": "Outer arm on the +Y side between the bosses. Convex outer edge R115, radial width 8, thickness 10. The edge appears internally tangent to both bosses (no edge line is drawn at the junctions).",
+   "dimensions": {
+    "outer_edge_radius_mm": 115.0,
+    "width_mm": 8.0,
+    "thickness_mm": 10.0,
+    "inner_edge_radius_if_concentric_mm": 107.0
+   },
+   "location": "Between F01 and F05, +Y side; arc centre not dimensioned (on the -Y side of the boss axis line)",
+   "source": "Top view callouts R115 and 8 (upper); section B-B callout 10; section A-A",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F08",
+   "type": "curved arm (inner arm)",
+   "description": "Inner arm. Its lower edge is a concave arc R60 that appears externally tangent to both bosses. Width 8, thickness 10.",
+   "dimensions": {
+    "lower_edge_radius_mm": 60.0,
+    "width_mm": 8.0,
+    "thickness_mm": 10.0,
+    "upper_edge_radius_if_concentric_mm": 68.0
+   },
+   "location": "Between F01 and F05, -Y side; arc centre not dimensioned (on the -Y side)",
+   "source": "Top view callouts R60 and 8 (lower), leader carried down to C-C",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F09",
+   "type": "through window",
+   "description": "Opening between the two arms, through the arm thickness. It is bounded by the arm inner edges and the D60 and D42 boss walls, with four R8 corner blends.",
+   "dimensions": {
+    "corner_radius_mm": 8.0,
+    "depth_mm": 10.0
+   },
+   "location": "Between the bosses at arm level",
+   "source": "Section C-C (4x R8 callouts); top view; isometric view",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F10",
+   "type": "arm height position",
+   "description": "Arms 10 thick, drawn centred in the 20 boss height. The offset from the boss faces is not dimensioned.",
+   "dimensions": {
+    "thickness_mm": 10.0,
+    "assumed_offset_from_boss_faces_mm": 5.0
+   },
+   "location": "Assumed S1 Z-9 to Z-19 (S2 Z-5 to Z-15)",
+   "source": "Section B-B callout 10; front view; section A-A (layout only)",
+   "confidence": "low",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F11",
+   "type": "fillets",
+   "description": "R2 concave fillets where the arm top and bottom faces meet the boss walls",
+   "dimensions": {
+    "radius_mm": 2.0
+   },
+   "location": "Arm/D60 junction and arm/D42 junction, top and bottom of arms",
+   "source": "Front view R2 (2x); section A-A R2 (2x)",
+   "confidence": "medium",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F12",
+   "type": "planar faces",
+   "description": "Top faces of both bosses, 4 below the pin tops. Overall height 20 + 4 = 24, equal to the stock height, so Z0 (block top) = pin tops.",
+   "dimensions": {
+    "pin_height_mm": 4.0,
+    "overall_height_mm": 24.0
+   },
+   "location": "S1 Z-4 (top faces); S2 Z0 (bottom faces)",
+   "source": "Section B-B callout 4; front view callouts 20",
+   "confidence": "high",
+   "needs_human_verification": true
+  },
+  {
+   "id": "F13",
+   "type": "general note",
+   "description": "Break all sharp edges and remove burrs. No tolerances, surface-finish value, material or title are entered on the drawing.",
+   "dimensions": {},
+   "location": "Whole part",
+   "source": "Title block",
+   "confidence": "high",
+   "needs_human_verification": true
+  }
+ ],
+ "unclear_or_missing": [
+  {
+   "item": "Centre distance d between the D60 and D42 boss axes",
+   "why": "There is no horizontal dimension in the top view, front view or C-C. Scaling is not allowed, so the position of F05, F06, F07, F08 and F09 cannot be fixed.",
+   "affects": [
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Centres of arcs R115 and R60",
+   "why": "Not dimensioned. Tangency to the bosses is only implied (no junction edge lines). Even if tangency is confirmed, the centres still need d.",
+   "affects": [
+    "OP60",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Height position of the 10-thick arms within the 20 boss height",
+   "why": "Only the thickness 10 is given. The centred position is read from the layout, not from a dimension.",
+   "affects": [
+    "OP50",
+    "OP60",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Arm width 8: edge construction",
+   "why": "Each 8 callout is measured at one place. It is not stated whether the inner edges are concentric offsets (R107, R68).",
+   "affects": [
+    "OP60",
+    "OP80",
+    "OP110"
+   ]
+  },
+  {
+   "item": "Pin count and angular positions",
+   "why": "The Ø3,5 callout has no '6x' and there are no angular dimensions. Six pins at 60 deg spacing with one on +Y is read from the view symmetry.",
+   "affects": [
+    "OP10",
+    "OP30"
+   ]
+  },
+  {
+   "item": "Meaning of 23 and 18 in section B-B",
+   "why": "Read as axis-to-pin-centre (23) and axis-to-keyway-bottom (18). The extension lines are close together and both start at the boss axis.",
+   "affects": [
+    "OP10",
+    "OP30",
+    "OP40"
+   ]
+  },
+  {
+   "item": "Keyway corner form and tolerance",
+   "why": "Sharp internal corners cannot be produced by a rotating end mill; a D6 tool leaves R3. No width tolerance or fit is given.",
+   "affects": [
+    "OP40",
+    "OP45"
+   ]
+  },
+  {
+   "item": "Pins integral or inserted dowels",
+   "why": "Not stated. They are assumed integral because overall height 24 equals the stock height.",
+   "affects": [
+    "OP10",
+    "OP30"
+   ]
+  },
+  {
+   "item": "Extent of R2 fillets and of plan-view blends at the arm/boss junctions",
+   "why": "R2 is shown only in the front view and A-A. Thin tangent lines in the top view suggest blends, but these are not dimensioned.",
+   "affects": [
+    "OP80",
+    "OP90",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Tolerances, surface finish, material",
+   "why": "These title-block fields are empty. Material is taken from the approved configuration (Al 6061).",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP30",
+    "OP40",
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Z0 'finished top' = pin tops",
+   "why": "Configuration says Z0 = block top, nothing faced. This matches pin tops only because 20 + 4 = 24 = stock height.",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP30",
+    "OP40"
+   ]
+  }
+ ]
+}

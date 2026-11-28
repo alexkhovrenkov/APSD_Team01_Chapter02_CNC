@@ -1,6 +1,6 @@
 {
  "title": "Part E shared experiment configuration - identical for Mode I (drawing) and Mode II (CAD data)",
- "version": "0.2-draft",
+ "version": "0.3",
  "last_changed": "2026-11-28",
  "prepared_by": "Claude Code (Anthropic, model claude-opus-5-5) as a proposing agent; every PENDING_HUMAN_REVIEW value must be decided by the team",
  "isolation_rule": "This file is sent VERBATIM (section 'ai_visible') to BOTH modes. It must not contain target geometry (dimensions, feature lists, coordinates of features). Geometry reaches the AI only through the mode-specific input: drawing images (Mode I) or the CAD manifest (Mode II). tools/apsd_part_e checks this before building a prompt.",
@@ -18,7 +18,7 @@
  ],
  "dependencies": {
   "02_Process_Plans": "Part B documents added 2026-11-28 (route sheets + Tooling, Stock and Setups, dated 2026-11-24). Values copied into ai_visible; open points listed under part_b_sources.",
-  "03_Lathe / 04_Mill": "Still EMPTY on 2026-11-28. The brief (2.5) requires the human baselines BEFORE AI code is requested.",
+  "03_Lathe / 04_Mill": "Human baselines committed on 2026-11-28 (lathe setups 1-2, milling setups 1-2) BEFORE any AI prompt was built (brief 2.5).",
   "01_Onshape_Drawings": "Named version 'Ch2-Final': onshape_link.txt and drawing PDFs present (2026-11-28). Lathe drawing title block still says inches / Letter sheet."
  },
  "ai_visible": {
@@ -116,26 +116,23 @@
    },
    "setups": {
     "value": {
-     "setup_1": "Raw bar in the chuck (25 mm held). Machines the 'front' end = the end that carries the external thread. Facing establishes Z0.",
-     "setup_2": "Part reversed; finished surfaces protected. Machines the opposite ('rear') end. The rear facing cut establishes the overall length; Z0 = finished rear face.",
-     "off_lathe_features": "Features that 2-axis turning cannot produce (off-axis holes, keys, flats) are made later on a 3-axis mill in a secondary setup (Part B route sheet ops 230-250). They are OUT OF SCOPE for the lathe NC programs: list them as such, do not program them.",
-     "open_items": [
-      "setup 2: gripped surface/diameter and grip length not specified",
-      "setup 2: how it is simulated in LatheLab (the stock dialog only loads raw bar)"
-     ]
+     "setup_1": "Raw bar in the chuck (25 mm held). Machines the 'front' end = the end that carries the external thread. Facing establishes Z0 (finished front face).",
+     "setup_2": "Part reversed; finished surfaces protected. Machines the opposite ('rear') end. The rear facing cut establishes Z0 (finished rear face).",
+     "programs": "One separate program per setup. Each setup is simulated on its own in LatheLab (the stock dialog only loads a raw bar).",
+     "off_lathe_features": "Features that 2-axis turning cannot produce (off-axis holes, keys, flats) are made later on a 3-axis mill in a secondary setup (Part B route sheet ops 230-250). They are OUT OF SCOPE for the lathe NC programs: list them as such, do not program them."
     },
     "class": "HUMAN_APPROVED",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "02_Process_Plans/lathe_route_sheet.pdf (Part B, Team01, 2026-11-24) setups 1-2 and ops 230-250; 02_Process_Plans/tooling_stock_setups.pdf (Part B, Team01, 2026-11-24) section 1.2; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
+    "status": "CONFIRMED",
+    "source": "02_Process_Plans/lathe_route_sheet.pdf setups 1-2 and ops 230-250; human lathe programs 03_Lathe/setup_01_complete.nc and setup_02_complete.nc (values as used there); approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "workholding": {
     "value": {
      "setup_1": "3-jaw chuck, 25 mm of the raw bar held",
-     "setup_2": "protected chuck arrangement on a finished surface (grip surface and length still open)"
+     "setup_2": "protected chuck arrangement on a finished surface; grip surface and grip length are not specified by the team (accepted)"
     },
     "class": "HUMAN_APPROVED",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "02_Process_Plans/lathe_route_sheet.pdf (Part B, Team01, 2026-11-24) headers; 02_Process_Plans/tooling_stock_setups.pdf (Part B, Team01, 2026-11-24) section 1.1; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
+    "status": "CONFIRMED",
+    "source": "02_Process_Plans/lathe_route_sheet.pdf headers; 02_Process_Plans/tooling_stock_setups.pdf section 1.1; approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "tools": {
     "value": {
@@ -257,14 +254,11 @@
      ],
      "units": "mm and degrees; reach = max. groove depth / drill flute length / bar length",
      "offsets": "offset number = station (T0101 ... T1212); wear X/Z = 0; offset R/T = nose radius / tip number (used by G41/G42)",
-     "open_items": [
-      "Part B notes that T05 and T09 reach is insufficient for the planned depths; not yet changed in the tool table",
-      "T09 bar diameter vs. the internal thread size: to be checked by the team"
-     ]
+     "note": "Tool table used exactly as configured in LatheLab; no tool was changed for reach (team decision)."
     },
     "class": "HUMAN_APPROVED",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "02_Process_Plans/tooling_stock_setups.pdf (Part B, Team01, 2026-11-24) section 1.3, Figures 2-3 (LatheLab 'Tools & offsets'); 02_Process_Plans/lathe_route_sheet.pdf (Part B, Team01, 2026-11-24) assumptions; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
+    "status": "CONFIRMED",
+    "source": "02_Process_Plans/tooling_stock_setups.pdf (Part B, Team01, 2026-11-24) section 1.3, Figures 2-3 (LatheLab 'Tools & offsets'); 02_Process_Plans/lathe_route_sheet.pdf (Part B, Team01, 2026-11-24) assumptions; approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "cutting_data": {
     "value": {
@@ -337,10 +331,15 @@
     "source": "02_Process_Plans/lathe_route_sheet.pdf (Part B, Team01, 2026-11-24) speed/feed columns and assumptions; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
    },
    "safety_clearances": {
-    "value": null,
-    "class": "MISSING",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "NOT in the Part B documents, although the route sheets say they are 'specified separately in the Tooling, Stock and Setups document'. Needed: start / tool-change position, approach distance in X and Z."
+    "value": {
+     "start_and_approach": "Approach point X110 Z2 (outside the bar, 2 mm in front of the face) before every cut; drilling tools approach on the axis at X0 Z2 and retract to Z5.",
+     "threading": "Thread passes start from Z10 to give the carriage room to synchronise.",
+     "tool_change": "Before every tool change: return to the machine reference with G28 U0 W0 and stop the spindle (M05); then call the next tool.",
+     "rapids": "G00 only outside the material; feed moves (G01) for every cut and for retracts along a machined face."
+    },
+    "class": "HUMAN_APPROVED",
+    "status": "CONFIRMED",
+    "source": "human lathe programs 03_Lathe/setup_01_complete.nc and setup_02_complete.nc (values as used there); approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "simulator_setup": {
     "value": "LatheLab: Stock dialog = Part B stock; Tools & offsets = Part B tools; Program check + Operations + Inspection; Check part only with a correctly configured target",
@@ -407,29 +406,23 @@
    },
    "work_origin": {
     "value": {
-     "setup_1": "G54 X0 Y0 at the front-left corner of the block (+X along the long side, +Y along the short side); Z0 on the finished top surface (= raw top, nothing faced off).",
-     "setup_2": "Part flipped; G54 re-established at the front-left corner after flipping; Z0 on the finished opposite surface.",
-     "open_items": [
-      "position of the part inside the block (offset of the part from the block corner) not specified",
-      "setup 2: how X/Y are aligned with setup 1 after flipping not specified"
-     ]
+     "setup_1": "G54 X0 Y0 at the front-left corner of the block (+X along the long side, +Y along the short side); Z0 on the top surface of the block (= finished top, nothing faced off).",
+     "part_position_setup_1": "The part lies flat with the pins facing up (+Z). The axis of the larger boss (the one with the keyed bore) is at X40 Y40. The line through both boss axes is parallel to +X, with the second boss at larger X. The keyway points towards +Y.",
+     "setup_2": "Part turned over about the Y axis, so every X becomes 170 - X and Y is unchanged (larger boss axis at X130 Y40). G54 at the front-left corner after flipping; Z0 on the bottom faces of the bosses (the finished opposite surface)."
     },
     "class": "HUMAN_APPROVED",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "02_Process_Plans/tooling_stock_setups.pdf (Part B, Team01, 2026-11-24) sections 2.1-2.2; 02_Process_Plans/milling_route_sheet.pdf (Part B, Team01, 2026-11-24) headers; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
+    "status": "CONFIRMED",
+    "source": "02_Process_Plans/milling_route_sheet.pdf (revised 2026-11-28, matched to the 04_Mill programs); approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "setups": {
     "value": {
-     "setup_1": "First side up, held in a fixture.",
-     "setup_2": "Workpiece flipped (opposite side up) in a dedicated support fixture that protects the features made in setup 1; coordinate system re-established.",
-     "open_items": [
-      "setup 2 datum details (see work_origin)",
-      "setup 2: how it is simulated in MillLab (the stock is always a raw rectangular block)"
-     ]
+     "setup_1": "First side up (pins facing +Z), block held in a fixture.",
+     "setup_2": "Part turned over about the Y axis and held in a dedicated support fixture that protects the features made in setup 1; coordinate system re-established as in work_origin.",
+     "programs": "Each setup is simulated on its own in MillLab, starting from the raw block (MillLab only loads a raw rectangular block)."
     },
     "class": "HUMAN_APPROVED",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "02_Process_Plans/milling_route_sheet.pdf (Part B, Team01, 2026-11-24) setups 1-2; 02_Process_Plans/tooling_stock_setups.pdf (Part B, Team01, 2026-11-24) section 2.2; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
+    "status": "CONFIRMED",
+    "source": "02_Process_Plans/milling_route_sheet.pdf (revised 2026-11-28, matched to the 04_Mill programs); 02_Process_Plans/tooling_stock_setups.pdf section 2.2; approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "workholding": {
     "value": {
@@ -630,10 +623,14 @@
     "source": "02_Process_Plans/milling_route_sheet.pdf (Part B, Team01, 2026-11-24) speed/feed columns and assumptions; entered 2026-11-28 on the instruction of a team member; values copied, not changed"
    },
    "safety_clearances": {
-    "value": null,
-    "class": "MISSING",
-    "status": "PENDING_HUMAN_REVIEW",
-    "source": "NOT in the Part B documents, although the route sheets say they are 'specified separately in the Tooling, Stock and Setups document'. Needed: safe Z / clearance plane, R-plane for canned cycles, tool-change height."
+    "value": {
+     "safe_height": "All rapid XY moves at the safe height Z10 (10 mm above Z0).",
+     "plunge": "Moves into material at the plunge feed (see cutting_data).",
+     "tool_change": "Before every tool change: retract to Z10, stop the spindle (M05) and cancel tool length compensation (G49); change with M06; then G43 Hnn with nn = tool number."
+    },
+    "class": "HUMAN_APPROVED",
+    "status": "CONFIRMED",
+    "source": "02_Process_Plans/milling_route_sheet.pdf (revised 2026-11-28, matched to the 04_Mill programs); approved 2026-11-28 by a team member (Part E) in the Claude Code session"
    },
    "simulator_setup": {
     "value": "MillLab: Workpiece dialog = Part B block + origin + Z reference; Tools & offsets = Part B tools (H/D registers or AUTO comp stated); one simulation run per setup",
@@ -677,15 +674,14 @@
  },
  "part_b_sources": {
   "02_Process_Plans/lathe_route_sheet.pdf": "a4220fb784ec2d6ec2bbef36955498f932562820e500dcc7403684b72245873d",
-  "02_Process_Plans/milling_route_sheet.pdf": "5290d77bbba927a4519ad8f07b392f4c514264cdc5843c3d75595c922ba5a2cd",
+  "02_Process_Plans/milling_route_sheet.pdf": "revised 2026-11-28 (matched to the 04_Mill programs)",
   "02_Process_Plans/tooling_stock_setups.pdf": "722faab5f331df5f1f9c1c504d6201311f717f2406e26e85f81a7277d8681f74",
   "what_was_copied": "Only process inputs (stock, material, work zeros, setups, workholding, tool tables, speeds, feeds, depths of cut). The operation sequences and their target dimensions were NOT copied: they describe the part geometry and the human solution.",
-  "open_points_reported_to_the_team": [
-   "Lathe internal thread: route sheet M14x1 (provisional) with D13 drilled from the rear vs CAD core D12 and pitch 2 (M14x2)",
-   "Lathe T05/T09 reach (and T09 bar diameter) insufficient for the planned depths",
-   "Safety clearances missing for both machines",
-   "Setup 2 on both machines: grip/datum/simulation stock not specified",
-   "Milling: position of the part inside the block not specified"
+  "accepted_limitations_not_sent_to_the_AI": [
+   "Lathe internal thread: route sheet M14x1 (provisional) and the human program omits it; CAD has a D12 core with pitch 2 - left as is (team decision 2026-11-28)",
+   "Lathe T05/T09 reach shorter than the planned depths; tool table not changed (team decision)",
+   "Lathe setup 2: grip not specified; extra bar length (approx. 29 mm) not removed in the human program",
+   "Milling: recess/fillet passes leave material next to the boss walls (estimate 1.2-1.7 mm, to be confirmed in simulation)"
   ]
  },
  "isolation_allowlist": {
@@ -698,7 +694,7 @@
   "APSD-MILLING": {
    "4": "Maximum step-down 4 mm (Part B) and flute counts / tool numbers in the MillLab magazine.",
    "8": "Diameters / D registers of T06 tap, T11 reamer and T12 (D8) in the MillLab magazine.",
-   "10": "Diameters of T02/T04/T07 (D10) and T08 as entered in the MillLab magazine.",
+   "10": "Diameters of T02/T04/T07 (D10) and T08 in the MillLab magazine; safe height Z10 (Part B milling route sheet).",
    "18": "T08 overall length (18) as entered in the MillLab magazine.",
    "20": "T06 tap flute length (20) in the MillLab magazine.",
    "30": "T11 reamer flute length (30) in the MillLab magazine.",

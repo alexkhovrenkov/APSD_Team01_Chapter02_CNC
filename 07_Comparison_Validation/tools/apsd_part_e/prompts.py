@@ -151,7 +151,7 @@ def build_prompt(mode: str, part: str, include_feature_tree: bool = False) -> tu
     if mode == "I":
         img = DRAWING_INPUTS / DRAWING_OF[part]
         attachments.append({"role": "drawing_image_ATTACH_TO_CHAT", "path": rel(img), "sha256": sha(img.read_bytes())})
-        desc = ("Mode: DRAWING. The geometry source is the attached dimensioned engineering drawing image (one A4 sheet: "
+        desc = ("Mode: DRAWING. The geometry source is the attached dimensioned engineering drawing image (one drawing sheet: "
                 "isometric view plus the orthographic/section views that carry the dimensions; first-angle projection). "
                 "Read dimensions only from the dimension callouts.")
         geo = ("The drawing is attached to this message as an image. No other geometry data is provided.")
@@ -190,7 +190,7 @@ def isolation_check(mode: str, part: str, text: str, cfg_json: str, tpl: str) ->
     if mode == "I":
         chk("Mode I: no manifest content", "apsd-cnc-feature-manifest" not in text and not re.search(r"\b[LM]-(OD|BORE|BOSS|PINS|WINDOW|KEYWAY|AXIS)\b", text))
     else:
-        chk("Mode II: no drawing image or drawing file", ".png" not in text and "drawing_inputs" not in text and "instructor_sheet" not in text)
+        chk("Mode II: no drawing image or drawing file", ".png" not in text and "drawing_inputs" not in text and "instructor_sheet" not in text and "team_drawing" not in text)
         chk("Mode II: manufacturing hints removed", '"manufacturing_considerations"' not in text)
     allow = isolation_allowlist(part)
     lk_all = leaked_numbers(cfg_json, part)

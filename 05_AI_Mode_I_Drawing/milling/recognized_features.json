@@ -1,5 +1,141 @@
 {
- "title": "G1 geometry worksheet - Mode I - milling",
- "status": "NOT_YET_GENERATED",
- "note": "Created from the first imported AI attempt by apsd_part_e import-response; reviewers then map every reference feature to the AI features."
+ "title": "G1 geometry worksheet - Mode I - APSD-MILLING",
+ "status": "PENDING_HUMAN_REVIEW",
+ "source_run": "20261128T151802Z_modeI_milling",
+ "ai_features_raw": "initial/20261128T151802Z_modeI_milling/recognized_features_raw.json",
+ "ai_unclear_or_missing": [
+  {
+   "item": "Centre distance d between the D60 and D42 boss axes",
+   "why": "There is no horizontal dimension in the top view, front view or C-C. Scaling is not allowed, so the position of F05, F06, F07, F08 and F09 cannot be fixed.",
+   "affects": [
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Centres of arcs R115 and R60",
+   "why": "Not dimensioned. Tangency to the bosses is only implied (no junction edge lines). Even if tangency is confirmed, the centres still need d.",
+   "affects": [
+    "OP60",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Height position of the 10-thick arms within the 20 boss height",
+   "why": "Only the thickness 10 is given. The centred position is read from the layout, not from a dimension.",
+   "affects": [
+    "OP50",
+    "OP60",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Arm width 8: edge construction",
+   "why": "Each 8 callout is measured at one place. It is not stated whether the inner edges are concentric offsets (R107, R68).",
+   "affects": [
+    "OP60",
+    "OP80",
+    "OP110"
+   ]
+  },
+  {
+   "item": "Pin count and angular positions",
+   "why": "The Ø3,5 callout has no '6x' and there are no angular dimensions. Six pins at 60 deg spacing with one on +Y is read from the view symmetry.",
+   "affects": [
+    "OP10",
+    "OP30"
+   ]
+  },
+  {
+   "item": "Meaning of 23 and 18 in section B-B",
+   "why": "Read as axis-to-pin-centre (23) and axis-to-keyway-bottom (18). The extension lines are close together and both start at the boss axis.",
+   "affects": [
+    "OP10",
+    "OP30",
+    "OP40"
+   ]
+  },
+  {
+   "item": "Keyway corner form and tolerance",
+   "why": "Sharp internal corners cannot be produced by a rotating end mill; a D6 tool leaves R3. No width tolerance or fit is given.",
+   "affects": [
+    "OP40",
+    "OP45"
+   ]
+  },
+  {
+   "item": "Pins integral or inserted dowels",
+   "why": "Not stated. They are assumed integral because overall height 24 equals the stock height.",
+   "affects": [
+    "OP10",
+    "OP30"
+   ]
+  },
+  {
+   "item": "Extent of R2 fillets and of plan-view blends at the arm/boss junctions",
+   "why": "R2 is shown only in the front view and A-A. Thin tangent lines in the top view suggest blends, but these are not dimensioned.",
+   "affects": [
+    "OP80",
+    "OP90",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Tolerances, surface finish, material",
+   "why": "These title-block fields are empty. Material is taken from the approved configuration (Al 6061).",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP30",
+    "OP40",
+    "OP50",
+    "OP60",
+    "OP70",
+    "OP80",
+    "OP90",
+    "OP110",
+    "OP120"
+   ]
+  },
+  {
+   "item": "Z0 'finished top' = pin tops",
+   "why": "Configuration says Z0 = block top, nothing faced. This matches pin tops only because 20 + 4 = 24 = stock height.",
+   "affects": [
+    "OP10",
+    "OP20",
+    "OP30",
+    "OP40"
+   ]
+  }
+ ],
+ "instructions": "For every reference feature (07_Comparison_Validation/evaluation_reference) fill outcome = CORRECT | PARTIAL | INCORRECT | MISSED | FLAGGED_AS_UNCLEAR | INVENTED_VALUE, the AI feature ids, and ai_value for each compared dimension. Reviewer and date are mandatory. Do not edit ai_* fields.",
+ "reference_mapping": [],
+ "ai_feature_ids": [
+  "F01",
+  "F02",
+  "F03",
+  "F04",
+  "F05",
+  "F06",
+  "F07",
+  "F08",
+  "F09",
+  "F10",
+  "F11",
+  "F12",
+  "F13"
+ ],
+ "reviewer": null,
+ "review_date": null
 }

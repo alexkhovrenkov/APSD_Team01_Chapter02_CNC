@@ -31,5 +31,6 @@ PARTS = {"lathe": "APSD-LATHE", "milling": "APSD-MILLING"}
 DIALECT_OF = {"lathe": "lathelab", "milling": "milllab"}
 BASELINE_OF = {"lathe": LATHE_BASELINE_DIR, "milling": MILL_BASELINE_DIR}
 MODE_DIR = {"I": MODE_I_DIR, "II": MODE_II_DIR}
-DRAWING_OF = {"lathe": "APSD_LATHE_instructor_sheet3_p26_300dpi.png", "milling": "APSD_MILLING_instructor_sheet2_p25_300dpi.png"}
+# Mode I drawing: team drawings of named version Ch2-Final (team decision 2026-11-28, see 05/drawing_inputs/input_manifest.json)
+DRAWING_OF = {"lathe": "APSD_LATHE_team_drawing_vdd8cc179_300dpi.png", "milling": "APSD_MILLING_team_drawing_vdd8cc179_300dpi.png"}
 NC_SUFFIXES = {".nc", ".txt", ".gcode", ".ngc", ".tap"}

@@ -1,0 +1,323 @@
+{
+ "op_10_face_top_to_z4.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 51,
+  "extents": {
+   "X": [
+    -7.0,
+    177.0
+   ],
+   "Y": [
+    3.0,
+    82.0
+   ],
+   "Z": [
+    -4.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_10_face_top_to_z4.nc"
+ },
+ "op_20_bore_d30.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 58,
+  "extents": {
+   "X": [
+    40.0,
+    50.0
+   ],
+   "Y": [
+    40.0,
+    40.0
+   ],
+   "Z": [
+    -24.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 1,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [
+   {
+    "severity": "major",
+    "line": null,
+    "code": "below_stock_bottom",
+    "message": "Z reaches -24.5, below the stock bottom -24 (vise/table risk)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_20_bore_d30.nc"
+ },
+ "op_30_pins_d3_5.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 80,
+  "extents": {
+   "X": [
+    11.421,
+    68.579
+   ],
+   "Y": [
+    7.0,
+    73.0
+   ],
+   "Z": [
+    -4.0,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_30_pins_d3_5.nc"
+ },
+ "op_40_keyway_w8.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 66,
+  "extents": {
+   "X": [
+    39.0,
+    41.0
+   ],
+   "Y": [
+    50.0,
+    55.0
+   ],
+   "Z": [
+    -24.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 1,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [
+   {
+    "severity": "major",
+    "line": null,
+    "code": "below_stock_bottom",
+    "message": "Z reaches -24.5, below the stock bottom -24 (vise/table risk)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_40_keyway_w8.nc"
+ },
+ "op_50_rough_outside_bosses_to_z9.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_50_rough_outside_bosses_to_z9.nc"
+ },
+ "op_60_rough_arms_window_to_z19.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_60_rough_arms_window_to_z19.nc"
+ },
+ "op_70_bore_d20.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_70_bore_d20.nc"
+ },
+ "op_80_finish_walls_window_r8.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_80_finish_walls_window_r8.nc"
+ },
+ "op_90_fillets_r2_top.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_90_fillets_r2_top.nc"
+ },
+ "setup_01_complete.nc": {
+  "dialect": "milllab",
+  "kind": "static check - NOT a simulation",
+  "nc_lines": 236,
+  "extents": {
+   "X": [
+    -7.0,
+    177.0
+   ],
+   "Y": [
+    3.0,
+    82.0
+   ],
+   "Z": [
+    -24.5,
+    10.0
+   ]
+  },
+  "x_is_diameter": false,
+  "counts": {
+   "critical": 0,
+   "major": 1,
+   "minor": 0,
+   "info": 0
+  },
+  "findings": [
+   {
+    "severity": "major",
+    "line": null,
+    "code": "below_stock_bottom",
+    "message": "Z reaches -24.5, below the stock bottom -24 (vise/table risk)"
+   }
+  ],
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/setup_01_complete.nc"
+ },
+ "op_110_clear_bottom_outside_bosses_to_z5.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_110_clear_bottom_outside_bosses_to_z5.nc"
+ },
+ "op_120_fillets_r2_bottom.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/op_120_fillets_r2_bottom.nc"
+ },
+ "setup_02_complete.nc": {
+  "dialect": "milllab",
+  "nc_lines": 0,
+  "findings": [
+   {
+    "severity": "critical",
+    "line": null,
+    "code": "empty",
+    "message": "no NC blocks found"
+   }
+  ],
+  "counts": {
+   "critical": 1,
+   "major": 0,
+   "minor": 0,
+   "info": 0
+  },
+  "kind": "static check - NOT a simulation",
+  "file": "/Users/julissabarahona/Desktop/APSD_CH_2/APSD_Team01_Chapter02_CNC/05_AI_Mode_I_Drawing/milling/initial/20261128T151802Z_modeI_milling/setup_02_complete.nc"
+ }
+}
